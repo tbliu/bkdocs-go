@@ -27,7 +27,7 @@ var (
 // EventsApiService EventsApi service
 type EventsApiService service
 
-type ApiEventsAccountsStatusGetRequest struct {
+type EventsApiApiEventsAccountsStatusGetRequest struct {
 	ctx _context.Context
 	ApiService *EventsApiService
 	since *time.Time
@@ -36,24 +36,24 @@ type ApiEventsAccountsStatusGetRequest struct {
 	untilId *int32
 }
 
-func (r ApiEventsAccountsStatusGetRequest) Since(since time.Time) ApiEventsAccountsStatusGetRequest {
+func (r EventsApiApiEventsAccountsStatusGetRequest) Since(since time.Time) EventsApiApiEventsAccountsStatusGetRequest {
 	r.since = &since
 	return r
 }
-func (r ApiEventsAccountsStatusGetRequest) Until(until time.Time) ApiEventsAccountsStatusGetRequest {
+func (r EventsApiApiEventsAccountsStatusGetRequest) Until(until time.Time) EventsApiApiEventsAccountsStatusGetRequest {
 	r.until = &until
 	return r
 }
-func (r ApiEventsAccountsStatusGetRequest) SinceId(sinceId int32) ApiEventsAccountsStatusGetRequest {
+func (r EventsApiApiEventsAccountsStatusGetRequest) SinceId(sinceId int32) EventsApiApiEventsAccountsStatusGetRequest {
 	r.sinceId = &sinceId
 	return r
 }
-func (r ApiEventsAccountsStatusGetRequest) UntilId(untilId int32) ApiEventsAccountsStatusGetRequest {
+func (r EventsApiApiEventsAccountsStatusGetRequest) UntilId(untilId int32) EventsApiApiEventsAccountsStatusGetRequest {
 	r.untilId = &untilId
 	return r
 }
 
-func (r ApiEventsAccountsStatusGetRequest) Execute() (InlineResponse2003, *_nethttp.Response, error) {
+func (r EventsApiApiEventsAccountsStatusGetRequest) Execute() (InlineResponse2003, *_nethttp.Response, error) {
 	return r.ApiService.EventsAccountsStatusGetExecute(r)
 }
 
@@ -70,10 +70,10 @@ Behavior:
 
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiEventsAccountsStatusGetRequest
+ @return EventsApiApiEventsAccountsStatusGetRequest
 */
-func (a *EventsApiService) EventsAccountsStatusGet(ctx _context.Context) ApiEventsAccountsStatusGetRequest {
-	return ApiEventsAccountsStatusGetRequest{
+func (a *EventsApiService) EventsAccountsStatusGet(ctx _context.Context) EventsApiApiEventsAccountsStatusGetRequest {
+	return EventsApiApiEventsAccountsStatusGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -81,7 +81,7 @@ func (a *EventsApiService) EventsAccountsStatusGet(ctx _context.Context) ApiEven
 
 // Execute executes the request
 //  @return InlineResponse2003
-func (a *EventsApiService) EventsAccountsStatusGetExecute(r ApiEventsAccountsStatusGetRequest) (InlineResponse2003, *_nethttp.Response, error) {
+func (a *EventsApiService) EventsAccountsStatusGetExecute(r EventsApiApiEventsAccountsStatusGetRequest) (InlineResponse2003, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -168,7 +168,7 @@ func (a *EventsApiService) EventsAccountsStatusGetExecute(r ApiEventsAccountsSta
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiEventsJournalsStatusGetRequest struct {
+type EventsApiApiEventsJournalsStatusGetRequest struct {
 	ctx _context.Context
 	ApiService *EventsApiService
 	since *time.Time
@@ -177,24 +177,24 @@ type ApiEventsJournalsStatusGetRequest struct {
 	untilId *int32
 }
 
-func (r ApiEventsJournalsStatusGetRequest) Since(since time.Time) ApiEventsJournalsStatusGetRequest {
+func (r EventsApiApiEventsJournalsStatusGetRequest) Since(since time.Time) EventsApiApiEventsJournalsStatusGetRequest {
 	r.since = &since
 	return r
 }
-func (r ApiEventsJournalsStatusGetRequest) Until(until time.Time) ApiEventsJournalsStatusGetRequest {
+func (r EventsApiApiEventsJournalsStatusGetRequest) Until(until time.Time) EventsApiApiEventsJournalsStatusGetRequest {
 	r.until = &until
 	return r
 }
-func (r ApiEventsJournalsStatusGetRequest) SinceId(sinceId int32) ApiEventsJournalsStatusGetRequest {
+func (r EventsApiApiEventsJournalsStatusGetRequest) SinceId(sinceId int32) EventsApiApiEventsJournalsStatusGetRequest {
 	r.sinceId = &sinceId
 	return r
 }
-func (r ApiEventsJournalsStatusGetRequest) UntilId(untilId int32) ApiEventsJournalsStatusGetRequest {
+func (r EventsApiApiEventsJournalsStatusGetRequest) UntilId(untilId int32) EventsApiApiEventsJournalsStatusGetRequest {
 	r.untilId = &untilId
 	return r
 }
 
-func (r ApiEventsJournalsStatusGetRequest) Execute() (InlineResponse2004, *_nethttp.Response, error) {
+func (r EventsApiApiEventsJournalsStatusGetRequest) Execute() (InlineResponse2004, *_nethttp.Response, error) {
 	return r.ApiService.EventsJournalsStatusGetExecute(r)
 }
 
@@ -211,10 +211,10 @@ Behavior:
 
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiEventsJournalsStatusGetRequest
+ @return EventsApiApiEventsJournalsStatusGetRequest
 */
-func (a *EventsApiService) EventsJournalsStatusGet(ctx _context.Context) ApiEventsJournalsStatusGetRequest {
-	return ApiEventsJournalsStatusGetRequest{
+func (a *EventsApiService) EventsJournalsStatusGet(ctx _context.Context) EventsApiApiEventsJournalsStatusGetRequest {
+	return EventsApiApiEventsJournalsStatusGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -222,7 +222,7 @@ func (a *EventsApiService) EventsJournalsStatusGet(ctx _context.Context) ApiEven
 
 // Execute executes the request
 //  @return InlineResponse2004
-func (a *EventsApiService) EventsJournalsStatusGetExecute(r ApiEventsJournalsStatusGetRequest) (InlineResponse2004, *_nethttp.Response, error) {
+func (a *EventsApiService) EventsJournalsStatusGetExecute(r EventsApiApiEventsJournalsStatusGetRequest) (InlineResponse2004, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}

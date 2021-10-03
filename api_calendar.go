@@ -26,7 +26,7 @@ var (
 // CalendarApiService CalendarApi service
 type CalendarApiService service
 
-type ApiCalendarGetRequest struct {
+type CalendarApiApiCalendarGetRequest struct {
 	ctx _context.Context
 	ApiService *CalendarApiService
 	start *string
@@ -34,17 +34,17 @@ type ApiCalendarGetRequest struct {
 }
 
 // The first date to retrieve data for. (Inclusive)
-func (r ApiCalendarGetRequest) Start(start string) ApiCalendarGetRequest {
+func (r CalendarApiApiCalendarGetRequest) Start(start string) CalendarApiApiCalendarGetRequest {
 	r.start = &start
 	return r
 }
 // The last date to retrieve data for. (Inclusive)
-func (r ApiCalendarGetRequest) End(end string) ApiCalendarGetRequest {
+func (r CalendarApiApiCalendarGetRequest) End(end string) CalendarApiApiCalendarGetRequest {
 	r.end = &end
 	return r
 }
 
-func (r ApiCalendarGetRequest) Execute() ([]MarketDay, *_nethttp.Response, error) {
+func (r CalendarApiApiCalendarGetRequest) Execute() ([]MarketDay, *_nethttp.Response, error) {
 	return r.ApiService.CalendarGetExecute(r)
 }
 
@@ -52,10 +52,10 @@ func (r ApiCalendarGetRequest) Execute() ([]MarketDay, *_nethttp.Response, error
 CalendarGet Query market calendar
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCalendarGetRequest
+ @return CalendarApiApiCalendarGetRequest
 */
-func (a *CalendarApiService) CalendarGet(ctx _context.Context) ApiCalendarGetRequest {
-	return ApiCalendarGetRequest{
+func (a *CalendarApiService) CalendarGet(ctx _context.Context) CalendarApiApiCalendarGetRequest {
+	return CalendarApiApiCalendarGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -63,7 +63,7 @@ func (a *CalendarApiService) CalendarGet(ctx _context.Context) ApiCalendarGetReq
 
 // Execute executes the request
 //  @return []MarketDay
-func (a *CalendarApiService) CalendarGetExecute(r ApiCalendarGetRequest) ([]MarketDay, *_nethttp.Response, error) {
+func (a *CalendarApiService) CalendarGetExecute(r CalendarApiApiCalendarGetRequest) ([]MarketDay, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}

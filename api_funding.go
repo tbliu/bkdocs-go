@@ -27,7 +27,7 @@ var (
 // FundingApiService FundingApi service
 type FundingApiService service
 
-type ApiDeleteAchRelationshipRequest struct {
+type FundingApiApiDeleteAchRelationshipRequest struct {
 	ctx _context.Context
 	ApiService *FundingApiService
 	accountId string
@@ -35,7 +35,7 @@ type ApiDeleteAchRelationshipRequest struct {
 }
 
 
-func (r ApiDeleteAchRelationshipRequest) Execute() (*_nethttp.Response, error) {
+func (r FundingApiApiDeleteAchRelationshipRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteAchRelationshipExecute(r)
 }
 
@@ -45,10 +45,10 @@ DeleteAchRelationship Delete an existing ACH relationship
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountId Account identifier.
  @param achRelationshipId ACH relationship identifier
- @return ApiDeleteAchRelationshipRequest
+ @return FundingApiApiDeleteAchRelationshipRequest
 */
-func (a *FundingApiService) DeleteAchRelationship(ctx _context.Context, accountId string, achRelationshipId string) ApiDeleteAchRelationshipRequest {
-	return ApiDeleteAchRelationshipRequest{
+func (a *FundingApiService) DeleteAchRelationship(ctx _context.Context, accountId string, achRelationshipId string) FundingApiApiDeleteAchRelationshipRequest {
+	return FundingApiApiDeleteAchRelationshipRequest{
 		ApiService: a,
 		ctx: ctx,
 		accountId: accountId,
@@ -57,7 +57,7 @@ func (a *FundingApiService) DeleteAchRelationship(ctx _context.Context, accountI
 }
 
 // Execute executes the request
-func (a *FundingApiService) DeleteAchRelationshipExecute(r ApiDeleteAchRelationshipRequest) (*_nethttp.Response, error) {
+func (a *FundingApiService) DeleteAchRelationshipExecute(r FundingApiApiDeleteAchRelationshipRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -143,7 +143,7 @@ func (a *FundingApiService) DeleteAchRelationshipExecute(r ApiDeleteAchRelations
 	return localVarHTTPResponse, nil
 }
 
-type ApiDeleteRecipientBankRequest struct {
+type FundingApiApiDeleteRecipientBankRequest struct {
 	ctx _context.Context
 	ApiService *FundingApiService
 	accountId string
@@ -151,7 +151,7 @@ type ApiDeleteRecipientBankRequest struct {
 }
 
 
-func (r ApiDeleteRecipientBankRequest) Execute() (*_nethttp.Response, error) {
+func (r FundingApiApiDeleteRecipientBankRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteRecipientBankExecute(r)
 }
 
@@ -161,10 +161,10 @@ DeleteRecipientBank Delete a Bank Relationship for an account
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountId Account identifier.
  @param bankId
- @return ApiDeleteRecipientBankRequest
+ @return FundingApiApiDeleteRecipientBankRequest
 */
-func (a *FundingApiService) DeleteRecipientBank(ctx _context.Context, accountId string, bankId string) ApiDeleteRecipientBankRequest {
-	return ApiDeleteRecipientBankRequest{
+func (a *FundingApiService) DeleteRecipientBank(ctx _context.Context, accountId string, bankId string) FundingApiApiDeleteRecipientBankRequest {
+	return FundingApiApiDeleteRecipientBankRequest{
 		ApiService: a,
 		ctx: ctx,
 		accountId: accountId,
@@ -173,7 +173,7 @@ func (a *FundingApiService) DeleteRecipientBank(ctx _context.Context, accountId 
 }
 
 // Execute executes the request
-func (a *FundingApiService) DeleteRecipientBankExecute(r ApiDeleteRecipientBankRequest) (*_nethttp.Response, error) {
+func (a *FundingApiService) DeleteRecipientBankExecute(r FundingApiApiDeleteRecipientBankRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -240,7 +240,7 @@ func (a *FundingApiService) DeleteRecipientBankExecute(r ApiDeleteRecipientBankR
 	return localVarHTTPResponse, nil
 }
 
-type ApiDeleteTransferRequest struct {
+type FundingApiApiDeleteTransferRequest struct {
 	ctx _context.Context
 	ApiService *FundingApiService
 	accountId string
@@ -248,7 +248,7 @@ type ApiDeleteTransferRequest struct {
 }
 
 
-func (r ApiDeleteTransferRequest) Execute() (*_nethttp.Response, error) {
+func (r FundingApiApiDeleteTransferRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteTransferExecute(r)
 }
 
@@ -258,10 +258,10 @@ DeleteTransfer Request to close a transfer
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountId
  @param transferId
- @return ApiDeleteTransferRequest
+ @return FundingApiApiDeleteTransferRequest
 */
-func (a *FundingApiService) DeleteTransfer(ctx _context.Context, accountId string, transferId string) ApiDeleteTransferRequest {
-	return ApiDeleteTransferRequest{
+func (a *FundingApiService) DeleteTransfer(ctx _context.Context, accountId string, transferId string) FundingApiApiDeleteTransferRequest {
+	return FundingApiApiDeleteTransferRequest{
 		ApiService: a,
 		ctx: ctx,
 		accountId: accountId,
@@ -270,7 +270,7 @@ func (a *FundingApiService) DeleteTransfer(ctx _context.Context, accountId strin
 }
 
 // Execute executes the request
-func (a *FundingApiService) DeleteTransferExecute(r ApiDeleteTransferRequest) (*_nethttp.Response, error) {
+func (a *FundingApiService) DeleteTransferExecute(r FundingApiApiDeleteTransferRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -346,7 +346,7 @@ func (a *FundingApiService) DeleteTransferExecute(r ApiDeleteTransferRequest) (*
 	return localVarHTTPResponse, nil
 }
 
-type ApiGetAchRelationshipsRequest struct {
+type FundingApiApiGetAchRelationshipsRequest struct {
 	ctx _context.Context
 	ApiService *FundingApiService
 	accountId string
@@ -354,12 +354,12 @@ type ApiGetAchRelationshipsRequest struct {
 }
 
 // Comma-separated status values
-func (r ApiGetAchRelationshipsRequest) Statuses(statuses string) ApiGetAchRelationshipsRequest {
+func (r FundingApiApiGetAchRelationshipsRequest) Statuses(statuses string) FundingApiApiGetAchRelationshipsRequest {
 	r.statuses = &statuses
 	return r
 }
 
-func (r ApiGetAchRelationshipsRequest) Execute() ([]ACHRelationshipResource, *_nethttp.Response, error) {
+func (r FundingApiApiGetAchRelationshipsRequest) Execute() ([]ACHRelationshipResource, *_nethttp.Response, error) {
 	return r.ApiService.GetAchRelationshipsExecute(r)
 }
 
@@ -368,10 +368,10 @@ GetAchRelationships Retrieve ACH Relationships for an account
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountId Account identifier.
- @return ApiGetAchRelationshipsRequest
+ @return FundingApiApiGetAchRelationshipsRequest
 */
-func (a *FundingApiService) GetAchRelationships(ctx _context.Context, accountId string) ApiGetAchRelationshipsRequest {
-	return ApiGetAchRelationshipsRequest{
+func (a *FundingApiService) GetAchRelationships(ctx _context.Context, accountId string) FundingApiApiGetAchRelationshipsRequest {
+	return FundingApiApiGetAchRelationshipsRequest{
 		ApiService: a,
 		ctx: ctx,
 		accountId: accountId,
@@ -380,7 +380,7 @@ func (a *FundingApiService) GetAchRelationships(ctx _context.Context, accountId 
 
 // Execute executes the request
 //  @return []ACHRelationshipResource
-func (a *FundingApiService) GetAchRelationshipsExecute(r ApiGetAchRelationshipsRequest) ([]ACHRelationshipResource, *_nethttp.Response, error) {
+func (a *FundingApiService) GetAchRelationshipsExecute(r FundingApiApiGetAchRelationshipsRequest) ([]ACHRelationshipResource, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -459,7 +459,7 @@ func (a *FundingApiService) GetAchRelationshipsExecute(r ApiGetAchRelationshipsR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetRecipientBanksRequest struct {
+type FundingApiApiGetRecipientBanksRequest struct {
 	ctx _context.Context
 	ApiService *FundingApiService
 	accountId string
@@ -467,16 +467,16 @@ type ApiGetRecipientBanksRequest struct {
 	bankName *string
 }
 
-func (r ApiGetRecipientBanksRequest) Status(status string) ApiGetRecipientBanksRequest {
+func (r FundingApiApiGetRecipientBanksRequest) Status(status string) FundingApiApiGetRecipientBanksRequest {
 	r.status = &status
 	return r
 }
-func (r ApiGetRecipientBanksRequest) BankName(bankName string) ApiGetRecipientBanksRequest {
+func (r FundingApiApiGetRecipientBanksRequest) BankName(bankName string) FundingApiApiGetRecipientBanksRequest {
 	r.bankName = &bankName
 	return r
 }
 
-func (r ApiGetRecipientBanksRequest) Execute() ([]BankResource, *_nethttp.Response, error) {
+func (r FundingApiApiGetRecipientBanksRequest) Execute() ([]BankResource, *_nethttp.Response, error) {
 	return r.ApiService.GetRecipientBanksExecute(r)
 }
 
@@ -485,10 +485,10 @@ GetRecipientBanks Retrieve bank relationships for an account
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountId
- @return ApiGetRecipientBanksRequest
+ @return FundingApiApiGetRecipientBanksRequest
 */
-func (a *FundingApiService) GetRecipientBanks(ctx _context.Context, accountId string) ApiGetRecipientBanksRequest {
-	return ApiGetRecipientBanksRequest{
+func (a *FundingApiService) GetRecipientBanks(ctx _context.Context, accountId string) FundingApiApiGetRecipientBanksRequest {
+	return FundingApiApiGetRecipientBanksRequest{
 		ApiService: a,
 		ctx: ctx,
 		accountId: accountId,
@@ -497,7 +497,7 @@ func (a *FundingApiService) GetRecipientBanks(ctx _context.Context, accountId st
 
 // Execute executes the request
 //  @return []BankResource
-func (a *FundingApiService) GetRecipientBanksExecute(r ApiGetRecipientBanksRequest) ([]BankResource, *_nethttp.Response, error) {
+func (a *FundingApiService) GetRecipientBanksExecute(r FundingApiApiGetRecipientBanksRequest) ([]BankResource, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -579,7 +579,7 @@ func (a *FundingApiService) GetRecipientBanksExecute(r ApiGetRecipientBanksReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetTransfersRequest struct {
+type FundingApiApiGetTransfersRequest struct {
 	ctx _context.Context
 	ApiService *FundingApiService
 	accountId string
@@ -588,20 +588,20 @@ type ApiGetTransfersRequest struct {
 	offset *float32
 }
 
-func (r ApiGetTransfersRequest) Direction(direction string) ApiGetTransfersRequest {
+func (r FundingApiApiGetTransfersRequest) Direction(direction string) FundingApiApiGetTransfersRequest {
 	r.direction = &direction
 	return r
 }
-func (r ApiGetTransfersRequest) Limit(limit float32) ApiGetTransfersRequest {
+func (r FundingApiApiGetTransfersRequest) Limit(limit float32) FundingApiApiGetTransfersRequest {
 	r.limit = &limit
 	return r
 }
-func (r ApiGetTransfersRequest) Offset(offset float32) ApiGetTransfersRequest {
+func (r FundingApiApiGetTransfersRequest) Offset(offset float32) FundingApiApiGetTransfersRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiGetTransfersRequest) Execute() ([]TransferResource, *_nethttp.Response, error) {
+func (r FundingApiApiGetTransfersRequest) Execute() ([]TransferResource, *_nethttp.Response, error) {
 	return r.ApiService.GetTransfersExecute(r)
 }
 
@@ -614,10 +614,10 @@ direction and status.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountId
- @return ApiGetTransfersRequest
+ @return FundingApiApiGetTransfersRequest
 */
-func (a *FundingApiService) GetTransfers(ctx _context.Context, accountId string) ApiGetTransfersRequest {
-	return ApiGetTransfersRequest{
+func (a *FundingApiService) GetTransfers(ctx _context.Context, accountId string) FundingApiApiGetTransfersRequest {
+	return FundingApiApiGetTransfersRequest{
 		ApiService: a,
 		ctx: ctx,
 		accountId: accountId,
@@ -626,7 +626,7 @@ func (a *FundingApiService) GetTransfers(ctx _context.Context, accountId string)
 
 // Execute executes the request
 //  @return []TransferResource
-func (a *FundingApiService) GetTransfersExecute(r ApiGetTransfersRequest) ([]TransferResource, *_nethttp.Response, error) {
+func (a *FundingApiService) GetTransfersExecute(r FundingApiApiGetTransfersRequest) ([]TransferResource, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -711,19 +711,19 @@ func (a *FundingApiService) GetTransfersExecute(r ApiGetTransfersRequest) ([]Tra
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPostAchRelationshipsRequest struct {
+type FundingApiApiPostAchRelationshipsRequest struct {
 	ctx _context.Context
 	ApiService *FundingApiService
 	accountId string
 	aCHRelationshipData *ACHRelationshipData
 }
 
-func (r ApiPostAchRelationshipsRequest) ACHRelationshipData(aCHRelationshipData ACHRelationshipData) ApiPostAchRelationshipsRequest {
+func (r FundingApiApiPostAchRelationshipsRequest) ACHRelationshipData(aCHRelationshipData ACHRelationshipData) FundingApiApiPostAchRelationshipsRequest {
 	r.aCHRelationshipData = &aCHRelationshipData
 	return r
 }
 
-func (r ApiPostAchRelationshipsRequest) Execute() (ACHRelationshipResource, *_nethttp.Response, error) {
+func (r FundingApiApiPostAchRelationshipsRequest) Execute() (ACHRelationshipResource, *_nethttp.Response, error) {
 	return r.ApiService.PostAchRelationshipsExecute(r)
 }
 
@@ -732,10 +732,10 @@ PostAchRelationships Create an ACH Relationship
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountId Account identifier.
- @return ApiPostAchRelationshipsRequest
+ @return FundingApiApiPostAchRelationshipsRequest
 */
-func (a *FundingApiService) PostAchRelationships(ctx _context.Context, accountId string) ApiPostAchRelationshipsRequest {
-	return ApiPostAchRelationshipsRequest{
+func (a *FundingApiService) PostAchRelationships(ctx _context.Context, accountId string) FundingApiApiPostAchRelationshipsRequest {
+	return FundingApiApiPostAchRelationshipsRequest{
 		ApiService: a,
 		ctx: ctx,
 		accountId: accountId,
@@ -744,7 +744,7 @@ func (a *FundingApiService) PostAchRelationships(ctx _context.Context, accountId
 
 // Execute executes the request
 //  @return ACHRelationshipResource
-func (a *FundingApiService) PostAchRelationshipsExecute(r ApiPostAchRelationshipsRequest) (ACHRelationshipResource, *_nethttp.Response, error) {
+func (a *FundingApiService) PostAchRelationshipsExecute(r FundingApiApiPostAchRelationshipsRequest) (ACHRelationshipResource, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -854,19 +854,19 @@ func (a *FundingApiService) PostAchRelationshipsExecute(r ApiPostAchRelationship
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPostRecipientBanksRequest struct {
+type FundingApiApiPostRecipientBanksRequest struct {
 	ctx _context.Context
 	ApiService *FundingApiService
 	accountId string
 	bankData *BankData
 }
 
-func (r ApiPostRecipientBanksRequest) BankData(bankData BankData) ApiPostRecipientBanksRequest {
+func (r FundingApiApiPostRecipientBanksRequest) BankData(bankData BankData) FundingApiApiPostRecipientBanksRequest {
 	r.bankData = &bankData
 	return r
 }
 
-func (r ApiPostRecipientBanksRequest) Execute() (BankResource, *_nethttp.Response, error) {
+func (r FundingApiApiPostRecipientBanksRequest) Execute() (BankResource, *_nethttp.Response, error) {
 	return r.ApiService.PostRecipientBanksExecute(r)
 }
 
@@ -875,10 +875,10 @@ PostRecipientBanks Create a Bank Relationship for an account
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountId Account identifier.
- @return ApiPostRecipientBanksRequest
+ @return FundingApiApiPostRecipientBanksRequest
 */
-func (a *FundingApiService) PostRecipientBanks(ctx _context.Context, accountId string) ApiPostRecipientBanksRequest {
-	return ApiPostRecipientBanksRequest{
+func (a *FundingApiService) PostRecipientBanks(ctx _context.Context, accountId string) FundingApiApiPostRecipientBanksRequest {
+	return FundingApiApiPostRecipientBanksRequest{
 		ApiService: a,
 		ctx: ctx,
 		accountId: accountId,
@@ -887,7 +887,7 @@ func (a *FundingApiService) PostRecipientBanks(ctx _context.Context, accountId s
 
 // Execute executes the request
 //  @return BankResource
-func (a *FundingApiService) PostRecipientBanksExecute(r ApiPostRecipientBanksRequest) (BankResource, *_nethttp.Response, error) {
+func (a *FundingApiService) PostRecipientBanksExecute(r FundingApiApiPostRecipientBanksRequest) (BankResource, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -968,19 +968,19 @@ func (a *FundingApiService) PostRecipientBanksExecute(r ApiPostRecipientBanksReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPostTransfersRequest struct {
+type FundingApiApiPostTransfersRequest struct {
 	ctx _context.Context
 	ApiService *FundingApiService
 	accountId string
 	transferData *TransferData
 }
 
-func (r ApiPostTransfersRequest) TransferData(transferData TransferData) ApiPostTransfersRequest {
+func (r FundingApiApiPostTransfersRequest) TransferData(transferData TransferData) FundingApiApiPostTransfersRequest {
 	r.transferData = &transferData
 	return r
 }
 
-func (r ApiPostTransfersRequest) Execute() (TransferResource, *_nethttp.Response, error) {
+func (r FundingApiApiPostTransfersRequest) Execute() (TransferResource, *_nethttp.Response, error) {
 	return r.ApiService.PostTransfersExecute(r)
 }
 
@@ -993,10 +993,10 @@ with virtual money in the sandbox environment.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountId
- @return ApiPostTransfersRequest
+ @return FundingApiApiPostTransfersRequest
 */
-func (a *FundingApiService) PostTransfers(ctx _context.Context, accountId string) ApiPostTransfersRequest {
-	return ApiPostTransfersRequest{
+func (a *FundingApiService) PostTransfers(ctx _context.Context, accountId string) FundingApiApiPostTransfersRequest {
+	return FundingApiApiPostTransfersRequest{
 		ApiService: a,
 		ctx: ctx,
 		accountId: accountId,
@@ -1005,7 +1005,7 @@ func (a *FundingApiService) PostTransfers(ctx _context.Context, accountId string
 
 // Execute executes the request
 //  @return TransferResource
-func (a *FundingApiService) PostTransfersExecute(r ApiPostTransfersRequest) (TransferResource, *_nethttp.Response, error) {
+func (a *FundingApiService) PostTransfersExecute(r FundingApiApiPostTransfersRequest) (TransferResource, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}

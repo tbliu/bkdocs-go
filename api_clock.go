@@ -26,13 +26,13 @@ var (
 // ClockApiService ClockApi service
 type ClockApiService service
 
-type ApiClockGetRequest struct {
+type ClockApiApiClockGetRequest struct {
 	ctx _context.Context
 	ApiService *ClockApiService
 }
 
 
-func (r ApiClockGetRequest) Execute() (InlineResponse2001, *_nethttp.Response, error) {
+func (r ClockApiApiClockGetRequest) Execute() (InlineResponse2001, *_nethttp.Response, error) {
 	return r.ApiService.ClockGetExecute(r)
 }
 
@@ -40,10 +40,10 @@ func (r ApiClockGetRequest) Execute() (InlineResponse2001, *_nethttp.Response, e
 ClockGet Query market clock
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiClockGetRequest
+ @return ClockApiApiClockGetRequest
 */
-func (a *ClockApiService) ClockGet(ctx _context.Context) ApiClockGetRequest {
-	return ApiClockGetRequest{
+func (a *ClockApiService) ClockGet(ctx _context.Context) ClockApiApiClockGetRequest {
+	return ClockApiApiClockGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -51,7 +51,7 @@ func (a *ClockApiService) ClockGet(ctx _context.Context) ApiClockGetRequest {
 
 // Execute executes the request
 //  @return InlineResponse2001
-func (a *ClockApiService) ClockGetExecute(r ApiClockGetRequest) (InlineResponse2001, *_nethttp.Response, error) {
+func (a *ClockApiService) ClockGetExecute(r ClockApiApiClockGetRequest) (InlineResponse2001, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}

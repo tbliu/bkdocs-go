@@ -27,7 +27,7 @@ var (
 // DocumentsApiService DocumentsApi service
 type DocumentsApiService service
 
-type ApiAccountsAccountIdDocumentsDocumentIdDownloadGetRequest struct {
+type DocumentsApiApiAccountsAccountIdDocumentsDocumentIdDownloadGetRequest struct {
 	ctx _context.Context
 	ApiService *DocumentsApiService
 	accountId string
@@ -35,7 +35,7 @@ type ApiAccountsAccountIdDocumentsDocumentIdDownloadGetRequest struct {
 }
 
 
-func (r ApiAccountsAccountIdDocumentsDocumentIdDownloadGetRequest) Execute() (*_nethttp.Response, error) {
+func (r DocumentsApiApiAccountsAccountIdDocumentsDocumentIdDownloadGetRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.AccountsAccountIdDocumentsDocumentIdDownloadGetExecute(r)
 }
 
@@ -49,10 +49,10 @@ a redirect with HTTP status code 301 if one is found.
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountId Account identifier.
  @param documentId
- @return ApiAccountsAccountIdDocumentsDocumentIdDownloadGetRequest
+ @return DocumentsApiApiAccountsAccountIdDocumentsDocumentIdDownloadGetRequest
 */
-func (a *DocumentsApiService) AccountsAccountIdDocumentsDocumentIdDownloadGet(ctx _context.Context, accountId string, documentId string) ApiAccountsAccountIdDocumentsDocumentIdDownloadGetRequest {
-	return ApiAccountsAccountIdDocumentsDocumentIdDownloadGetRequest{
+func (a *DocumentsApiService) AccountsAccountIdDocumentsDocumentIdDownloadGet(ctx _context.Context, accountId string, documentId string) DocumentsApiApiAccountsAccountIdDocumentsDocumentIdDownloadGetRequest {
+	return DocumentsApiApiAccountsAccountIdDocumentsDocumentIdDownloadGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		accountId: accountId,
@@ -61,7 +61,7 @@ func (a *DocumentsApiService) AccountsAccountIdDocumentsDocumentIdDownloadGet(ct
 }
 
 // Execute executes the request
-func (a *DocumentsApiService) AccountsAccountIdDocumentsDocumentIdDownloadGetExecute(r ApiAccountsAccountIdDocumentsDocumentIdDownloadGetRequest) (*_nethttp.Response, error) {
+func (a *DocumentsApiService) AccountsAccountIdDocumentsDocumentIdDownloadGetExecute(r DocumentsApiApiAccountsAccountIdDocumentsDocumentIdDownloadGetRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -128,7 +128,7 @@ func (a *DocumentsApiService) AccountsAccountIdDocumentsDocumentIdDownloadGetExe
 	return localVarHTTPResponse, nil
 }
 
-type ApiAccountsAccountIdDocumentsGetRequest struct {
+type DocumentsApiApiAccountsAccountIdDocumentsGetRequest struct {
 	ctx _context.Context
 	ApiService *DocumentsApiService
 	accountId string
@@ -137,17 +137,17 @@ type ApiAccountsAccountIdDocumentsGetRequest struct {
 }
 
 // optional date value to filter the list (inclusive).
-func (r ApiAccountsAccountIdDocumentsGetRequest) StartDate(startDate string) ApiAccountsAccountIdDocumentsGetRequest {
+func (r DocumentsApiApiAccountsAccountIdDocumentsGetRequest) StartDate(startDate string) DocumentsApiApiAccountsAccountIdDocumentsGetRequest {
 	r.startDate = &startDate
 	return r
 }
 // optional date value to filter the list (inclusive).
-func (r ApiAccountsAccountIdDocumentsGetRequest) EndDate(endDate string) ApiAccountsAccountIdDocumentsGetRequest {
+func (r DocumentsApiApiAccountsAccountIdDocumentsGetRequest) EndDate(endDate string) DocumentsApiApiAccountsAccountIdDocumentsGetRequest {
 	r.endDate = &endDate
 	return r
 }
 
-func (r ApiAccountsAccountIdDocumentsGetRequest) Execute() ([]InlineResponse2002, *_nethttp.Response, error) {
+func (r DocumentsApiApiAccountsAccountIdDocumentsGetRequest) Execute() ([]InlineResponse2002, *_nethttp.Response, error) {
 	return r.ApiService.AccountsAccountIdDocumentsGetExecute(r)
 }
 
@@ -160,10 +160,10 @@ statements and trade confirms under an account.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountId Account identifier.
- @return ApiAccountsAccountIdDocumentsGetRequest
+ @return DocumentsApiApiAccountsAccountIdDocumentsGetRequest
 */
-func (a *DocumentsApiService) AccountsAccountIdDocumentsGet(ctx _context.Context, accountId string) ApiAccountsAccountIdDocumentsGetRequest {
-	return ApiAccountsAccountIdDocumentsGetRequest{
+func (a *DocumentsApiService) AccountsAccountIdDocumentsGet(ctx _context.Context, accountId string) DocumentsApiApiAccountsAccountIdDocumentsGetRequest {
+	return DocumentsApiApiAccountsAccountIdDocumentsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		accountId: accountId,
@@ -172,7 +172,7 @@ func (a *DocumentsApiService) AccountsAccountIdDocumentsGet(ctx _context.Context
 
 // Execute executes the request
 //  @return []InlineResponse2002
-func (a *DocumentsApiService) AccountsAccountIdDocumentsGetExecute(r ApiAccountsAccountIdDocumentsGetRequest) ([]InlineResponse2002, *_nethttp.Response, error) {
+func (a *DocumentsApiService) AccountsAccountIdDocumentsGetExecute(r DocumentsApiApiAccountsAccountIdDocumentsGetRequest) ([]InlineResponse2002, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -263,14 +263,14 @@ func (a *DocumentsApiService) AccountsAccountIdDocumentsGetExecute(r ApiAccounts
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDocumentsDocumentIdGetRequest struct {
+type DocumentsApiApiDocumentsDocumentIdGetRequest struct {
 	ctx _context.Context
 	ApiService *DocumentsApiService
 	documentId string
 }
 
 
-func (r ApiDocumentsDocumentIdGetRequest) Execute() (*_nethttp.Response, error) {
+func (r DocumentsApiApiDocumentsDocumentIdGetRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DocumentsDocumentIdGetExecute(r)
 }
 
@@ -283,10 +283,10 @@ a redirect with HTTP status code 301 if one is found.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param documentId
- @return ApiDocumentsDocumentIdGetRequest
+ @return DocumentsApiApiDocumentsDocumentIdGetRequest
 */
-func (a *DocumentsApiService) DocumentsDocumentIdGet(ctx _context.Context, documentId string) ApiDocumentsDocumentIdGetRequest {
-	return ApiDocumentsDocumentIdGetRequest{
+func (a *DocumentsApiService) DocumentsDocumentIdGet(ctx _context.Context, documentId string) DocumentsApiApiDocumentsDocumentIdGetRequest {
+	return DocumentsApiApiDocumentsDocumentIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		documentId: documentId,
@@ -294,7 +294,7 @@ func (a *DocumentsApiService) DocumentsDocumentIdGet(ctx _context.Context, docum
 }
 
 // Execute executes the request
-func (a *DocumentsApiService) DocumentsDocumentIdGetExecute(r ApiDocumentsDocumentIdGetRequest) (*_nethttp.Response, error) {
+func (a *DocumentsApiService) DocumentsDocumentIdGetExecute(r DocumentsApiApiDocumentsDocumentIdGetRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}

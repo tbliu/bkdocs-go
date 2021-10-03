@@ -27,18 +27,18 @@ var (
 // OAuthApiService OAuthApi service
 type OAuthApiService service
 
-type ApiOauthAuthorizePostRequest struct {
+type OAuthApiApiOauthAuthorizePostRequest struct {
 	ctx _context.Context
 	ApiService *OAuthApiService
 	inlineObject1 *InlineObject1
 }
 
-func (r ApiOauthAuthorizePostRequest) InlineObject1(inlineObject1 InlineObject1) ApiOauthAuthorizePostRequest {
+func (r OAuthApiApiOauthAuthorizePostRequest) InlineObject1(inlineObject1 InlineObject1) OAuthApiApiOauthAuthorizePostRequest {
 	r.inlineObject1 = &inlineObject1
 	return r
 }
 
-func (r ApiOauthAuthorizePostRequest) Execute() (InlineResponse2007, *_nethttp.Response, error) {
+func (r OAuthApiApiOauthAuthorizePostRequest) Execute() (InlineResponse2007, *_nethttp.Response, error) {
 	return r.ApiService.OauthAuthorizePostExecute(r)
 }
 
@@ -50,10 +50,10 @@ in the OAuth code flow.
 
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOauthAuthorizePostRequest
+ @return OAuthApiApiOauthAuthorizePostRequest
 */
-func (a *OAuthApiService) OauthAuthorizePost(ctx _context.Context) ApiOauthAuthorizePostRequest {
-	return ApiOauthAuthorizePostRequest{
+func (a *OAuthApiService) OauthAuthorizePost(ctx _context.Context) OAuthApiApiOauthAuthorizePostRequest {
+	return OAuthApiApiOauthAuthorizePostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -61,7 +61,7 @@ func (a *OAuthApiService) OauthAuthorizePost(ctx _context.Context) ApiOauthAutho
 
 // Execute executes the request
 //  @return InlineResponse2007
-func (a *OAuthApiService) OauthAuthorizePostExecute(r ApiOauthAuthorizePostRequest) (InlineResponse2007, *_nethttp.Response, error) {
+func (a *OAuthApiService) OauthAuthorizePostExecute(r OAuthApiApiOauthAuthorizePostRequest) (InlineResponse2007, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -160,7 +160,7 @@ func (a *OAuthApiService) OauthAuthorizePostExecute(r ApiOauthAuthorizePostReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiOauthClientsClientIdGetRequest struct {
+type OAuthApiApiOauthClientsClientIdGetRequest struct {
 	ctx _context.Context
 	ApiService *OAuthApiService
 	clientId string
@@ -169,20 +169,20 @@ type ApiOauthClientsClientIdGetRequest struct {
 	scope *string
 }
 
-func (r ApiOauthClientsClientIdGetRequest) ResponseType(responseType string) ApiOauthClientsClientIdGetRequest {
+func (r OAuthApiApiOauthClientsClientIdGetRequest) ResponseType(responseType string) OAuthApiApiOauthClientsClientIdGetRequest {
 	r.responseType = &responseType
 	return r
 }
-func (r ApiOauthClientsClientIdGetRequest) RedirectUri(redirectUri string) ApiOauthClientsClientIdGetRequest {
+func (r OAuthApiApiOauthClientsClientIdGetRequest) RedirectUri(redirectUri string) OAuthApiApiOauthClientsClientIdGetRequest {
 	r.redirectUri = &redirectUri
 	return r
 }
-func (r ApiOauthClientsClientIdGetRequest) Scope(scope string) ApiOauthClientsClientIdGetRequest {
+func (r OAuthApiApiOauthClientsClientIdGetRequest) Scope(scope string) OAuthApiApiOauthClientsClientIdGetRequest {
 	r.scope = &scope
 	return r
 }
 
-func (r ApiOauthClientsClientIdGetRequest) Execute() (InlineResponse2005, *_nethttp.Response, error) {
+func (r OAuthApiApiOauthClientsClientIdGetRequest) Execute() (InlineResponse2005, *_nethttp.Response, error) {
 	return r.ApiService.OauthClientsClientIdGetExecute(r)
 }
 
@@ -195,10 +195,10 @@ display in the authorization page.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param clientId
- @return ApiOauthClientsClientIdGetRequest
+ @return OAuthApiApiOauthClientsClientIdGetRequest
 */
-func (a *OAuthApiService) OauthClientsClientIdGet(ctx _context.Context, clientId string) ApiOauthClientsClientIdGetRequest {
-	return ApiOauthClientsClientIdGetRequest{
+func (a *OAuthApiService) OauthClientsClientIdGet(ctx _context.Context, clientId string) OAuthApiApiOauthClientsClientIdGetRequest {
+	return OAuthApiApiOauthClientsClientIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		clientId: clientId,
@@ -207,7 +207,7 @@ func (a *OAuthApiService) OauthClientsClientIdGet(ctx _context.Context, clientId
 
 // Execute executes the request
 //  @return InlineResponse2005
-func (a *OAuthApiService) OauthClientsClientIdGetExecute(r ApiOauthClientsClientIdGetRequest) (InlineResponse2005, *_nethttp.Response, error) {
+func (a *OAuthApiService) OauthClientsClientIdGetExecute(r OAuthApiApiOauthClientsClientIdGetRequest) (InlineResponse2005, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -301,18 +301,18 @@ func (a *OAuthApiService) OauthClientsClientIdGetExecute(r ApiOauthClientsClient
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiOauthTokenPostRequest struct {
+type OAuthApiApiOauthTokenPostRequest struct {
 	ctx _context.Context
 	ApiService *OAuthApiService
 	inlineObject *InlineObject
 }
 
-func (r ApiOauthTokenPostRequest) InlineObject(inlineObject InlineObject) ApiOauthTokenPostRequest {
+func (r OAuthApiApiOauthTokenPostRequest) InlineObject(inlineObject InlineObject) OAuthApiApiOauthTokenPostRequest {
 	r.inlineObject = &inlineObject
 	return r
 }
 
-func (r ApiOauthTokenPostRequest) Execute() (InlineResponse2006, *_nethttp.Response, error) {
+func (r OAuthApiApiOauthTokenPostRequest) Execute() (InlineResponse2006, *_nethttp.Response, error) {
 	return r.ApiService.OauthTokenPostExecute(r)
 }
 
@@ -323,10 +323,10 @@ This operation issues an access token for an account.
 
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOauthTokenPostRequest
+ @return OAuthApiApiOauthTokenPostRequest
 */
-func (a *OAuthApiService) OauthTokenPost(ctx _context.Context) ApiOauthTokenPostRequest {
-	return ApiOauthTokenPostRequest{
+func (a *OAuthApiService) OauthTokenPost(ctx _context.Context) OAuthApiApiOauthTokenPostRequest {
+	return OAuthApiApiOauthTokenPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -334,7 +334,7 @@ func (a *OAuthApiService) OauthTokenPost(ctx _context.Context) ApiOauthTokenPost
 
 // Execute executes the request
 //  @return InlineResponse2006
-func (a *OAuthApiService) OauthTokenPostExecute(r ApiOauthTokenPostRequest) (InlineResponse2006, *_nethttp.Response, error) {
+func (a *OAuthApiService) OauthTokenPostExecute(r OAuthApiApiOauthTokenPostRequest) (InlineResponse2006, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}

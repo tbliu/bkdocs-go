@@ -27,14 +27,14 @@ var (
 // AssetsApiService AssetsApi service
 type AssetsApiService service
 
-type ApiAssetsAssetIdGetRequest struct {
+type AssetsApiApiAssetsAssetIdGetRequest struct {
 	ctx _context.Context
 	ApiService *AssetsApiService
 	assetId string
 }
 
 
-func (r ApiAssetsAssetIdGetRequest) Execute() (AssetResource, *_nethttp.Response, error) {
+func (r AssetsApiApiAssetsAssetIdGetRequest) Execute() (AssetResource, *_nethttp.Response, error) {
 	return r.ApiService.AssetsAssetIdGetExecute(r)
 }
 
@@ -45,10 +45,10 @@ Returns the requested asset, if found
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param assetId The UUID of the required asset
- @return ApiAssetsAssetIdGetRequest
+ @return AssetsApiApiAssetsAssetIdGetRequest
 */
-func (a *AssetsApiService) AssetsAssetIdGet(ctx _context.Context, assetId string) ApiAssetsAssetIdGetRequest {
-	return ApiAssetsAssetIdGetRequest{
+func (a *AssetsApiService) AssetsAssetIdGet(ctx _context.Context, assetId string) AssetsApiApiAssetsAssetIdGetRequest {
+	return AssetsApiApiAssetsAssetIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		assetId: assetId,
@@ -57,7 +57,7 @@ func (a *AssetsApiService) AssetsAssetIdGet(ctx _context.Context, assetId string
 
 // Execute executes the request
 //  @return AssetResource
-func (a *AssetsApiService) AssetsAssetIdGetExecute(r ApiAssetsAssetIdGetRequest) (AssetResource, *_nethttp.Response, error) {
+func (a *AssetsApiService) AssetsAssetIdGetExecute(r AssetsApiApiAssetsAssetIdGetRequest) (AssetResource, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -133,14 +133,14 @@ func (a *AssetsApiService) AssetsAssetIdGetExecute(r ApiAssetsAssetIdGetRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAssetsSymbolGetRequest struct {
+type AssetsApiApiAssetsSymbolGetRequest struct {
 	ctx _context.Context
 	ApiService *AssetsApiService
 	symbol string
 }
 
 
-func (r ApiAssetsSymbolGetRequest) Execute() (AssetResource, *_nethttp.Response, error) {
+func (r AssetsApiApiAssetsSymbolGetRequest) Execute() (AssetResource, *_nethttp.Response, error) {
 	return r.ApiService.AssetsSymbolGetExecute(r)
 }
 
@@ -151,10 +151,10 @@ Returns the requested asset, if found
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param symbol The symbol of the required asset
- @return ApiAssetsSymbolGetRequest
+ @return AssetsApiApiAssetsSymbolGetRequest
 */
-func (a *AssetsApiService) AssetsSymbolGet(ctx _context.Context, symbol string) ApiAssetsSymbolGetRequest {
-	return ApiAssetsSymbolGetRequest{
+func (a *AssetsApiService) AssetsSymbolGet(ctx _context.Context, symbol string) AssetsApiApiAssetsSymbolGetRequest {
+	return AssetsApiApiAssetsSymbolGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		symbol: symbol,
@@ -163,7 +163,7 @@ func (a *AssetsApiService) AssetsSymbolGet(ctx _context.Context, symbol string) 
 
 // Execute executes the request
 //  @return AssetResource
-func (a *AssetsApiService) AssetsSymbolGetExecute(r ApiAssetsSymbolGetRequest) (AssetResource, *_nethttp.Response, error) {
+func (a *AssetsApiService) AssetsSymbolGetExecute(r AssetsApiApiAssetsSymbolGetRequest) (AssetResource, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -239,13 +239,13 @@ func (a *AssetsApiService) AssetsSymbolGetExecute(r ApiAssetsSymbolGetRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetAssetsRequest struct {
+type AssetsApiApiGetAssetsRequest struct {
 	ctx _context.Context
 	ApiService *AssetsApiService
 }
 
 
-func (r ApiGetAssetsRequest) Execute() ([]AssetResource, *_nethttp.Response, error) {
+func (r AssetsApiApiGetAssetsRequest) Execute() ([]AssetResource, *_nethttp.Response, error) {
 	return r.ApiService.GetAssetsExecute(r)
 }
 
@@ -255,10 +255,10 @@ GetAssets Retrieve all assets
 Returns all assets
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetAssetsRequest
+ @return AssetsApiApiGetAssetsRequest
 */
-func (a *AssetsApiService) GetAssets(ctx _context.Context) ApiGetAssetsRequest {
-	return ApiGetAssetsRequest{
+func (a *AssetsApiService) GetAssets(ctx _context.Context) AssetsApiApiGetAssetsRequest {
+	return AssetsApiApiGetAssetsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -266,7 +266,7 @@ func (a *AssetsApiService) GetAssets(ctx _context.Context) ApiGetAssetsRequest {
 
 // Execute executes the request
 //  @return []AssetResource
-func (a *AssetsApiService) GetAssetsExecute(r ApiGetAssetsRequest) ([]AssetResource, *_nethttp.Response, error) {
+func (a *AssetsApiService) GetAssetsExecute(r AssetsApiApiGetAssetsRequest) ([]AssetResource, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}

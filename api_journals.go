@@ -28,14 +28,14 @@ var (
 // JournalsApiService JournalsApi service
 type JournalsApiService service
 
-type ApiDeleteJournalRequest struct {
+type JournalsApiApiDeleteJournalRequest struct {
 	ctx _context.Context
 	ApiService *JournalsApiService
 	journalId string
 }
 
 
-func (r ApiDeleteJournalRequest) Execute() (*_nethttp.Response, error) {
+func (r JournalsApiApiDeleteJournalRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteJournalExecute(r)
 }
 
@@ -49,10 +49,10 @@ will return an error.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param journalId
- @return ApiDeleteJournalRequest
+ @return JournalsApiApiDeleteJournalRequest
 */
-func (a *JournalsApiService) DeleteJournal(ctx _context.Context, journalId string) ApiDeleteJournalRequest {
-	return ApiDeleteJournalRequest{
+func (a *JournalsApiService) DeleteJournal(ctx _context.Context, journalId string) JournalsApiApiDeleteJournalRequest {
+	return JournalsApiApiDeleteJournalRequest{
 		ApiService: a,
 		ctx: ctx,
 		journalId: journalId,
@@ -60,7 +60,7 @@ func (a *JournalsApiService) DeleteJournal(ctx _context.Context, journalId strin
 }
 
 // Execute executes the request
-func (a *JournalsApiService) DeleteJournalExecute(r ApiDeleteJournalRequest) (*_nethttp.Response, error) {
+func (a *JournalsApiService) DeleteJournalExecute(r JournalsApiApiDeleteJournalRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -126,7 +126,7 @@ func (a *JournalsApiService) DeleteJournalExecute(r ApiDeleteJournalRequest) (*_
 	return localVarHTTPResponse, nil
 }
 
-type ApiEventsJournalsStatusGetRequest struct {
+type JournalsApiApiEventsJournalsStatusGetRequest struct {
 	ctx _context.Context
 	ApiService *JournalsApiService
 	since *time.Time
@@ -135,24 +135,24 @@ type ApiEventsJournalsStatusGetRequest struct {
 	untilId *int32
 }
 
-func (r ApiEventsJournalsStatusGetRequest) Since(since time.Time) ApiEventsJournalsStatusGetRequest {
+func (r JournalsApiApiEventsJournalsStatusGetRequest) Since(since time.Time) JournalsApiApiEventsJournalsStatusGetRequest {
 	r.since = &since
 	return r
 }
-func (r ApiEventsJournalsStatusGetRequest) Until(until time.Time) ApiEventsJournalsStatusGetRequest {
+func (r JournalsApiApiEventsJournalsStatusGetRequest) Until(until time.Time) JournalsApiApiEventsJournalsStatusGetRequest {
 	r.until = &until
 	return r
 }
-func (r ApiEventsJournalsStatusGetRequest) SinceId(sinceId int32) ApiEventsJournalsStatusGetRequest {
+func (r JournalsApiApiEventsJournalsStatusGetRequest) SinceId(sinceId int32) JournalsApiApiEventsJournalsStatusGetRequest {
 	r.sinceId = &sinceId
 	return r
 }
-func (r ApiEventsJournalsStatusGetRequest) UntilId(untilId int32) ApiEventsJournalsStatusGetRequest {
+func (r JournalsApiApiEventsJournalsStatusGetRequest) UntilId(untilId int32) JournalsApiApiEventsJournalsStatusGetRequest {
 	r.untilId = &untilId
 	return r
 }
 
-func (r ApiEventsJournalsStatusGetRequest) Execute() (InlineResponse2004, *_nethttp.Response, error) {
+func (r JournalsApiApiEventsJournalsStatusGetRequest) Execute() (InlineResponse2004, *_nethttp.Response, error) {
 	return r.ApiService.EventsJournalsStatusGetExecute(r)
 }
 
@@ -169,10 +169,10 @@ Behavior:
 
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiEventsJournalsStatusGetRequest
+ @return JournalsApiApiEventsJournalsStatusGetRequest
 */
-func (a *JournalsApiService) EventsJournalsStatusGet(ctx _context.Context) ApiEventsJournalsStatusGetRequest {
-	return ApiEventsJournalsStatusGetRequest{
+func (a *JournalsApiService) EventsJournalsStatusGet(ctx _context.Context) JournalsApiApiEventsJournalsStatusGetRequest {
+	return JournalsApiApiEventsJournalsStatusGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -180,7 +180,7 @@ func (a *JournalsApiService) EventsJournalsStatusGet(ctx _context.Context) ApiEv
 
 // Execute executes the request
 //  @return InlineResponse2004
-func (a *JournalsApiService) EventsJournalsStatusGetExecute(r ApiEventsJournalsStatusGetRequest) (InlineResponse2004, *_nethttp.Response, error) {
+func (a *JournalsApiService) EventsJournalsStatusGetExecute(r JournalsApiApiEventsJournalsStatusGetRequest) (InlineResponse2004, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -267,7 +267,7 @@ func (a *JournalsApiService) EventsJournalsStatusGetExecute(r ApiEventsJournalsS
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetJournalsRequest struct {
+type JournalsApiApiGetJournalsRequest struct {
 	ctx _context.Context
 	ApiService *JournalsApiService
 	after *string
@@ -279,33 +279,33 @@ type ApiGetJournalsRequest struct {
 }
 
 // by settle_date
-func (r ApiGetJournalsRequest) After(after string) ApiGetJournalsRequest {
+func (r JournalsApiApiGetJournalsRequest) After(after string) JournalsApiApiGetJournalsRequest {
 	r.after = &after
 	return r
 }
 // by settle_date
-func (r ApiGetJournalsRequest) Before(before string) ApiGetJournalsRequest {
+func (r JournalsApiApiGetJournalsRequest) Before(before string) JournalsApiApiGetJournalsRequest {
 	r.before = &before
 	return r
 }
-func (r ApiGetJournalsRequest) Status(status string) ApiGetJournalsRequest {
+func (r JournalsApiApiGetJournalsRequest) Status(status string) JournalsApiApiGetJournalsRequest {
 	r.status = &status
 	return r
 }
-func (r ApiGetJournalsRequest) EntryType(entryType string) ApiGetJournalsRequest {
+func (r JournalsApiApiGetJournalsRequest) EntryType(entryType string) JournalsApiApiGetJournalsRequest {
 	r.entryType = &entryType
 	return r
 }
-func (r ApiGetJournalsRequest) ToAccount(toAccount string) ApiGetJournalsRequest {
+func (r JournalsApiApiGetJournalsRequest) ToAccount(toAccount string) JournalsApiApiGetJournalsRequest {
 	r.toAccount = &toAccount
 	return r
 }
-func (r ApiGetJournalsRequest) FromAccount(fromAccount string) ApiGetJournalsRequest {
+func (r JournalsApiApiGetJournalsRequest) FromAccount(fromAccount string) JournalsApiApiGetJournalsRequest {
 	r.fromAccount = &fromAccount
 	return r
 }
 
-func (r ApiGetJournalsRequest) Execute() ([]JournalResource, *_nethttp.Response, error) {
+func (r JournalsApiApiGetJournalsRequest) Execute() ([]JournalResource, *_nethttp.Response, error) {
 	return r.ApiService.GetJournalsExecute(r)
 }
 
@@ -313,10 +313,10 @@ func (r ApiGetJournalsRequest) Execute() ([]JournalResource, *_nethttp.Response,
 GetJournals Return a list of requested journals.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetJournalsRequest
+ @return JournalsApiApiGetJournalsRequest
 */
-func (a *JournalsApiService) GetJournals(ctx _context.Context) ApiGetJournalsRequest {
-	return ApiGetJournalsRequest{
+func (a *JournalsApiService) GetJournals(ctx _context.Context) JournalsApiApiGetJournalsRequest {
+	return JournalsApiApiGetJournalsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -324,7 +324,7 @@ func (a *JournalsApiService) GetJournals(ctx _context.Context) ApiGetJournalsReq
 
 // Execute executes the request
 //  @return []JournalResource
-func (a *JournalsApiService) GetJournalsExecute(r ApiGetJournalsRequest) ([]JournalResource, *_nethttp.Response, error) {
+func (a *JournalsApiService) GetJournalsExecute(r JournalsApiApiGetJournalsRequest) ([]JournalResource, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -417,18 +417,18 @@ func (a *JournalsApiService) GetJournalsExecute(r ApiGetJournalsRequest) ([]Jour
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPostJournalsRequest struct {
+type JournalsApiApiPostJournalsRequest struct {
 	ctx _context.Context
 	ApiService *JournalsApiService
 	journalData *JournalData
 }
 
-func (r ApiPostJournalsRequest) JournalData(journalData JournalData) ApiPostJournalsRequest {
+func (r JournalsApiApiPostJournalsRequest) JournalData(journalData JournalData) JournalsApiApiPostJournalsRequest {
 	r.journalData = &journalData
 	return r
 }
 
-func (r ApiPostJournalsRequest) Execute() (JournalResource, *_nethttp.Response, error) {
+func (r JournalsApiApiPostJournalsRequest) Execute() (JournalResource, *_nethttp.Response, error) {
 	return r.ApiService.PostJournalsExecute(r)
 }
 
@@ -445,10 +445,10 @@ transactions that meet the criteria are executed right away.
 
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostJournalsRequest
+ @return JournalsApiApiPostJournalsRequest
 */
-func (a *JournalsApiService) PostJournals(ctx _context.Context) ApiPostJournalsRequest {
-	return ApiPostJournalsRequest{
+func (a *JournalsApiService) PostJournals(ctx _context.Context) JournalsApiApiPostJournalsRequest {
+	return JournalsApiApiPostJournalsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -456,7 +456,7 @@ func (a *JournalsApiService) PostJournals(ctx _context.Context) ApiPostJournalsR
 
 // Execute executes the request
 //  @return JournalResource
-func (a *JournalsApiService) PostJournalsExecute(r ApiPostJournalsRequest) (JournalResource, *_nethttp.Response, error) {
+func (a *JournalsApiService) PostJournalsExecute(r JournalsApiApiPostJournalsRequest) (JournalResource, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -565,18 +565,18 @@ func (a *JournalsApiService) PostJournalsExecute(r ApiPostJournalsRequest) (Jour
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPostJournalsBatchRequest struct {
+type JournalsApiApiPostJournalsBatchRequest struct {
 	ctx _context.Context
 	ApiService *JournalsApiService
 	batchJournalRequest *BatchJournalRequest
 }
 
-func (r ApiPostJournalsBatchRequest) BatchJournalRequest(batchJournalRequest BatchJournalRequest) ApiPostJournalsBatchRequest {
+func (r JournalsApiApiPostJournalsBatchRequest) BatchJournalRequest(batchJournalRequest BatchJournalRequest) JournalsApiApiPostJournalsBatchRequest {
 	r.batchJournalRequest = &batchJournalRequest
 	return r
 }
 
-func (r ApiPostJournalsBatchRequest) Execute() ([]BatchJournalResponse, *_nethttp.Response, error) {
+func (r JournalsApiApiPostJournalsBatchRequest) Execute() ([]BatchJournalResponse, *_nethttp.Response, error) {
 	return r.ApiService.PostJournalsBatchExecute(r)
 }
 
@@ -584,10 +584,10 @@ func (r ApiPostJournalsBatchRequest) Execute() ([]BatchJournalResponse, *_nethtt
 PostJournalsBatch Create a batch journal
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostJournalsBatchRequest
+ @return JournalsApiApiPostJournalsBatchRequest
 */
-func (a *JournalsApiService) PostJournalsBatch(ctx _context.Context) ApiPostJournalsBatchRequest {
-	return ApiPostJournalsBatchRequest{
+func (a *JournalsApiService) PostJournalsBatch(ctx _context.Context) JournalsApiApiPostJournalsBatchRequest {
+	return JournalsApiApiPostJournalsBatchRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -595,7 +595,7 @@ func (a *JournalsApiService) PostJournalsBatch(ctx _context.Context) ApiPostJour
 
 // Execute executes the request
 //  @return []BatchJournalResponse
-func (a *JournalsApiService) PostJournalsBatchExecute(r ApiPostJournalsBatchRequest) ([]BatchJournalResponse, *_nethttp.Response, error) {
+func (a *JournalsApiService) PostJournalsBatchExecute(r JournalsApiApiPostJournalsBatchRequest) ([]BatchJournalResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}

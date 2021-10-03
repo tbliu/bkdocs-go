@@ -20,12 +20,12 @@ type DocumentType string
 
 // List of DocumentType
 const (
-	IDENTITY_VERIFICATION DocumentType = "identity_verification"
-	ADDRESS_VERIFICATION DocumentType = "address_verification"
-	DATE_OF_BIRTH_VERIFICATION DocumentType = "date_of_birth_verification"
-	TAX_ID_VERIFICATION DocumentType = "tax_id_verification"
-	ACCOUNT_APPROVAL_LETTER DocumentType = "account_approval_letter"
-	CIP_RESULT DocumentType = "cip_result"
+	DOCUMENTTYPE_IDENTITY_VERIFICATION DocumentType = "identity_verification"
+	DOCUMENTTYPE_ADDRESS_VERIFICATION DocumentType = "address_verification"
+	DOCUMENTTYPE_DATE_OF_BIRTH_VERIFICATION DocumentType = "date_of_birth_verification"
+	DOCUMENTTYPE_TAX_ID_VERIFICATION DocumentType = "tax_id_verification"
+	DOCUMENTTYPE_ACCOUNT_APPROVAL_LETTER DocumentType = "account_approval_letter"
+	DOCUMENTTYPE_CIP_RESULT DocumentType = "cip_result"
 )
 
 var allowedDocumentTypeEnumValues = []DocumentType{

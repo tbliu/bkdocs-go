@@ -28,7 +28,7 @@ var (
 // TradingApiService TradingApi service
 type TradingApiService service
 
-type ApiDeleteOrderRequest struct {
+type TradingApiApiDeleteOrderRequest struct {
 	ctx _context.Context
 	ApiService *TradingApiService
 	accountId string
@@ -36,7 +36,7 @@ type ApiDeleteOrderRequest struct {
 }
 
 
-func (r ApiDeleteOrderRequest) Execute() (*_nethttp.Response, error) {
+func (r TradingApiApiDeleteOrderRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteOrderExecute(r)
 }
 
@@ -48,10 +48,10 @@ Attempts to cancel an open order.
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountId Account identifier.
  @param orderId Order identifier.
- @return ApiDeleteOrderRequest
+ @return TradingApiApiDeleteOrderRequest
 */
-func (a *TradingApiService) DeleteOrder(ctx _context.Context, accountId string, orderId string) ApiDeleteOrderRequest {
-	return ApiDeleteOrderRequest{
+func (a *TradingApiService) DeleteOrder(ctx _context.Context, accountId string, orderId string) TradingApiApiDeleteOrderRequest {
+	return TradingApiApiDeleteOrderRequest{
 		ApiService: a,
 		ctx: ctx,
 		accountId: accountId,
@@ -60,7 +60,7 @@ func (a *TradingApiService) DeleteOrder(ctx _context.Context, accountId string, 
 }
 
 // Execute executes the request
-func (a *TradingApiService) DeleteOrderExecute(r ApiDeleteOrderRequest) (*_nethttp.Response, error) {
+func (a *TradingApiService) DeleteOrderExecute(r TradingApiApiDeleteOrderRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -146,14 +146,14 @@ func (a *TradingApiService) DeleteOrderExecute(r ApiDeleteOrderRequest) (*_netht
 	return localVarHTTPResponse, nil
 }
 
-type ApiDeleteOrdersRequest struct {
+type TradingApiApiDeleteOrdersRequest struct {
 	ctx _context.Context
 	ApiService *TradingApiService
 	accountId string
 }
 
 
-func (r ApiDeleteOrdersRequest) Execute() ([]InlineResponse207, *_nethttp.Response, error) {
+func (r TradingApiApiDeleteOrdersRequest) Execute() ([]InlineResponse207, *_nethttp.Response, error) {
 	return r.ApiService.DeleteOrdersExecute(r)
 }
 
@@ -164,10 +164,10 @@ Attempts to cancel all open orders. A response will be provided for each order t
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountId Account identifier.
- @return ApiDeleteOrdersRequest
+ @return TradingApiApiDeleteOrdersRequest
 */
-func (a *TradingApiService) DeleteOrders(ctx _context.Context, accountId string) ApiDeleteOrdersRequest {
-	return ApiDeleteOrdersRequest{
+func (a *TradingApiService) DeleteOrders(ctx _context.Context, accountId string) TradingApiApiDeleteOrdersRequest {
+	return TradingApiApiDeleteOrdersRequest{
 		ApiService: a,
 		ctx: ctx,
 		accountId: accountId,
@@ -176,7 +176,7 @@ func (a *TradingApiService) DeleteOrders(ctx _context.Context, accountId string)
 
 // Execute executes the request
 //  @return []InlineResponse207
-func (a *TradingApiService) DeleteOrdersExecute(r ApiDeleteOrdersRequest) ([]InlineResponse207, *_nethttp.Response, error) {
+func (a *TradingApiService) DeleteOrdersExecute(r TradingApiApiDeleteOrdersRequest) ([]InlineResponse207, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -271,7 +271,7 @@ func (a *TradingApiService) DeleteOrdersExecute(r ApiDeleteOrdersRequest) ([]Inl
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetOrderRequest struct {
+type TradingApiApiGetOrderRequest struct {
 	ctx _context.Context
 	ApiService *TradingApiService
 	accountId string
@@ -279,7 +279,7 @@ type ApiGetOrderRequest struct {
 }
 
 
-func (r ApiGetOrderRequest) Execute() (OrderObject, *_nethttp.Response, error) {
+func (r TradingApiApiGetOrderRequest) Execute() (OrderObject, *_nethttp.Response, error) {
 	return r.ApiService.GetOrderExecute(r)
 }
 
@@ -291,10 +291,10 @@ Retrieves a single order for the given order_id.
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountId Account identifier.
  @param orderId Order identifier.
- @return ApiGetOrderRequest
+ @return TradingApiApiGetOrderRequest
 */
-func (a *TradingApiService) GetOrder(ctx _context.Context, accountId string, orderId string) ApiGetOrderRequest {
-	return ApiGetOrderRequest{
+func (a *TradingApiService) GetOrder(ctx _context.Context, accountId string, orderId string) TradingApiApiGetOrderRequest {
+	return TradingApiApiGetOrderRequest{
 		ApiService: a,
 		ctx: ctx,
 		accountId: accountId,
@@ -304,7 +304,7 @@ func (a *TradingApiService) GetOrder(ctx _context.Context, accountId string, ord
 
 // Execute executes the request
 //  @return OrderObject
-func (a *TradingApiService) GetOrderExecute(r ApiGetOrderRequest) (OrderObject, *_nethttp.Response, error) {
+func (a *TradingApiService) GetOrderExecute(r TradingApiApiGetOrderRequest) (OrderObject, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -400,7 +400,7 @@ func (a *TradingApiService) GetOrderExecute(r ApiGetOrderRequest) (OrderObject, 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetOrdersRequest struct {
+type TradingApiApiGetOrdersRequest struct {
 	ctx _context.Context
 	ApiService *TradingApiService
 	accountId string
@@ -414,42 +414,42 @@ type ApiGetOrdersRequest struct {
 }
 
 // Status of the orders to list.
-func (r ApiGetOrdersRequest) Status(status string) ApiGetOrdersRequest {
+func (r TradingApiApiGetOrdersRequest) Status(status string) TradingApiApiGetOrdersRequest {
 	r.status = &status
 	return r
 }
 // The maximum number of orders in response.
-func (r ApiGetOrdersRequest) Limit(limit int32) ApiGetOrdersRequest {
+func (r TradingApiApiGetOrdersRequest) Limit(limit int32) TradingApiApiGetOrdersRequest {
 	r.limit = &limit
 	return r
 }
 // The response will include only ones submitted after this timestamp (exclusive.)
-func (r ApiGetOrdersRequest) After(after time.Time) ApiGetOrdersRequest {
+func (r TradingApiApiGetOrdersRequest) After(after time.Time) TradingApiApiGetOrdersRequest {
 	r.after = &after
 	return r
 }
 // The response will include only ones submitted until this timestamp (exclusive.)
-func (r ApiGetOrdersRequest) Until(until time.Time) ApiGetOrdersRequest {
+func (r TradingApiApiGetOrdersRequest) Until(until time.Time) TradingApiApiGetOrdersRequest {
 	r.until = &until
 	return r
 }
 // The chronological order of response based on the submission time. asc or desc. Defaults to desc.
-func (r ApiGetOrdersRequest) Direction(direction string) ApiGetOrdersRequest {
+func (r TradingApiApiGetOrdersRequest) Direction(direction string) TradingApiApiGetOrdersRequest {
 	r.direction = &direction
 	return r
 }
 // If true, the result will roll up multi-leg orders under the legs field of primary order.
-func (r ApiGetOrdersRequest) Nested(nested bool) ApiGetOrdersRequest {
+func (r TradingApiApiGetOrdersRequest) Nested(nested bool) TradingApiApiGetOrdersRequest {
 	r.nested = &nested
 	return r
 }
 // A comma-separated list of symbols to filter by.
-func (r ApiGetOrdersRequest) Symbols(symbols string) ApiGetOrdersRequest {
+func (r TradingApiApiGetOrdersRequest) Symbols(symbols string) TradingApiApiGetOrdersRequest {
 	r.symbols = &symbols
 	return r
 }
 
-func (r ApiGetOrdersRequest) Execute() ([]OrderObject, *_nethttp.Response, error) {
+func (r TradingApiApiGetOrdersRequest) Execute() ([]OrderObject, *_nethttp.Response, error) {
 	return r.ApiService.GetOrdersExecute(r)
 }
 
@@ -460,10 +460,10 @@ Retrieves a list of orders for the account, filtered by the supplied query param
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountId Account identifier.
- @return ApiGetOrdersRequest
+ @return TradingApiApiGetOrdersRequest
 */
-func (a *TradingApiService) GetOrders(ctx _context.Context, accountId string) ApiGetOrdersRequest {
-	return ApiGetOrdersRequest{
+func (a *TradingApiService) GetOrders(ctx _context.Context, accountId string) TradingApiApiGetOrdersRequest {
+	return TradingApiApiGetOrdersRequest{
 		ApiService: a,
 		ctx: ctx,
 		accountId: accountId,
@@ -472,7 +472,7 @@ func (a *TradingApiService) GetOrders(ctx _context.Context, accountId string) Ap
 
 // Execute executes the request
 //  @return []OrderObject
-func (a *TradingApiService) GetOrdersExecute(r ApiGetOrdersRequest) ([]OrderObject, *_nethttp.Response, error) {
+func (a *TradingApiService) GetOrdersExecute(r TradingApiApiGetOrdersRequest) ([]OrderObject, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -588,14 +588,14 @@ func (a *TradingApiService) GetOrdersExecute(r ApiGetOrdersRequest) ([]OrderObje
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetPositionsRequest struct {
+type TradingApiApiGetPositionsRequest struct {
 	ctx _context.Context
 	ApiService *TradingApiService
 	accountId string
 }
 
 
-func (r ApiGetPositionsRequest) Execute() ([]Position, *_nethttp.Response, error) {
+func (r TradingApiApiGetPositionsRequest) Execute() ([]Position, *_nethttp.Response, error) {
 	return r.ApiService.GetPositionsExecute(r)
 }
 
@@ -604,10 +604,10 @@ GetPositions List open positions for an account
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountId Account identifier.
- @return ApiGetPositionsRequest
+ @return TradingApiApiGetPositionsRequest
 */
-func (a *TradingApiService) GetPositions(ctx _context.Context, accountId string) ApiGetPositionsRequest {
-	return ApiGetPositionsRequest{
+func (a *TradingApiService) GetPositions(ctx _context.Context, accountId string) TradingApiApiGetPositionsRequest {
+	return TradingApiApiGetPositionsRequest{
 		ApiService: a,
 		ctx: ctx,
 		accountId: accountId,
@@ -616,7 +616,7 @@ func (a *TradingApiService) GetPositions(ctx _context.Context, accountId string)
 
 // Execute executes the request
 //  @return []Position
-func (a *TradingApiService) GetPositionsExecute(r ApiGetPositionsRequest) ([]Position, *_nethttp.Response, error) {
+func (a *TradingApiService) GetPositionsExecute(r TradingApiApiGetPositionsRequest) ([]Position, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -692,7 +692,7 @@ func (a *TradingApiService) GetPositionsExecute(r ApiGetPositionsRequest) ([]Pos
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPatchOrderRequest struct {
+type TradingApiApiPatchOrderRequest struct {
 	ctx _context.Context
 	ApiService *TradingApiService
 	accountId string
@@ -700,12 +700,12 @@ type ApiPatchOrderRequest struct {
 	patchOrder *PatchOrder
 }
 
-func (r ApiPatchOrderRequest) PatchOrder(patchOrder PatchOrder) ApiPatchOrderRequest {
+func (r TradingApiApiPatchOrderRequest) PatchOrder(patchOrder PatchOrder) TradingApiApiPatchOrderRequest {
 	r.patchOrder = &patchOrder
 	return r
 }
 
-func (r ApiPatchOrderRequest) Execute() (OrderObject, *_nethttp.Response, error) {
+func (r TradingApiApiPatchOrderRequest) Execute() (OrderObject, *_nethttp.Response, error) {
 	return r.ApiService.PatchOrderExecute(r)
 }
 
@@ -717,10 +717,10 @@ Replaces a single order with updated parameters. Each parameter overrides the co
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountId Account identifier.
  @param orderId Order identifier.
- @return ApiPatchOrderRequest
+ @return TradingApiApiPatchOrderRequest
 */
-func (a *TradingApiService) PatchOrder(ctx _context.Context, accountId string, orderId string) ApiPatchOrderRequest {
-	return ApiPatchOrderRequest{
+func (a *TradingApiService) PatchOrder(ctx _context.Context, accountId string, orderId string) TradingApiApiPatchOrderRequest {
+	return TradingApiApiPatchOrderRequest{
 		ApiService: a,
 		ctx: ctx,
 		accountId: accountId,
@@ -730,7 +730,7 @@ func (a *TradingApiService) PatchOrder(ctx _context.Context, accountId string, o
 
 // Execute executes the request
 //  @return OrderObject
-func (a *TradingApiService) PatchOrderExecute(r ApiPatchOrderRequest) (OrderObject, *_nethttp.Response, error) {
+func (a *TradingApiService) PatchOrderExecute(r TradingApiApiPatchOrderRequest) (OrderObject, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
@@ -841,19 +841,19 @@ func (a *TradingApiService) PatchOrderExecute(r ApiPatchOrderRequest) (OrderObje
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPostOrdersRequest struct {
+type TradingApiApiPostOrdersRequest struct {
 	ctx _context.Context
 	ApiService *TradingApiService
 	accountId string
 	createOrder *CreateOrder
 }
 
-func (r ApiPostOrdersRequest) CreateOrder(createOrder CreateOrder) ApiPostOrdersRequest {
+func (r TradingApiApiPostOrdersRequest) CreateOrder(createOrder CreateOrder) TradingApiApiPostOrdersRequest {
 	r.createOrder = &createOrder
 	return r
 }
 
-func (r ApiPostOrdersRequest) Execute() (OrderObject, *_nethttp.Response, error) {
+func (r TradingApiApiPostOrdersRequest) Execute() (OrderObject, *_nethttp.Response, error) {
 	return r.ApiService.PostOrdersExecute(r)
 }
 
@@ -864,10 +864,10 @@ Create an order for an account.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accountId Account identifier.
- @return ApiPostOrdersRequest
+ @return TradingApiApiPostOrdersRequest
 */
-func (a *TradingApiService) PostOrders(ctx _context.Context, accountId string) ApiPostOrdersRequest {
-	return ApiPostOrdersRequest{
+func (a *TradingApiService) PostOrders(ctx _context.Context, accountId string) TradingApiApiPostOrdersRequest {
+	return TradingApiApiPostOrdersRequest{
 		ApiService: a,
 		ctx: ctx,
 		accountId: accountId,
@@ -876,7 +876,7 @@ func (a *TradingApiService) PostOrders(ctx _context.Context, accountId string) A
 
 // Execute executes the request
 //  @return OrderObject
-func (a *TradingApiService) PostOrdersExecute(r ApiPostOrdersRequest) (OrderObject, *_nethttp.Response, error) {
+func (a *TradingApiService) PostOrdersExecute(r TradingApiApiPostOrdersRequest) (OrderObject, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
