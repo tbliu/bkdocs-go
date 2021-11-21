@@ -23,7 +23,7 @@ type AccountExtended struct {
 	// Always \"USD\"
 	Currency *string `json:"currency,omitempty"`
 	CreatedAt *time.Time `json:"created_at,omitempty"`
-	LastEquity *float64 `json:"last_equity,omitempty"`
+	LastEquity *float64 `json:"last_equity,string,omitempty"`
 	KycResults *KycResult `json:"kyc_results,omitempty"`
 	Contact *Contact `json:"contact,omitempty"`
 	Identity *Identity `json:"identity,omitempty"`
