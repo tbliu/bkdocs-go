@@ -147,7 +147,7 @@ func (r DocumentsApiApiAccountsAccountIdDocumentsGetRequest) EndDate(endDate str
 	return r
 }
 
-func (r DocumentsApiApiAccountsAccountIdDocumentsGetRequest) Execute() ([]InlineResponse2002, *_nethttp.Response, error) {
+func (r DocumentsApiApiAccountsAccountIdDocumentsGetRequest) Execute() ([][]map[string]interface{}, *_nethttp.Response, error) {
 	return r.ApiService.AccountsAccountIdDocumentsGetExecute(r)
 }
 
@@ -171,15 +171,15 @@ func (a *DocumentsApiService) AccountsAccountIdDocumentsGet(ctx _context.Context
 }
 
 // Execute executes the request
-//  @return []InlineResponse2002
-func (a *DocumentsApiService) AccountsAccountIdDocumentsGetExecute(r DocumentsApiApiAccountsAccountIdDocumentsGetRequest) ([]InlineResponse2002, *_nethttp.Response, error) {
+//  @return [][]map[string]interface{}
+func (a *DocumentsApiService) AccountsAccountIdDocumentsGetExecute(r DocumentsApiApiAccountsAccountIdDocumentsGetRequest) ([][]map[string]interface{}, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []InlineResponse2002
+		localVarReturnValue  [][]map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DocumentsApiService.AccountsAccountIdDocumentsGet")

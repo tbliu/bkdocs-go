@@ -28,7 +28,8 @@ const (
 	DOCUMENTTYPE_CIP_RESULT DocumentType = "cip_result"
 )
 
-var allowedDocumentTypeEnumValues = []DocumentType{
+// All allowed values of DocumentType enum
+var AllowedDocumentTypeEnumValues = []DocumentType{
 	"identity_verification",
 	"address_verification",
 	"date_of_birth_verification",
@@ -44,7 +45,7 @@ func (v *DocumentType) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := DocumentType(value)
-	for _, existing := range allowedDocumentTypeEnumValues {
+	for _, existing := range AllowedDocumentTypeEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -61,13 +62,13 @@ func NewDocumentTypeFromValue(v string) (*DocumentType, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for DocumentType: valid values are %v", v, allowedDocumentTypeEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for DocumentType: valid values are %v", v, AllowedDocumentTypeEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v DocumentType) IsValid() bool {
-	for _, existing := range allowedDocumentTypeEnumValues {
+	for _, existing := range AllowedDocumentTypeEnumValues {
 		if existing == v {
 			return true
 		}

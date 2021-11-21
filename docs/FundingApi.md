@@ -35,8 +35,8 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
-    achRelationshipId := TODO // string | ACH relationship identifier
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
+    achRelationshipId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | ACH relationship identifier
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -54,8 +54,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
-**achRelationshipId** | [**string**](.md) | ACH relationship identifier | 
+**accountId** | **string** | Account identifier. | 
+**achRelationshipId** | **string** | ACH relationship identifier | 
 
 ### Other Parameters
 
@@ -104,7 +104,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
     bankId := "bankId_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
@@ -123,7 +123,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
+**accountId** | **string** | Account identifier. | 
 **bankId** | **string** |  | 
 
 ### Other Parameters
@@ -242,7 +242,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
     statuses := "statuses_example" // string | Comma-separated status values (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -263,7 +263,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
+**accountId** | **string** | Account identifier. | 
 
 ### Other Parameters
 
@@ -312,7 +312,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | 
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     status := "status_example" // string |  (optional)
     bankName := "bankName_example" // string |  (optional)
 
@@ -334,7 +334,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) |  | 
+**accountId** | **string** |  | 
 
 ### Other Parameters
 
@@ -386,10 +386,10 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | 
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     direction := "direction_example" // string |  (optional)
-    limit := float32(8.14) // float32 |  (optional)
-    offset := float32(8.14) // float32 |  (optional)
+    limit := int32(56) // int32 |  (optional)
+    offset := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -409,7 +409,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) |  | 
+**accountId** | **string** |  | 
 
 ### Other Parameters
 
@@ -420,8 +420,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **direction** | **string** |  | 
- **limit** | **float32** |  | 
- **offset** | **float32** |  | 
+ **limit** | **int32** |  | 
+ **offset** | **int32** |  | 
 
 ### Return type
 
@@ -460,7 +460,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
     aCHRelationshipData := *openapiclient.NewACHRelationshipData("AccountOwnerName_example", "BankAccountType_example", "BankAccountNumber_example", "BankRoutingNumber_example") // ACHRelationshipData | 
 
     configuration := openapiclient.NewConfiguration()
@@ -481,7 +481,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
+**accountId** | **string** | Account identifier. | 
 
 ### Other Parameters
 
@@ -530,7 +530,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
     bankData := *openapiclient.NewBankData("Name_example", "BankCode_example", "BankCodeType_example", "AccountNumber_example") // BankData | 
 
     configuration := openapiclient.NewConfiguration()
@@ -551,7 +551,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
+**accountId** | **string** | Account identifier. | 
 
 ### Other Parameters
 
@@ -602,7 +602,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | 
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     transferData := *openapiclient.NewTransferData("TransferType_example", "Amount_example", "Direction_example", "RelationshipId_example", "BankId_example") // TransferData | 
 
     configuration := openapiclient.NewConfiguration()
@@ -623,7 +623,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) |  | 
+**accountId** | **string** |  | 
 
 ### Other Parameters
 

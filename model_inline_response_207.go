@@ -18,7 +18,7 @@ import (
 type InlineResponse207 struct {
 	Id *string `json:"id,omitempty"`
 	Status *int32 `json:"status,omitempty"`
-	Body *OrderObject `json:"body,omitempty"`
+	Body *Order `json:"body,omitempty"`
 }
 
 // NewInlineResponse207 instantiates a new InlineResponse207 object
@@ -103,9 +103,9 @@ func (o *InlineResponse207) SetStatus(v int32) {
 }
 
 // GetBody returns the Body field value if set, zero value otherwise.
-func (o *InlineResponse207) GetBody() OrderObject {
+func (o *InlineResponse207) GetBody() Order {
 	if o == nil || o.Body == nil {
-		var ret OrderObject
+		var ret Order
 		return ret
 	}
 	return *o.Body
@@ -113,7 +113,7 @@ func (o *InlineResponse207) GetBody() OrderObject {
 
 // GetBodyOk returns a tuple with the Body field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineResponse207) GetBodyOk() (*OrderObject, bool) {
+func (o *InlineResponse207) GetBodyOk() (*Order, bool) {
 	if o == nil || o.Body == nil {
 		return nil, false
 	}
@@ -129,8 +129,8 @@ func (o *InlineResponse207) HasBody() bool {
 	return false
 }
 
-// SetBody gets a reference to the given OrderObject and assigns it to the Body field.
-func (o *InlineResponse207) SetBody(v OrderObject) {
+// SetBody gets a reference to the given Order and assigns it to the Body field.
+func (o *InlineResponse207) SetBody(v Order) {
 	o.Body = &v
 }
 

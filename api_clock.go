@@ -32,7 +32,7 @@ type ClockApiApiClockGetRequest struct {
 }
 
 
-func (r ClockApiApiClockGetRequest) Execute() (InlineResponse2001, *_nethttp.Response, error) {
+func (r ClockApiApiClockGetRequest) Execute() (Clock, *_nethttp.Response, error) {
 	return r.ApiService.ClockGetExecute(r)
 }
 
@@ -50,15 +50,15 @@ func (a *ClockApiService) ClockGet(ctx _context.Context) ClockApiApiClockGetRequ
 }
 
 // Execute executes the request
-//  @return InlineResponse2001
-func (a *ClockApiService) ClockGetExecute(r ClockApiApiClockGetRequest) (InlineResponse2001, *_nethttp.Response, error) {
+//  @return Clock
+func (a *ClockApiService) ClockGetExecute(r ClockApiApiClockGetRequest) (Clock, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2001
+		localVarReturnValue  Clock
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClockApiService.ClockGet")

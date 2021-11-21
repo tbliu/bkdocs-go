@@ -584,19 +584,19 @@ type FundingApiApiGetTransfersRequest struct {
 	ApiService *FundingApiService
 	accountId string
 	direction *string
-	limit *float32
-	offset *float32
+	limit *int32
+	offset *int32
 }
 
 func (r FundingApiApiGetTransfersRequest) Direction(direction string) FundingApiApiGetTransfersRequest {
 	r.direction = &direction
 	return r
 }
-func (r FundingApiApiGetTransfersRequest) Limit(limit float32) FundingApiApiGetTransfersRequest {
+func (r FundingApiApiGetTransfersRequest) Limit(limit int32) FundingApiApiGetTransfersRequest {
 	r.limit = &limit
 	return r
 }
-func (r FundingApiApiGetTransfersRequest) Offset(offset float32) FundingApiApiGetTransfersRequest {
+func (r FundingApiApiGetTransfersRequest) Offset(offset int32) FundingApiApiGetTransfersRequest {
 	r.offset = &offset
 	return r
 }

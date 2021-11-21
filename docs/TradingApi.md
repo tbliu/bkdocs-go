@@ -35,7 +35,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
     orderId := "orderId_example" // string | Order identifier.
 
     configuration := openapiclient.NewConfiguration()
@@ -54,7 +54,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
+**accountId** | **string** | Account identifier. | 
 **orderId** | **string** | Order identifier. | 
 
 ### Other Parameters
@@ -106,7 +106,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -126,7 +126,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
+**accountId** | **string** | Account identifier. | 
 
 ### Other Parameters
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## GetOrder
 
-> OrderObject GetOrder(ctx, accountId, orderId).Execute()
+> Order GetOrder(ctx, accountId, orderId).Execute()
 
 Retrieves a single order for the given order_id.
 
@@ -176,7 +176,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
     orderId := "orderId_example" // string | Order identifier.
 
     configuration := openapiclient.NewConfiguration()
@@ -186,7 +186,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TradingApi.GetOrder``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOrder`: OrderObject
+    // response from `GetOrder`: Order
     fmt.Fprintf(os.Stdout, "Response from `TradingApi.GetOrder`: %v\n", resp)
 }
 ```
@@ -197,7 +197,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
+**accountId** | **string** | Account identifier. | 
 **orderId** | **string** | Order identifier. | 
 
 ### Other Parameters
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrderObject**](OrderObject.md)
+[**Order**](Order.md)
 
 ### Authorization
 
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ## GetOrders
 
-> []OrderObject GetOrders(ctx, accountId).Status(status).Limit(limit).After(after).Until(until).Direction(direction).Nested(nested).Symbols(symbols).Execute()
+> []Order GetOrders(ctx, accountId).Status(status).Limit(limit).After(after).Until(until).Direction(direction).Nested(nested).Symbols(symbols).Execute()
 
 Retrieves a list of orders for the account, filtered by the supplied query parameters.
 
@@ -250,7 +250,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
     status := "status_example" // string | Status of the orders to list. (optional)
     limit := int32(500) // int32 | The maximum number of orders in response. (optional)
     after := time.Now() // time.Time | The response will include only ones submitted after this timestamp (exclusive.) (optional)
@@ -266,7 +266,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TradingApi.GetOrders``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOrders`: []OrderObject
+    // response from `GetOrders`: []Order
     fmt.Fprintf(os.Stdout, "Response from `TradingApi.GetOrders`: %v\n", resp)
 }
 ```
@@ -277,7 +277,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
+**accountId** | **string** | Account identifier. | 
 
 ### Other Parameters
 
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]OrderObject**](OrderObject.md)
+[**[]Order**](Order.md)
 
 ### Authorization
 
@@ -332,7 +332,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -352,7 +352,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
+**accountId** | **string** | Account identifier. | 
 
 ### Other Parameters
 
@@ -383,7 +383,7 @@ Name | Type | Description  | Notes
 
 ## PatchOrder
 
-> OrderObject PatchOrder(ctx, accountId, orderId).PatchOrder(patchOrder).Execute()
+> Order PatchOrder(ctx, accountId, orderId).UpdateOrderRequest(updateOrderRequest).Execute()
 
 Replaces a single order with updated parameters. Each parameter overrides the corresponding attribute of the existing order.
 
@@ -403,18 +403,18 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
     orderId := "orderId_example" // string | Order identifier.
-    patchOrder := *openapiclient.NewPatchOrder(time.Now(), time.Now()) // PatchOrder | 
+    updateOrderRequest := *openapiclient.NewUpdateOrderRequest(time.Now(), time.Now()) // UpdateOrderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.TradingApi.PatchOrder(context.Background(), accountId, orderId).PatchOrder(patchOrder).Execute()
+    resp, r, err := api_client.TradingApi.PatchOrder(context.Background(), accountId, orderId).UpdateOrderRequest(updateOrderRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TradingApi.PatchOrder``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PatchOrder`: OrderObject
+    // response from `PatchOrder`: Order
     fmt.Fprintf(os.Stdout, "Response from `TradingApi.PatchOrder`: %v\n", resp)
 }
 ```
@@ -425,7 +425,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
+**accountId** | **string** | Account identifier. | 
 **orderId** | **string** | Order identifier. | 
 
 ### Other Parameters
@@ -437,11 +437,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **patchOrder** | [**PatchOrder**](PatchOrder.md) |  | 
+ **updateOrderRequest** | [**UpdateOrderRequest**](UpdateOrderRequest.md) |  | 
 
 ### Return type
 
-[**OrderObject**](OrderObject.md)
+[**Order**](Order.md)
 
 ### Authorization
 
@@ -459,7 +459,7 @@ Name | Type | Description  | Notes
 
 ## PostOrders
 
-> OrderObject PostOrders(ctx, accountId).CreateOrder(createOrder).Execute()
+> Order PostOrders(ctx, accountId).CreateOrderRequest(createOrderRequest).Execute()
 
 Create an order for an account.
 
@@ -478,17 +478,17 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
-    createOrder := *openapiclient.NewCreateOrder("AAPL", "buy", "limit", "gtc") // CreateOrder | 
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
+    createOrderRequest := *openapiclient.NewCreateOrderRequest("AAPL", "buy", "limit", "gtc") // CreateOrderRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.TradingApi.PostOrders(context.Background(), accountId).CreateOrder(createOrder).Execute()
+    resp, r, err := api_client.TradingApi.PostOrders(context.Background(), accountId).CreateOrderRequest(createOrderRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TradingApi.PostOrders``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PostOrders`: OrderObject
+    // response from `PostOrders`: Order
     fmt.Fprintf(os.Stdout, "Response from `TradingApi.PostOrders`: %v\n", resp)
 }
 ```
@@ -499,7 +499,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
+**accountId** | **string** | Account identifier. | 
 
 ### Other Parameters
 
@@ -509,11 +509,11 @@ Other parameters are passed through a pointer to a apiPostOrdersRequest struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **createOrder** | [**CreateOrder**](CreateOrder.md) |  | 
+ **createOrderRequest** | [**CreateOrderRequest**](CreateOrderRequest.md) |  | 
 
 ### Return type
 
-[**OrderObject**](OrderObject.md)
+[**Order**](Order.md)
 
 ### Authorization
 

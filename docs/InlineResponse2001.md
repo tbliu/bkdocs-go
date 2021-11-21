@@ -4,10 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Timestamp** | Pointer to **string** |  | [optional] 
-**IsOpen** | Pointer to **bool** |  | [optional] 
-**NextOpen** | Pointer to **string** |  | [optional] 
-**NextClose** | Pointer to **string** |  | [optional] 
+**EventId** | Pointer to **int32** |  | [optional] 
+**At** | Pointer to **time.Time** |  | [optional] 
+**JournalId** | Pointer to **string** |  | [optional] 
+**StatusFrom** | Pointer to **string** |  | [optional] 
+**StatusTo** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -28,105 +29,130 @@ NewInlineResponse2001WithDefaults instantiates a new InlineResponse2001 object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetTimestamp
+### GetEventId
 
-`func (o *InlineResponse2001) GetTimestamp() string`
+`func (o *InlineResponse2001) GetEventId() int32`
 
-GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
+GetEventId returns the EventId field if non-nil, zero value otherwise.
 
-### GetTimestampOk
+### GetEventIdOk
 
-`func (o *InlineResponse2001) GetTimestampOk() (*string, bool)`
+`func (o *InlineResponse2001) GetEventIdOk() (*int32, bool)`
 
-GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
+GetEventIdOk returns a tuple with the EventId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTimestamp
+### SetEventId
 
-`func (o *InlineResponse2001) SetTimestamp(v string)`
+`func (o *InlineResponse2001) SetEventId(v int32)`
 
-SetTimestamp sets Timestamp field to given value.
+SetEventId sets EventId field to given value.
 
-### HasTimestamp
+### HasEventId
 
-`func (o *InlineResponse2001) HasTimestamp() bool`
+`func (o *InlineResponse2001) HasEventId() bool`
 
-HasTimestamp returns a boolean if a field has been set.
+HasEventId returns a boolean if a field has been set.
 
-### GetIsOpen
+### GetAt
 
-`func (o *InlineResponse2001) GetIsOpen() bool`
+`func (o *InlineResponse2001) GetAt() time.Time`
 
-GetIsOpen returns the IsOpen field if non-nil, zero value otherwise.
+GetAt returns the At field if non-nil, zero value otherwise.
 
-### GetIsOpenOk
+### GetAtOk
 
-`func (o *InlineResponse2001) GetIsOpenOk() (*bool, bool)`
+`func (o *InlineResponse2001) GetAtOk() (*time.Time, bool)`
 
-GetIsOpenOk returns a tuple with the IsOpen field if it's non-nil, zero value otherwise
+GetAtOk returns a tuple with the At field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIsOpen
+### SetAt
 
-`func (o *InlineResponse2001) SetIsOpen(v bool)`
+`func (o *InlineResponse2001) SetAt(v time.Time)`
 
-SetIsOpen sets IsOpen field to given value.
+SetAt sets At field to given value.
 
-### HasIsOpen
+### HasAt
 
-`func (o *InlineResponse2001) HasIsOpen() bool`
+`func (o *InlineResponse2001) HasAt() bool`
 
-HasIsOpen returns a boolean if a field has been set.
+HasAt returns a boolean if a field has been set.
 
-### GetNextOpen
+### GetJournalId
 
-`func (o *InlineResponse2001) GetNextOpen() string`
+`func (o *InlineResponse2001) GetJournalId() string`
 
-GetNextOpen returns the NextOpen field if non-nil, zero value otherwise.
+GetJournalId returns the JournalId field if non-nil, zero value otherwise.
 
-### GetNextOpenOk
+### GetJournalIdOk
 
-`func (o *InlineResponse2001) GetNextOpenOk() (*string, bool)`
+`func (o *InlineResponse2001) GetJournalIdOk() (*string, bool)`
 
-GetNextOpenOk returns a tuple with the NextOpen field if it's non-nil, zero value otherwise
+GetJournalIdOk returns a tuple with the JournalId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNextOpen
+### SetJournalId
 
-`func (o *InlineResponse2001) SetNextOpen(v string)`
+`func (o *InlineResponse2001) SetJournalId(v string)`
 
-SetNextOpen sets NextOpen field to given value.
+SetJournalId sets JournalId field to given value.
 
-### HasNextOpen
+### HasJournalId
 
-`func (o *InlineResponse2001) HasNextOpen() bool`
+`func (o *InlineResponse2001) HasJournalId() bool`
 
-HasNextOpen returns a boolean if a field has been set.
+HasJournalId returns a boolean if a field has been set.
 
-### GetNextClose
+### GetStatusFrom
 
-`func (o *InlineResponse2001) GetNextClose() string`
+`func (o *InlineResponse2001) GetStatusFrom() string`
 
-GetNextClose returns the NextClose field if non-nil, zero value otherwise.
+GetStatusFrom returns the StatusFrom field if non-nil, zero value otherwise.
 
-### GetNextCloseOk
+### GetStatusFromOk
 
-`func (o *InlineResponse2001) GetNextCloseOk() (*string, bool)`
+`func (o *InlineResponse2001) GetStatusFromOk() (*string, bool)`
 
-GetNextCloseOk returns a tuple with the NextClose field if it's non-nil, zero value otherwise
+GetStatusFromOk returns a tuple with the StatusFrom field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNextClose
+### SetStatusFrom
 
-`func (o *InlineResponse2001) SetNextClose(v string)`
+`func (o *InlineResponse2001) SetStatusFrom(v string)`
 
-SetNextClose sets NextClose field to given value.
+SetStatusFrom sets StatusFrom field to given value.
 
-### HasNextClose
+### HasStatusFrom
 
-`func (o *InlineResponse2001) HasNextClose() bool`
+`func (o *InlineResponse2001) HasStatusFrom() bool`
 
-HasNextClose returns a boolean if a field has been set.
+HasStatusFrom returns a boolean if a field has been set.
+
+### GetStatusTo
+
+`func (o *InlineResponse2001) GetStatusTo() string`
+
+GetStatusTo returns the StatusTo field if non-nil, zero value otherwise.
+
+### GetStatusToOk
+
+`func (o *InlineResponse2001) GetStatusToOk() (*string, bool)`
+
+GetStatusToOk returns a tuple with the StatusTo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatusTo
+
+`func (o *InlineResponse2001) SetStatusTo(v string)`
+
+SetStatusTo sets StatusTo field to given value.
+
+### HasStatusTo
+
+`func (o *InlineResponse2001) HasStatusTo() bool`
+
+HasStatusTo returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

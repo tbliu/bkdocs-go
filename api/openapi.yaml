@@ -45,7 +45,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AccountCreationObject'
+              $ref: '#/components/schemas/AccountCreationRequest'
         required: true
       responses:
         "200":
@@ -133,7 +133,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AccountUpdate'
+              $ref: '#/components/schemas/AccountUpdateRequest'
         required: true
       responses:
         "200":
@@ -159,541 +159,6 @@ paths:
       summary: Update an account
       tags:
       - Accounts
-  /accounts/{account_id}/documents/upload:
-    post:
-      parameters:
-      - description: Account identifier.
-        explode: false
-        in: path
-        name: account_id
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DocumentUpload'
-        required: true
-      responses:
-        "204":
-          description: Success (No Content)
-        "400":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: Bad Request. The body in the request is not valid.
-        "404":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: Not Found. No account was found for this account_id
-      security:
-      - BasicAuth: []
-      summary: Upload a document to an already existing account
-      tags:
-      - Accounts
-  /trading/accounts/{account_id}/account:
-    get:
-      description: The response is a Trading Account model.
-      operationId: get_trading_account
-      parameters:
-      - description: Account identifier.
-        explode: false
-        in: path
-        name: account_id
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/inline_response_200'
-          description: OK
-      security:
-      - BasicAuth: []
-      summary: Retrieve trading details for an account.
-      tags:
-      - Accounts
-  /trading/accounts/{account_id}/orders:
-    delete:
-      description: Attempts to cancel all open orders. A response will be provided
-        for each order that is attempted to be cancelled.
-      operationId: delete_orders
-      parameters:
-      - description: Account identifier.
-        explode: false
-        in: path
-        name: account_id
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "207":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/inline_response_207'
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Malformed input.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Resource does not exist.
-      security:
-      - BasicAuth: []
-      summary: Attempts to cancel all open orders. A response will be provided for
-        each order that is attempted to be cancelled.
-      tags:
-      - Trading
-    get:
-      description: Retrieves a list of orders for the account, filtered by the supplied
-        query parameters.
-      operationId: get_orders
-      parameters:
-      - description: Account identifier.
-        explode: false
-        in: path
-        name: account_id
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Status of the orders to list.
-        explode: true
-        in: query
-        name: status
-        required: false
-        schema:
-          enum:
-          - open
-          - closed
-          - all
-          type: string
-        style: form
-      - description: The maximum number of orders in response.
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          example: 500
-          type: integer
-        style: form
-      - description: The response will include only ones submitted after this timestamp
-          (exclusive.)
-        explode: true
-        in: query
-        name: after
-        required: false
-        schema:
-          example: 2021-03-16T18:38:01.942282Z
-          format: date-time
-          type: string
-        style: form
-      - description: The response will include only ones submitted until this timestamp
-          (exclusive.)
-        explode: true
-        in: query
-        name: until
-        required: false
-        schema:
-          example: 2021-03-16T18:38:01.942282Z
-          format: date-time
-          type: string
-        style: form
-      - description: The chronological order of response based on the submission time.
-          asc or desc. Defaults to desc.
-        explode: true
-        in: query
-        name: direction
-        required: false
-        schema:
-          enum:
-          - asc
-          - desc
-          example: desc
-          type: string
-        style: form
-      - description: If true, the result will roll up multi-leg orders under the legs
-          field of primary order.
-        explode: true
-        in: query
-        name: nested
-        required: false
-        schema:
-          example: false
-          type: boolean
-        style: form
-      - description: A comma-separated list of symbols to filter by.
-        explode: true
-        in: query
-        name: symbols
-        required: false
-        schema:
-          example: AAPL,TSLA,MSFT
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/OrderObject'
-                type: array
-          description: Retrieves a list of orders for the account, filtered by the
-            supplied query parameters.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Malformed input.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Resource does not exist.
-      security:
-      - BasicAuth: []
-      summary: Retrieves a list of orders for the account, filtered by the supplied
-        query parameters.
-      tags:
-      - Trading
-    post:
-      description: Create an order for an account.
-      operationId: post_orders
-      parameters:
-      - description: Account identifier.
-        explode: false
-        in: path
-        name: account_id
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateOrder'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/OrderObject'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Malformed input.
-        "403":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: Request is forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Resource does not exist.
-      security:
-      - BasicAuth: []
-      summary: Create an order for an account.
-      tags:
-      - Trading
-  /trading/accounts/{account_id}/orders/{order_id}:
-    delete:
-      description: Attempts to cancel an open order.
-      operationId: delete_order
-      parameters:
-      - description: Account identifier.
-        explode: false
-        in: path
-        name: account_id
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Order identifier.
-        explode: false
-        in: path
-        name: order_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "204":
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Malformed input.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Resource does not exist.
-      security:
-      - BasicAuth: []
-      summary: Attempts to cancel an open order.
-      tags:
-      - Trading
-    get:
-      description: Retrieves a single order for the given order_id.
-      operationId: get_order
-      parameters:
-      - description: Account identifier.
-        explode: false
-        in: path
-        name: account_id
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Order identifier.
-        explode: false
-        in: path
-        name: order_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/OrderObject'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Malformed input.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Resource does not exist.
-      security:
-      - BasicAuth: []
-      summary: Retrieves a single order for the given order_id.
-      tags:
-      - Trading
-    patch:
-      description: Replaces a single order with updated parameters. Each parameter
-        overrides the corresponding attribute of the existing order.
-      operationId: patch_order
-      parameters:
-      - description: Account identifier.
-        explode: false
-        in: path
-        name: account_id
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Order identifier.
-        explode: false
-        in: path
-        name: order_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchOrder'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/OrderObject'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Malformed input.
-        "403":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: Request is forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Resource does not exist.
-      security:
-      - BasicAuth: []
-      summary: Replaces a single order with updated parameters. Each parameter overrides
-        the corresponding attribute of the existing order.
-      tags:
-      - Trading
-  /assets:
-    get:
-      description: Returns all assets
-      operationId: get_assets
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/AssetResource'
-                type: array
-          description: OK
-      security:
-      - BasicAuth: []
-      summary: Retrieve all assets
-      tags:
-      - Assets
-  /assets/{asset_id}:
-    get:
-      description: Returns the requested asset, if found
-      parameters:
-      - description: The UUID of the required asset
-        explode: false
-        in: path
-        name: asset_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssetResource'
-          description: Returns asset
-        "404":
-          description: Asset not found
-      security:
-      - BasicAuth: []
-      summary: Retrieve an asset by UUID
-      tags:
-      - Assets
-  /assets/{symbol}:
-    get:
-      description: Returns the requested asset, if found
-      parameters:
-      - description: The symbol of the required asset
-        explode: false
-        in: path
-        name: symbol
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssetResource'
-          description: Returns asset
-        "404":
-          description: Asset not found
-      security:
-      - BasicAuth: []
-      summary: Retrieve an asset by symbol
-      tags:
-      - Assets
-  /calendar:
-    get:
-      parameters:
-      - description: The first date to retrieve data for. (Inclusive)
-        explode: true
-        in: query
-        name: start
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: The last date to retrieve data for. (Inclusive)
-        explode: true
-        in: query
-        name: end
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/MarketDay'
-                type: array
-          description: Returns the calendar object
-      security:
-      - BasicAuth: []
-      summary: Query market calendar
-      tags:
-      - Calendar
-  /clock:
-    get:
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/inline_response_200_1'
-          description: The current market's timestamp
-      security:
-      - BasicAuth: []
-      summary: Query market clock
-      tags:
-      - Clock
   /accounts/{account_id}/documents:
     get:
       description: "You can query account documents such as monthly \nstatements and\
@@ -730,9 +195,10 @@ paths:
         "200":
           content:
             application/json:
+              examples: {}
               schema:
                 items:
-                  $ref: '#/components/schemas/inline_response_200_2'
+                  $ref: '#/components/schemas/Document'
                 type: array
           description: OK
         "404":
@@ -746,11 +212,8 @@ paths:
       summary: Return a list of account documents.
       tags:
       - Documents
-  /accounts/{account_id}/documents/{document_id}/download:
-    get:
-      description: |
-        The operation returns a pre-signed downloadable link as
-        a redirect with HTTP status code 301 if one is found.
+  /accounts/{account_id}/documents/upload:
+    post:
       parameters:
       - description: Account identifier.
         explode: false
@@ -761,160 +224,32 @@ paths:
           format: uuid
           type: string
         style: simple
-      - explode: false
-        in: path
-        name: document_id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentUploadRequest'
         required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
       responses:
-        "301":
-          description: |
-            Redirect to the pre-signed download link for the
-            document PDF file.
-        "404":
-          description: The document is not found.
-      security:
-      - BasicAuth: []
-      summary: Download a document file that belongs to an account.
-      tags:
-      - Documents
-  /documents/{document_id}:
-    get:
-      description: |
-        The operation returns a pre-signed downloadable link as
-        a redirect with HTTP status code 301 if one is found.
-      parameters:
-      - explode: false
-        in: path
-        name: document_id
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "301":
-          description: |
-            Redirect to the pre-signed download link for the
-            document PDF file.
-        "404":
-          description: The document is not found.
-      security:
-      - BasicAuth: []
-      summary: Download a document file directly
-      tags:
-      - Documents
-  /events/accounts/status:
-    get:
-      description: |
-        Query Params Rules:
-        - `since` required if `until` specified
-        - `since_id` required if `until_id` specified
-        - `since` and `since_id` can’t be used at the same time
-        Behavior:
-        - if `since` or `since_id` not specified this will not return any historic data
-        - if `until` or `until_id` reached stream will end (status 200)
-      parameters:
-      - explode: true
-        in: query
-        name: since
-        required: false
-        schema:
-          format: date-time
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: until
-        required: false
-        schema:
-          format: date-time
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: since_id
-        required: false
-        schema:
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: until_id
-        required: false
-        schema:
-          type: integer
-        style: form
-      responses:
-        "200":
+        "204":
+          description: Success (No Content)
+        "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_3'
-          description: Connected.
+                type: string
+          description: Bad Request. The body in the request is not valid.
+        "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Not Found. No account was found for this account_id
       security:
       - BasicAuth: []
-      summary: Subscribe to account status events (SSE).
+      summary: Upload a document to an already existing account
       tags:
       - Accounts
-      - Events
-  /events/journals/status:
-    get:
-      description: |
-        Query Params Rules:
-        - `since` required if `until` specified
-        - `since_id` required if `until_id` specified
-        - `since` and `since_id` can’t be used at the same time
-        Behavior:
-        - if `since` or `since_id` not specified this will not return any historic data
-        - if `until` or `until_id` reached stream will end (status 200)
-      parameters:
-      - explode: true
-        in: query
-        name: since
-        required: false
-        schema:
-          format: date-time
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: until
-        required: false
-        schema:
-          format: date-time
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: since_id
-        required: false
-        schema:
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: until_id
-        required: false
-        schema:
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/inline_response_200_4'
-          description: Connected
-      security:
-      - BasicAuth: []
-      summary: Subscribe to journal events (SSE).
-      tags:
-      - Journals
-      - Events
   /accounts/{account_id}/recipient_banks:
     get:
       operationId: get_recipient_banks
@@ -1057,7 +392,7 @@ paths:
         required: false
         schema:
           format: int32
-          type: number
+          type: integer
         style: form
       - explode: true
         in: query
@@ -1065,7 +400,7 @@ paths:
         required: false
         schema:
           format: int32
-          type: number
+          type: integer
         style: form
       responses:
         "200":
@@ -1115,354 +450,6 @@ paths:
       tags:
       - Funding
       - Accounts
-  /journals:
-    get:
-      operationId: get_journals
-      parameters:
-      - description: by settle_date
-        explode: true
-        in: query
-        name: after
-        required: false
-        schema:
-          format: date
-          type: string
-        style: form
-      - description: by settle_date
-        explode: true
-        in: query
-        name: before
-        required: false
-        schema:
-          format: date
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: status
-        required: false
-        schema:
-          enum:
-          - pending
-          - canceled
-          - executed
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: entry_type
-        required: false
-        schema:
-          enum:
-          - JNLC
-          - JNLS
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: to_account
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: from_account
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-                id: f45g67h8-d1fc-4136-aa4f-cf4460aecdfc
-                entry_type: JNLC
-                from_account: 8fjkjn-4483-4199-840f-6c5fe0b7ca24
-                to_account: 3gtt65jd-6f2a-433c-8c33-17b66b8941fa
-                status: pending
-                net_amount: "115.5"
-              schema:
-                discriminator:
-                  mapping:
-                    JNLC: '#/components/schemas/JournalJNLC'
-                    JNLS: '#/components/schemas/JournalJNLS'
-                  propertyName: entry_type
-                items:
-                  $ref: '#/components/schemas/JournalResource'
-                type: array
-          description: OK
-      security:
-      - BasicAuth: []
-      summary: Return a list of requested journals.
-      tags:
-      - Journals
-    post:
-      description: |
-        A journal can be JNLC (move cash) or JNLS (move shares),
-        dictated by `entry_type`.
-        Generally, journal requests are subject to approval
-        and starts from the `pending` status. The status
-        changes are propagated through the Event API.
-        Under certain conditions agreed for the partner, such journal
-        transactions that meet the criteria are executed right away.
-      operationId: post_journals
-      requestBody:
-        content:
-          application/json:
-            example:
-              entry_type: JNLC
-              from_account: 8fjkjn-4483-4199-840f-6c5fe0b7ca24
-              to_account: 3gtt65jd-6f2a-433c-8c33-17b66b8941fa
-              amount: "115.5"
-            schema:
-              $ref: '#/components/schemas/JournalData'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JournalResource'
-          description: A journal is requested.
-        "400":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: One of the parameters is invalid.
-        "403":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: The amount requested to move is not available.
-        "404":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: One of the account is not found.
-      security:
-      - BasicAuth: []
-      summary: Request a journal.
-      tags:
-      - Journals
-  /journals/{journal_id}:
-    delete:
-      description: |
-        You can cancel journals while they are in the pending
-        status. An attempt to cancel already-executed journals
-        will return an error.
-      operationId: delete_journal
-      parameters:
-      - explode: false
-        in: path
-        name: journal_id
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "204":
-          description: |
-            The cancel request succeeded.
-        "404":
-          description: |
-            The journal is not found.
-        "422":
-          description: |
-            The journal is not in the pending status.
-      security:
-      - BasicAuth: []
-      summary: Cancel a pending journal.
-      tags:
-      - Journals
-  /oauth/clients/{client_id}:
-    get:
-      description: |
-        The endpoint returns the details of OAuth client to
-        display in the authorization page.
-      parameters:
-      - explode: false
-        in: path
-        name: client_id
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - explode: true
-        in: query
-        name: response_type
-        required: false
-        schema:
-          enum:
-          - code
-          - token
-          example: token
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: redirect_uri
-        required: false
-        schema:
-          example: https://example.com/authorize
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: scope
-        required: false
-        schema:
-          example: general
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/inline_response_200_5'
-          description: Success.
-        "401":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: |
-            Client does not exist or you do not have access to the client.
-      security:
-      - BasicAuth: []
-      summary: Returns an OAuth client.
-      tags:
-      - OAuth
-  /oauth/token:
-    post:
-      description: |
-        This operation issues an access token for an account.
-      requestBody:
-        $ref: '#/components/requestBodies/inline_object'
-        content:
-          application/json:
-            schema:
-              example:
-                client_id: 7a3c52a910e1dc2abbb14da2b6b8e711
-                client_secret: bbb14da2b6b8e7117a3c52a910e1dc2a
-                redirect_uri: http://localhost
-                scope: general
-                account_id: 0d18ae51-3c94-4511-b209-101e1666416b
-              properties:
-                client_id:
-                  description: OAuth client ID
-                  type: string
-                client_secret:
-                  description: OAuth client secret
-                  type: string
-                redirect_uri:
-                  description: redirect URI for the OAuth flow
-                  type: string
-                scope:
-                  description: scopes requested by the OAuth flow
-                  type: string
-                account_id:
-                  description: end-user account ID
-                  format: uuid
-                  type: string
-              type: object
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/inline_response_200_6'
-          description: Success.
-        "401":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: |
-            Client does not exists, you do not have access to the client, or “client_secret” is incorrect.
-        "422":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: |
-            Redirect URI or scope is invalid.
-      security:
-      - BasicAuth: []
-      summary: Issue a token.
-      tags:
-      - OAuth
-  /oauth/authorize:
-    post:
-      description: |
-        The operation issues an OAuth code which can be used
-        in the OAuth code flow.
-      requestBody:
-        $ref: '#/components/requestBodies/inline_object_1'
-        content:
-          application/json:
-            schema:
-              example:
-                client_id: 7a3c52a910e1dc2abbb14da2b6b8e711
-                client_secret: bbb14da2b6b8e7117a3c52a910e1dc2a
-                redirect_uri: http://localhost
-                scope: general
-                account_id: 0d18ae51-3c94-4511-b209-101e1666416b
-              properties:
-                client_id:
-                  description: OAuth client ID
-                  type: string
-                client_secret:
-                  description: OAuth client secret
-                  type: string
-                redirect_uri:
-                  description: redirect URI for the OAuth flow
-                  type: string
-                scope:
-                  description: scopes requested by the OAuth flow
-                  type: string
-                account_id:
-                  description: end-user account ID
-                  format: uuid
-                  type: string
-              type: object
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/inline_response_200_7'
-          description: Successfully issued a code.
-        "401":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: |
-            Client does not exists, you do not have access to the client, or “client_secret” is incorrect.
-        "422":
-          content:
-            application/json:
-              schema:
-                type: string
-          description: |
-            Redirect URI or scope is invalid.
-      security:
-      - BasicAuth: []
-      summary: Issue a code.
-      tags:
-      - OAuth
   /accounts/activities:
     get:
       parameters:
@@ -1799,28 +786,32 @@ paths:
       tags:
       - Accounts
       - Funding
-  /journals/batch:
-    post:
-      operationId: post_journals_batch
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BatchJournalRequest'
+  /trading/accounts/{account_id}/account:
+    get:
+      description: The response is a Trading Account model.
+      operationId: get_trading_account
+      parameters:
+      - description: Account identifier.
+        explode: false
+        in: path
+        name: account_id
         required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "200":
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/BatchJournalResponse'
-                type: array
+                $ref: '#/components/schemas/inline_response_200'
+          description: OK
       security:
       - BasicAuth: []
-      summary: Create a batch journal
+      summary: Retrieve trading details for an account.
       tags:
-      - Journals
+      - Accounts
   /trading/accounts/{account_id}/positions:
     get:
       operationId: get_positions
@@ -1848,6 +839,1179 @@ paths:
       summary: List open positions for an account
       tags:
       - Trading
+  /trading/accounts/{account_id}/orders/{order_id}:
+    delete:
+      description: Attempts to cancel an open order.
+      operationId: delete_order
+      parameters:
+      - description: Account identifier.
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Order identifier.
+        explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Malformed input.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Resource does not exist.
+      security:
+      - BasicAuth: []
+      summary: Attempts to cancel an open order.
+      tags:
+      - Trading
+    get:
+      description: Retrieves a single order for the given order_id.
+      operationId: get_order
+      parameters:
+      - description: Account identifier.
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Order identifier.
+        explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Malformed input.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Resource does not exist.
+      security:
+      - BasicAuth: []
+      summary: Retrieves a single order for the given order_id.
+      tags:
+      - Trading
+    patch:
+      description: Replaces a single order with updated parameters. Each parameter
+        overrides the corresponding attribute of the existing order.
+      operationId: patch_order
+      parameters:
+      - description: Account identifier.
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Order identifier.
+        explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOrderRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Malformed input.
+        "403":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Request is forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Resource does not exist.
+      security:
+      - BasicAuth: []
+      summary: Replaces a single order with updated parameters. Each parameter overrides
+        the corresponding attribute of the existing order.
+      tags:
+      - Trading
+  /trading/accounts/{account_id}/orders:
+    delete:
+      description: Attempts to cancel all open orders. A response will be provided
+        for each order that is attempted to be cancelled.
+      operationId: delete_orders
+      parameters:
+      - description: Account identifier.
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "207":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/inline_response_207'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Malformed input.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Resource does not exist.
+      security:
+      - BasicAuth: []
+      summary: Attempts to cancel all open orders. A response will be provided for
+        each order that is attempted to be cancelled.
+      tags:
+      - Trading
+    get:
+      description: Retrieves a list of orders for the account, filtered by the supplied
+        query parameters.
+      operationId: get_orders
+      parameters:
+      - description: Account identifier.
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Status of the orders to list.
+        explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          enum:
+          - open
+          - closed
+          - all
+          type: string
+        style: form
+      - description: The maximum number of orders in response.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          example: 500
+          type: integer
+        style: form
+      - description: The response will include only ones submitted after this timestamp
+          (exclusive.)
+        explode: true
+        in: query
+        name: after
+        required: false
+        schema:
+          example: 2021-03-16T18:38:01.942282Z
+          format: date-time
+          type: string
+        style: form
+      - description: The response will include only ones submitted until this timestamp
+          (exclusive.)
+        explode: true
+        in: query
+        name: until
+        required: false
+        schema:
+          example: 2021-03-16T18:38:01.942282Z
+          format: date-time
+          type: string
+        style: form
+      - description: The chronological order of response based on the submission time.
+          asc or desc. Defaults to desc.
+        explode: true
+        in: query
+        name: direction
+        required: false
+        schema:
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+        style: form
+      - description: If true, the result will roll up multi-leg orders under the legs
+          field of primary order.
+        explode: true
+        in: query
+        name: nested
+        required: false
+        schema:
+          example: false
+          type: boolean
+        style: form
+      - description: A comma-separated list of symbols to filter by.
+        explode: true
+        in: query
+        name: symbols
+        required: false
+        schema:
+          example: AAPL,TSLA,MSFT
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Order'
+                type: array
+          description: Retrieves a list of orders for the account, filtered by the
+            supplied query parameters.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Malformed input.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Resource does not exist.
+      security:
+      - BasicAuth: []
+      summary: Retrieves a list of orders for the account, filtered by the supplied
+        query parameters.
+      tags:
+      - Trading
+    post:
+      description: Create an order for an account.
+      operationId: post_orders
+      parameters:
+      - description: Account identifier.
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrderRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Malformed input.
+        "403":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Request is forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Resource does not exist.
+      security:
+      - BasicAuth: []
+      summary: Create an order for an account.
+      tags:
+      - Trading
+  /assets:
+    get:
+      description: Returns all assets
+      operationId: get_assets
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Asset'
+                type: array
+          description: OK
+      security:
+      - BasicAuth: []
+      summary: Retrieve all assets
+      tags:
+      - Assets
+  /assets/{asset_id}:
+    get:
+      description: Returns the requested asset, if found
+      parameters:
+      - description: The UUID of the required asset
+        explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+          description: Returns asset
+        "404":
+          description: Asset not found
+      security:
+      - BasicAuth: []
+      summary: Retrieve an asset by UUID
+      tags:
+      - Assets
+  /assets/{symbol}:
+    get:
+      description: Returns the requested asset, if found
+      parameters:
+      - description: The symbol of the required asset
+        explode: false
+        in: path
+        name: symbol
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+          description: Returns asset
+        "404":
+          description: Asset not found
+      security:
+      - BasicAuth: []
+      summary: Retrieve an asset by symbol
+      tags:
+      - Assets
+  /calendar:
+    get:
+      parameters:
+      - description: The first date to retrieve data for. (Inclusive)
+        explode: true
+        in: query
+        name: start
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The last date to retrieve data for. (Inclusive)
+        explode: true
+        in: query
+        name: end
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MarketDay'
+                type: array
+          description: Returns the calendar object
+      security:
+      - BasicAuth: []
+      summary: Query market calendar
+      tags:
+      - Calendar
+  /clock:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              examples: {}
+              schema:
+                $ref: '#/components/schemas/Clock'
+          description: The current market's timestamp
+      security:
+      - BasicAuth: []
+      summary: Query market clock
+      tags:
+      - Clock
+  /accounts/{account_id}/documents/{document_id}/download:
+    get:
+      description: |
+        The operation returns a pre-signed downloadable link as
+        a redirect with HTTP status code 301 if one is found.
+      parameters:
+      - description: Account identifier.
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: document_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "301":
+          description: |
+            Redirect to the pre-signed download link for the
+            document PDF file.
+        "404":
+          description: The document is not found.
+      security:
+      - BasicAuth: []
+      summary: Download a document file that belongs to an account.
+      tags:
+      - Documents
+  /documents/{document_id}:
+    get:
+      description: |
+        The operation returns a pre-signed downloadable link as
+        a redirect with HTTP status code 301 if one is found.
+      parameters:
+      - explode: false
+        in: path
+        name: document_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "301":
+          description: |
+            Redirect to the pre-signed download link for the
+            document PDF file.
+        "404":
+          description: The document is not found.
+      security:
+      - BasicAuth: []
+      summary: Download a document file directly
+      tags:
+      - Documents
+  /events/accounts/status:
+    get:
+      description: |
+        Query Params Rules:
+        - `since` required if `until` specified
+        - `since_id` required if `until_id` specified
+        - `since` and `since_id` can’t be used at the same time
+        Behavior:
+        - if `since` or `since_id` not specified this will not return any historic data
+        - if `until` or `until_id` reached stream will end (status 200)
+      parameters:
+      - explode: true
+        in: query
+        name: since
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: until
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: since_id
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: until_id
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples: {}
+              schema:
+                $ref: '#/components/schemas/AccountStatusEvent'
+          description: Connected.
+      security:
+      - BasicAuth: []
+      summary: Subscribe to account status events (SSE).
+      tags:
+      - Accounts
+      - Events
+  /events/journals/status:
+    get:
+      description: |
+        Query Params Rules:
+        - `since` required if `until` specified
+        - `since_id` required if `until_id` specified
+        - `since` and `since_id` can’t be used at the same time
+        Behavior:
+        - if `since` or `since_id` not specified this will not return any historic data
+        - if `until` or `until_id` reached stream will end (status 200)
+      parameters:
+      - explode: true
+        in: query
+        name: since
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: until
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: since_id
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: until_id
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_1'
+          description: Connected
+      security:
+      - BasicAuth: []
+      summary: Subscribe to journal events (SSE).
+      tags:
+      - Journals
+      - Events
+  /journals:
+    get:
+      operationId: get_journals
+      parameters:
+      - description: by settle_date
+        explode: true
+        in: query
+        name: after
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      - description: by settle_date
+        explode: true
+        in: query
+        name: before
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          enum:
+          - pending
+          - canceled
+          - executed
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: entry_type
+        required: false
+        schema:
+          enum:
+          - JNLC
+          - JNLS
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: to_account
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: from_account
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                example:
+                  value:
+                  - id: 3c2192da-6320-49cf-9374-ed63bbd8a5ca
+                    entry_type: JNLS
+                    from_account: 6b61532b-773c-4cc7-92bc-d78b66454fbd
+                    to_account: bee1b4d6-17cf-438b-a46d-75da5223e899
+                    status: executed
+                    symbol: AAPL
+                    settle_date: 2020-12-24
+                    qty: "2"
+                    price: "128.23"
+              schema:
+                discriminator:
+                  mapping:
+                    JNLC: '#/components/schemas/JNLC'
+                    JNLS: '#/components/schemas/JNLS'
+                  propertyName: entry_type
+                items:
+                  $ref: '#/components/schemas/Journal'
+                type: array
+          description: OK
+      security:
+      - BasicAuth: []
+      summary: Return a list of requested journals.
+      tags:
+      - Journals
+    post:
+      description: |
+        A journal can be JNLC (move cash) or JNLS (move shares),
+        dictated by `entry_type`.
+        Generally, journal requests are subject to approval
+        and starts from the `pending` status. The status
+        changes are propagated through the Event API.
+        Under certain conditions agreed for the partner, such journal
+        transactions that meet the criteria are executed right away.
+      operationId: post_journals
+      requestBody:
+        content:
+          application/json:
+            example:
+              entry_type: JNLC
+              from_account: 7c891489-574f-4f9a-82f0-4082a07f4736
+              to_account: 2d47a229-0c25-40a2-8cc7-b2c8821ff93a
+              amount: "115.5"
+            schema:
+              $ref: '#/components/schemas/JournalData'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Journal'
+          description: A journal is requested.
+        "400":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: One of the parameters is invalid.
+        "403":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: The amount requested to move is not available.
+        "404":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: One of the account is not found.
+      security:
+      - BasicAuth: []
+      summary: Request a journal.
+      tags:
+      - Journals
+  /journals/{journal_id}:
+    delete:
+      description: |
+        You can cancel journals while they are in the pending
+        status. An attempt to cancel already-executed journals
+        will return an error.
+      operationId: delete_journal
+      parameters:
+      - explode: false
+        in: path
+        name: journal_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: |
+            The cancel request succeeded.
+        "404":
+          description: |
+            The journal is not found.
+        "422":
+          description: |
+            The journal is not in the pending status.
+      security:
+      - BasicAuth: []
+      summary: Cancel a pending journal.
+      tags:
+      - Journals
+  /journals/batch:
+    post:
+      operationId: post_journals_batch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchJournalRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BatchJournalResponse'
+                type: array
+      security:
+      - BasicAuth: []
+      summary: Create a batch journal
+      tags:
+      - Journals
+  /oauth/clients/{client_id}:
+    get:
+      description: |
+        The endpoint returns the details of OAuth client to
+        display in the authorization page.
+      parameters:
+      - explode: false
+        in: path
+        name: client_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: response_type
+        required: false
+        schema:
+          enum:
+          - code
+          - token
+          example: token
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: redirect_uri
+        required: false
+        schema:
+          example: https://example.com/authorize
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: scope
+        required: false
+        schema:
+          example: general
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_2'
+          description: Success.
+        "401":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: |
+            Client does not exist or you do not have access to the client.
+      security:
+      - BasicAuth: []
+      summary: Returns an OAuth client.
+      tags:
+      - OAuth
+  /oauth/token:
+    post:
+      description: |
+        This operation issues an access token for an account.
+      requestBody:
+        $ref: '#/components/requestBodies/inline_object'
+        content:
+          application/json:
+            schema:
+              example:
+                client_id: 7a3c52a910e1dc2abbb14da2b6b8e711
+                client_secret: bbb14da2b6b8e7117a3c52a910e1dc2a
+                redirect_uri: http://localhost
+                scope: general
+                account_id: 0d18ae51-3c94-4511-b209-101e1666416b
+              properties:
+                client_id:
+                  description: OAuth client ID
+                  type: string
+                client_secret:
+                  description: OAuth client secret
+                  type: string
+                redirect_uri:
+                  description: redirect URI for the OAuth flow
+                  type: string
+                scope:
+                  description: scopes requested by the OAuth flow
+                  type: string
+                account_id:
+                  description: end-user account ID
+                  format: uuid
+                  type: string
+              type: object
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_3'
+          description: Success.
+        "401":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: |
+            Client does not exists, you do not have access to the client, or “client_secret” is incorrect.
+        "422":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: |
+            Redirect URI or scope is invalid.
+      security:
+      - BasicAuth: []
+      summary: Issue a token.
+      tags:
+      - OAuth
+  /oauth/authorize:
+    post:
+      description: |
+        The operation issues an OAuth code which can be used
+        in the OAuth code flow.
+      requestBody:
+        $ref: '#/components/requestBodies/inline_object_1'
+        content:
+          application/json:
+            schema:
+              example:
+                client_id: 7a3c52a910e1dc2abbb14da2b6b8e711
+                client_secret: bbb14da2b6b8e7117a3c52a910e1dc2a
+                redirect_uri: http://localhost
+                scope: general
+                account_id: 0d18ae51-3c94-4511-b209-101e1666416b
+              properties:
+                client_id:
+                  description: OAuth client ID
+                  type: string
+                client_secret:
+                  description: OAuth client secret
+                  type: string
+                redirect_uri:
+                  description: redirect URI for the OAuth flow
+                  type: string
+                scope:
+                  description: scopes requested by the OAuth flow
+                  type: string
+                account_id:
+                  description: end-user account ID
+                  format: uuid
+                  type: string
+              type: object
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_4'
+          description: Successfully issued a code.
+        "401":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: |
+            Client does not exists, you do not have access to the client, or “client_secret” is incorrect.
+        "422":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: |
+            Redirect URI or scope is invalid.
+      security:
+      - BasicAuth: []
+      summary: Issue a code.
+      tags:
+      - OAuth
+  /trading/accounts/{account_id}/watchlists:
+    get:
+      description: Fetch a list of all watchlists currently in an account.
+      operationId: get-trading-accounts-account_id-watchlists
+      parameters:
+      - description: Unique identifier of an account.
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Watchlist'
+                type: array
+          description: OK
+      summary: Retrieve all watchlists
+      tags: []
+    post:
+      operationId: post-trading-accounts-account_id-watchlists
+      parameters:
+      - description: Unique identifier of an account.
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Watchlist'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Watchlist'
+          description: Newly created watchlist
+      summary: Create a new watchlist
+  /accounts/{account_id}/watchlists/{watchlist_id}:
+    delete:
+      description: Irrevocably delete a watchlist.
+      operationId: delete-accounts-account_id-watchlists-watchlist_id
+      parameters:
+      - description: Unique identifier of an account
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Unique identifier of a watchlist
+        explode: false
+        in: path
+        name: watchlist_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Watchlist deleted.
+      summary: Remove a watchlist
+    get:
+      description: Fetch a single watchlist by identifier.
+      operationId: get-accounts-account_id-watchlists-watchlist_id
+      parameters:
+      - description: Unique identifier of an account
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Unique identifier of a watchlist
+        explode: false
+        in: path
+        name: watchlist_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Watchlist'
+          description: OK
+      summary: Manage watchlists
+      tags: []
+    put:
+      description: Replace entirely the set of securities contained in the watchlist
+        while optionally renaming it. Destructive operation.
+      operationId: put-accounts-account_id-watchlists-watchlist_id
+      parameters:
+      - description: Unique identifier of an account
+        explode: false
+        in: path
+        name: account_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Unique identifier of a watchlist
+        explode: false
+        in: path
+        name: watchlist_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/inline_object_2'
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  pattern: ^[a-zA-Z0-9]+$
+                  type: string
+                symbols:
+                  description: New set of symbols for this watch list. Will destructively
+                    replace the prior set.
+                  items:
+                    example: '[''AAPL'', ''GOOG'']'
+                    type: string
+                  type: array
+              type: object
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Watchlist'
+          description: Updated watchlist.
+      summary: Update an existing watchlist
 components:
   parameters:
     ActivityType:
@@ -1992,18 +2156,23 @@ components:
         type: string
       style: simple
   requestBodies:
-    inline_object_1:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_1'
-      required: true
     inline_object:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/inline_object'
       required: true
+    inline_object_1:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/inline_object_1'
+      required: true
+    inline_object_2:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/inline_object_2'
   responses:
     Forbidden:
       content:
@@ -2056,7 +2225,7 @@ components:
           format: decimal
           type: string
         kyc_results:
-          $ref: '#/components/schemas/KycResult'
+          $ref: '#/components/schemas/KYCResult'
       type: object
     AccountStatus:
       description: |
@@ -2087,6 +2256,317 @@ components:
       - ACCOUNT_CLOSED
       example: ACTIVE
       type: string
+    AccountExtended:
+      example:
+        last_equity: last_equity
+        account_number: account_number
+        trusted_contact:
+          given_name: Jane
+          family_name: Doe
+          email_address: jane.doe@example.com
+        documents:
+        - id: 0d18ae51-3c94-4511-b209-101e1666416b
+          document_type: identity_verification
+          document_sub_type: passport
+          mime_type: image/jpeg
+          created_at: 2019-09-30T23:55:31.185998Z
+        - id: 0d18ae51-3c94-4511-b209-101e1666416b
+          document_type: identity_verification
+          document_sub_type: passport
+          mime_type: image/jpeg
+          created_at: 2019-09-30T23:55:31.185998Z
+        created_at: 2000-01-23T04:56:07.000+00:00
+        agreements:
+        - agreement: margin_agreement
+          signed_at: 2019-09-11T18:09:33Z
+          ip_address: 185.13.21.99
+        - agreement: margin_agreement
+          signed_at: 2019-09-11T18:09:33Z
+          ip_address: 185.13.21.99
+        kyc_results:
+          addidional_information: addidional_information
+          reject: '{}'
+          indeterminate: '{}'
+          accept: '{}'
+        identity:
+          given_name: John
+          family_name: Doe
+          date_of_birth: 1990-01-01
+          tax_id: 666-55-4321
+          tax_id_type: USA_SSN
+          country_of_citizenship: AUS
+          country_of_birth: AUS
+          country_of_tax_residence: USA
+          funding_source:
+          - employment_income
+        contact:
+          street_address:
+          - 20 N San Mateo Dr
+          - 20 N San Mateo Dr
+          email_address: john.doe@example.com
+          city: San Mateo
+          phone_number: +15556667788
+          state: CA
+          postal_code: "94401"
+        currency: currency
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        disclosures:
+          is_control_person: false
+          is_affiliated_exchange_or_finra: false
+          is_politically_exposed: false
+          immediate_family_exposed: false
+        status: ACTIVE
+      properties:
+        id:
+          format: uuid
+          type: string
+        account_number:
+          type: string
+        status:
+          $ref: '#/components/schemas/AccountStatus'
+        currency:
+          description: Always "USD"
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        last_equity:
+          format: decimal
+          type: string
+        kyc_results:
+          $ref: '#/components/schemas/KYCResult'
+        contact:
+          $ref: '#/components/schemas/Contact'
+        identity:
+          $ref: '#/components/schemas/Identity'
+        disclosures:
+          $ref: '#/components/schemas/Disclosures'
+        agreements:
+          description: |
+            The client has to present Alpaca Account Agreement and
+            Margin Agreement to the end user, and have them read
+            full sentences.
+          items:
+            $ref: '#/components/schemas/Agreement'
+          type: array
+        documents:
+          items:
+            $ref: '#/components/schemas/ApplicationDocument'
+          type: array
+        trusted_contact:
+          $ref: '#/components/schemas/TrustedContact'
+      type: object
+    AccountUpdateRequest:
+      example:
+        identity:
+          given_name: John
+          family_name: Doe
+          date_of_birth: 1990-01-01
+          tax_id: 666-55-4321
+          tax_id_type: USA_SSN
+          country_of_citizenship: AUS
+          country_of_birth: AUS
+          country_of_tax_residence: USA
+          funding_source:
+          - employment_income
+        contact:
+          street_address:
+          - 20 N San Mateo Dr
+          - 20 N San Mateo Dr
+          email_address: john.doe@example.com
+          city: San Mateo
+          phone_number: +15556667788
+          state: CA
+          postal_code: "94401"
+        trustedContact:
+          given_name: Jane
+          family_name: Doe
+          email_address: jane.doe@example.com
+        disclosures:
+          is_control_person: false
+          is_affiliated_exchange_or_finra: false
+          is_politically_exposed: false
+          immediate_family_exposed: false
+      properties:
+        contact:
+          $ref: '#/components/schemas/Contact'
+        identity:
+          $ref: '#/components/schemas/Identity'
+        disclosures:
+          $ref: '#/components/schemas/Disclosures'
+        trustedContact:
+          $ref: '#/components/schemas/TrustedContact'
+      type: object
+    AccountDocument:
+      description: |
+        If an account has documents on the application submission,
+        it has the ApplicationDocument model in exchange with
+        DocumentUploadRequest.
+      example:
+        id: 0d18ae51-3c94-4511-b209-101e1666416b
+        document_type: identity_verification
+        document_sub_type: passport
+        mime_type: image/jpeg
+        created_at: 2019-09-30T23:55:31.185998Z
+      properties:
+        id:
+          format: uuid
+          type: string
+        document_type:
+          $ref: '#/components/schemas/DocumentType'
+        document_sub_type:
+          type: string
+        mime_type:
+          type: string
+        created_at:
+          format: date-time
+          type: string
+      required:
+      - created_at
+      - document_type
+      - id
+      type: object
+    AccountCreationRequest:
+      example:
+        trusted_contact:
+          given_name: Jane
+          family_name: Doe
+          email_address: jane.doe@example.com
+        documents:
+        - document_type: identity_verification
+          document_sub_type: passport
+          content: QWxwYWNhcyBjYW5ub3QgbGl2ZSBhbG9uZS4=
+          mime_type: image/jpeg
+        - document_type: identity_verification
+          document_sub_type: passport
+          content: QWxwYWNhcyBjYW5ub3QgbGl2ZSBhbG9uZS4=
+          mime_type: image/jpeg
+        identity:
+          given_name: John
+          family_name: Doe
+          date_of_birth: 1990-01-01
+          tax_id: 666-55-4321
+          tax_id_type: USA_SSN
+          country_of_citizenship: AUS
+          country_of_birth: AUS
+          country_of_tax_residence: USA
+          funding_source:
+          - employment_income
+        contact:
+          street_address:
+          - 20 N San Mateo Dr
+          - 20 N San Mateo Dr
+          email_address: john.doe@example.com
+          city: San Mateo
+          phone_number: +15556667788
+          state: CA
+          postal_code: "94401"
+        agreements:
+        - agreement: margin_agreement
+          signed_at: 2019-09-11T18:09:33Z
+          ip_address: 185.13.21.99
+        - agreement: margin_agreement
+          signed_at: 2019-09-11T18:09:33Z
+          ip_address: 185.13.21.99
+        disclosures:
+          is_control_person: false
+          is_affiliated_exchange_or_finra: false
+          is_politically_exposed: false
+          immediate_family_exposed: false
+      properties:
+        contact:
+          $ref: '#/components/schemas/Contact'
+        identity:
+          $ref: '#/components/schemas/Identity'
+        disclosures:
+          $ref: '#/components/schemas/Disclosures'
+        agreements:
+          description: |
+            The client has to present Alpaca Account Agreement and
+            Margin Agreement to the end user, and have them read
+            full sentences.
+          items:
+            $ref: '#/components/schemas/Agreement'
+          type: array
+        documents:
+          items:
+            $ref: '#/components/schemas/DocumentUploadRequest'
+          type: array
+        trusted_contact:
+          $ref: '#/components/schemas/TrustedContact'
+      title: AccountCreationRequest
+      type: object
+    ApplicationDocument:
+      description: |
+        If an account has documents on the application submission,
+        it has the ApplicationDocument model in exchange with
+        DocumentUpload.
+      example:
+        id: 0d18ae51-3c94-4511-b209-101e1666416b
+        document_type: identity_verification
+        document_sub_type: passport
+        mime_type: image/jpeg
+        created_at: 2019-09-30T23:55:31.185998Z
+      properties:
+        id:
+          format: uuid
+          type: string
+        document_type:
+          $ref: '#/components/schemas/DocumentType'
+        document_sub_type:
+          type: string
+        mime_type:
+          type: string
+        created_at:
+          format: date-time
+          type: string
+      required:
+      - created_at
+      - document_type
+      - id
+      type: object
+    DocumentUpload:
+      description: |
+        If an account has documents after the submission, it has
+        the Document model in exchange with DocumentUpload.
+      example:
+        document_type: identity_verification
+        document_sub_type: passport
+        content: QWxwYWNhcyBjYW5ub3QgbGl2ZSBhbG9uZS4=
+        mime_type: image/jpeg
+      properties:
+        document_type:
+          $ref: '#/components/schemas/DocumentType'
+        document_sub_type:
+          example: passport
+          type: string
+        content:
+          example: QWxwYWNhcyBjYW5ub3QgbGl2ZSBhbG9uZS4=
+          format: base64
+          type: string
+        mime_type:
+          example: image/jpeg
+          type: string
+      required:
+      - content
+      - document_type
+      - mime_type
+      type: object
+    Activity:
+      description: Base for activity types
+      properties:
+        id:
+          example: 88b5f678-fef5-447b-af15-f21e367e6d8c
+          format: uuid
+          type: string
+        account_id:
+          example: c8f1ef5d-edc0-4f23-9ee4-378f19cb92a4
+          format: uuid
+          type: string
+        activity_type:
+          $ref: '#/components/schemas/ActivityType'
+      title: Activity
+      type: object
     ActivityType:
       enum:
       - FILL
@@ -2112,20 +2592,6 @@ components:
       - SSP
       title: ActivityType
       type: string
-    Activity:
-      description: Base for activity types
-      properties:
-        id:
-          format: uuid
-          type: string
-        account_id:
-          example: c8f1ef5d-edc0-4f23-9ee4-378f19cb92a4
-          format: uuid
-          type: string
-        activity_type:
-          $ref: '#/components/schemas/ActivityType'
-      title: Activity
-      type: object
     TradeActivity:
       allOf:
       - $ref: '#/components/schemas/Activity'
@@ -2164,6 +2630,51 @@ components:
       - cip_result
       example: identity_verification
       type: string
+    DocumentUploadRequest:
+      description: |
+        If an account has documents after the submission, it has
+        the Document model in exchange with DocumentUploadRequest.
+      example:
+        document_type: identity_verification
+        document_sub_type: passport
+        content: QWxwYWNhcyBjYW5ub3QgbGl2ZSBhbG9uZS4=
+        mime_type: image/jpeg
+      properties:
+        document_type:
+          $ref: '#/components/schemas/DocumentType'
+        document_sub_type:
+          example: passport
+          type: string
+        content:
+          example: QWxwYWNhcyBjYW5ub3QgbGl2ZSBhbG9uZS4=
+          format: base64
+          type: string
+        mime_type:
+          example: image/jpeg
+          type: string
+      required:
+      - content
+      - document_type
+      - mime_type
+      title: DocumentUploadRequest
+      type: object
+    KYCResult:
+      description: Hold information about the result of KYC.
+      example:
+        addidional_information: addidional_information
+        reject: '{}'
+        indeterminate: '{}'
+        accept: '{}'
+      properties:
+        reject:
+          type: object
+        accept:
+          type: object
+        indeterminate:
+          type: object
+        addidional_information:
+          type: string
+      type: object
     StreetAddress:
       example: 20 N San Mateo Dr
       type: string
@@ -2339,23 +2850,6 @@ components:
       - is_control_person
       - is_politically_exposed
       type: object
-    KycResult:
-      description: Hold information about the result of KYC.
-      example:
-        addidional_information: addidional_information
-        reject: '{}'
-        indeterminate: '{}'
-        accept: '{}'
-      properties:
-        reject:
-          type: object
-        accept:
-          type: object
-        indeterminate:
-          type: object
-        addidional_information:
-          type: string
-      type: object
     Agreement:
       example:
         agreement: margin_agreement
@@ -2392,62 +2886,6 @@ components:
       items:
         $ref: '#/components/schemas/Agreement'
       type: array
-    ApplicationDocument:
-      description: |
-        If an account has documents on the application submission,
-        it has the ApplicationDocument model in exchange with
-        DocumentUpload.
-      example:
-        id: 0d18ae51-3c94-4511-b209-101e1666416b
-        document_type: identity_verification
-        document_sub_type: passport
-        mime_type: image/jpeg
-        created_at: 2019-09-30T23:55:31.185998Z
-      properties:
-        id:
-          format: uuid
-          type: string
-        document_type:
-          $ref: '#/components/schemas/DocumentType'
-        document_sub_type:
-          type: string
-        mime_type:
-          type: string
-        created_at:
-          format: date-time
-          type: string
-      required:
-      - created_at
-      - document_type
-      - id
-      type: object
-    DocumentUpload:
-      description: |
-        If an account has documents after the submission, it has
-        the Document model in exchange with DocumentUpload.
-      example:
-        document_type: identity_verification
-        document_sub_type: passport
-        content: QWxwYWNhcyBjYW5ub3QgbGl2ZSBhbG9uZS4=
-        mime_type: image/jpeg
-      properties:
-        document_type:
-          $ref: '#/components/schemas/DocumentType'
-        document_sub_type:
-          example: passport
-          type: string
-        content:
-          example: QWxwYWNhcyBjYW5ub3QgbGl2ZSBhbG9uZS4=
-          format: base64
-          type: string
-        mime_type:
-          example: image/jpeg
-          type: string
-      required:
-      - content
-      - document_type
-      - mime_type
-      type: object
     TrustedContact:
       description: |
         This model input is optional. However, the client should
@@ -2504,339 +2942,7 @@ components:
       - family_name
       - given_name
       type: object
-    AccountExtended:
-      example:
-        last_equity: last_equity
-        account_number: account_number
-        trusted_contact:
-          given_name: Jane
-          family_name: Doe
-          email_address: jane.doe@example.com
-        documents:
-        - id: 0d18ae51-3c94-4511-b209-101e1666416b
-          document_type: identity_verification
-          document_sub_type: passport
-          mime_type: image/jpeg
-          created_at: 2019-09-30T23:55:31.185998Z
-        - id: 0d18ae51-3c94-4511-b209-101e1666416b
-          document_type: identity_verification
-          document_sub_type: passport
-          mime_type: image/jpeg
-          created_at: 2019-09-30T23:55:31.185998Z
-        created_at: 2000-01-23T04:56:07.000+00:00
-        agreements:
-        - agreement: margin_agreement
-          signed_at: 2019-09-11T18:09:33Z
-          ip_address: 185.13.21.99
-        - agreement: margin_agreement
-          signed_at: 2019-09-11T18:09:33Z
-          ip_address: 185.13.21.99
-        kyc_results:
-          addidional_information: addidional_information
-          reject: '{}'
-          indeterminate: '{}'
-          accept: '{}'
-        identity:
-          given_name: John
-          family_name: Doe
-          date_of_birth: 1990-01-01
-          tax_id: 666-55-4321
-          tax_id_type: USA_SSN
-          country_of_citizenship: AUS
-          country_of_birth: AUS
-          country_of_tax_residence: USA
-          funding_source:
-          - employment_income
-        contact:
-          street_address:
-          - 20 N San Mateo Dr
-          - 20 N San Mateo Dr
-          email_address: john.doe@example.com
-          city: San Mateo
-          phone_number: +15556667788
-          state: CA
-          postal_code: "94401"
-        currency: currency
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        disclosures:
-          is_control_person: false
-          is_affiliated_exchange_or_finra: false
-          is_politically_exposed: false
-          immediate_family_exposed: false
-        status: ACTIVE
-      properties:
-        id:
-          format: uuid
-          type: string
-        account_number:
-          type: string
-        status:
-          $ref: '#/components/schemas/AccountStatus'
-        currency:
-          description: Always "USD"
-          type: string
-        created_at:
-          format: date-time
-          type: string
-        last_equity:
-          format: decimal
-          type: string
-        kyc_results:
-          $ref: '#/components/schemas/KycResult'
-        contact:
-          $ref: '#/components/schemas/Contact'
-        identity:
-          $ref: '#/components/schemas/Identity'
-        disclosures:
-          $ref: '#/components/schemas/Disclosures'
-        agreements:
-          description: |
-            The client has to present Alpaca Account Agreement and
-            Margin Agreement to the end user, and have them read
-            full sentences.
-          items:
-            $ref: '#/components/schemas/Agreement'
-          type: array
-        documents:
-          items:
-            $ref: '#/components/schemas/ApplicationDocument'
-          type: array
-        trusted_contact:
-          $ref: '#/components/schemas/TrustedContact'
-      type: object
-    AccountUpdate:
-      example:
-        identity:
-          given_name: John
-          family_name: Doe
-          date_of_birth: 1990-01-01
-          tax_id: 666-55-4321
-          tax_id_type: USA_SSN
-          country_of_citizenship: AUS
-          country_of_birth: AUS
-          country_of_tax_residence: USA
-          funding_source:
-          - employment_income
-        contact:
-          street_address:
-          - 20 N San Mateo Dr
-          - 20 N San Mateo Dr
-          email_address: john.doe@example.com
-          city: San Mateo
-          phone_number: +15556667788
-          state: CA
-          postal_code: "94401"
-        trustedContact:
-          given_name: Jane
-          family_name: Doe
-          email_address: jane.doe@example.com
-        disclosures:
-          is_control_person: false
-          is_affiliated_exchange_or_finra: false
-          is_politically_exposed: false
-          immediate_family_exposed: false
-      properties:
-        contact:
-          $ref: '#/components/schemas/Contact'
-        identity:
-          $ref: '#/components/schemas/Identity'
-        disclosures:
-          $ref: '#/components/schemas/Disclosures'
-        trustedContact:
-          $ref: '#/components/schemas/TrustedContact'
-      type: object
-    JournalJNLC:
-      example:
-        id: f45g67h8-d1fc-4136-aa4f-cf4460aecdfc
-        entry_type: JNLC
-        from_account: 8fjkjn-4483-4199-840f-6c5fe0b7ca24
-        to_account: 3gtt65jd-6f2a-433c-8c33-17b66b8941fa
-        status: pending
-        net_amount: "115.5"
-      properties:
-        id:
-          description: journal ID
-          format: uuid
-          type: string
-        entry_type:
-          description: JNLC (constant)
-          type: string
-        from_account:
-          description: account ID the amount goes from
-          format: uuid
-          type: string
-        to_account:
-          format: uuid
-          type: string
-        description:
-          description: ID the amount goes to
-          type: string
-        settle_date:
-          format: date
-          nullable: true
-          type: string
-        status:
-          enum:
-          - pending
-          - canceled
-          - executed
-          - queued
-          - rejected
-          - deleted
-          type: string
-        net_amount:
-          format: decimal
-          type: string
-        transmitter_name:
-          description: max 255 characters
-          type: string
-        transmitter_account_number:
-          description: max 255 characters
-          type: string
-        transmitter_address:
-          description: max 255 characters
-          type: string
-        transmitter_financial_institution:
-          description: max 255 characters
-          type: string
-        transmitter_timestamp:
-          format: date-time
-          type: string
-      required:
-      - entry_type
-      - from_account
-      - id
-      - net_amount
-      - settle_date
-      - to_account
-      type: object
-    JournalJNLS:
-      example:
-        id: h7h5g33f-ef01-4458-9a4b-9598727a406f
-        entry_type: JNLS
-        from_account: 8fjkjn-4483-4199-840f-6c5fe0b7ca24
-        to_account: 3gtt65jd-6f2a-433c-8c33-17b66b8941fa
-        status: executed
-        symbol: AAPL
-        qty: "2"
-        price: "128.23"
-      properties:
-        id:
-          description: journal ID
-          format: uuid
-          type: string
-        entry_type:
-          description: JNLS (constant)
-          type: string
-        from_account:
-          description: account ID the shares go from
-          format: uuid
-          type: string
-        to_account:
-          description: account ID the shares go to
-          format: uuid
-          type: string
-        settle_date:
-          format: date
-          nullable: true
-          type: string
-        status:
-          enum:
-          - pending
-          - canceled
-          - executed
-          - queued
-          - rejected
-          - deleted
-          type: string
-        symbol:
-          type: string
-        qty:
-          format: decimal
-          type: string
-        price:
-          format: decimal
-          type: string
-      required:
-      - entry_type
-      - from_account
-      - id
-      - price
-      - qty
-      - settle_date
-      - symbol
-      - to_account
-      type: object
-    AccountCreationObject:
-      example:
-        trusted_contact:
-          given_name: Jane
-          family_name: Doe
-          email_address: jane.doe@example.com
-        documents:
-        - document_type: identity_verification
-          document_sub_type: passport
-          content: QWxwYWNhcyBjYW5ub3QgbGl2ZSBhbG9uZS4=
-          mime_type: image/jpeg
-        - document_type: identity_verification
-          document_sub_type: passport
-          content: QWxwYWNhcyBjYW5ub3QgbGl2ZSBhbG9uZS4=
-          mime_type: image/jpeg
-        identity:
-          given_name: John
-          family_name: Doe
-          date_of_birth: 1990-01-01
-          tax_id: 666-55-4321
-          tax_id_type: USA_SSN
-          country_of_citizenship: AUS
-          country_of_birth: AUS
-          country_of_tax_residence: USA
-          funding_source:
-          - employment_income
-        contact:
-          street_address:
-          - 20 N San Mateo Dr
-          - 20 N San Mateo Dr
-          email_address: john.doe@example.com
-          city: San Mateo
-          phone_number: +15556667788
-          state: CA
-          postal_code: "94401"
-        agreements:
-        - agreement: margin_agreement
-          signed_at: 2019-09-11T18:09:33Z
-          ip_address: 185.13.21.99
-        - agreement: margin_agreement
-          signed_at: 2019-09-11T18:09:33Z
-          ip_address: 185.13.21.99
-        disclosures:
-          is_control_person: false
-          is_affiliated_exchange_or_finra: false
-          is_politically_exposed: false
-          immediate_family_exposed: false
-      properties:
-        contact:
-          $ref: '#/components/schemas/Contact'
-        identity:
-          $ref: '#/components/schemas/Identity'
-        disclosures:
-          $ref: '#/components/schemas/Disclosures'
-        agreements:
-          description: |
-            The client has to present Alpaca Account Agreement and
-            Margin Agreement to the end user, and have them read
-            full sentences.
-          items:
-            $ref: '#/components/schemas/Agreement'
-          type: array
-        documents:
-          items:
-            $ref: '#/components/schemas/DocumentUpload'
-          type: array
-        trusted_contact:
-          $ref: '#/components/schemas/TrustedContact'
-      type: object
-    CreateOrder:
+    CreateOrderRequest:
       example:
         symbol: AAPL
         notional: "3"
@@ -2852,10 +2958,10 @@ components:
         take_profit:
           limit_price: "3.14"
         stop_price: "3.14"
-        trail_percent: "5"
+        trail_percent: "5.0"
         extended_hours: false
         qty: "4.124"
-        commission: "1"
+        commission: "1.0"
         order_class: simple
       properties:
         symbol:
@@ -2907,7 +3013,7 @@ components:
           format: decimal
           type: string
         trail_percent:
-          example: "5"
+          example: "5.0"
           format: decimal
           type: string
         extended_hours:
@@ -2925,11 +3031,11 @@ components:
           example: simple
           type: string
         take_profit:
-          $ref: '#/components/schemas/CreateOrder_take_profit'
+          $ref: '#/components/schemas/CreateOrderRequest_take_profit'
         stop_loss:
-          $ref: '#/components/schemas/CreateOrder_stop_loss'
+          $ref: '#/components/schemas/CreateOrderRequest_stop_loss'
         commission:
-          example: "1"
+          example: "1.0"
           format: decimal
           type: string
       required:
@@ -2938,7 +3044,7 @@ components:
       - time_in_force
       - type
       type: object
-    OrderObject:
+    Order:
       example:
         symbol: AALP
         notional: "4.2"
@@ -2967,7 +3073,7 @@ components:
         replaced_by: 61e69015-8549-4bfd-b9c3-01e75843f47d
         limit_price: "3.14"
         time_in_force: gtc
-        trail_percent: "5"
+        trail_percent: "5.0"
         extended_hours: true
         qty: "4.2"
         filled_at: 2021-03-16T18:38:01.942282Z
@@ -3138,7 +3244,7 @@ components:
           type: boolean
         legs:
           items:
-            $ref: '#/components/schemas/OrderObject'
+            $ref: '#/components/schemas/Order'
           nullable: true
           type: array
         trail_price:
@@ -3147,7 +3253,7 @@ components:
           nullable: true
           type: string
         trail_percent:
-          example: "5"
+          example: "5.0"
           format: decimal
           nullable: true
           type: string
@@ -3161,7 +3267,7 @@ components:
           format: decimal
           type: string
       type: object
-    PatchOrder:
+    UpdateOrderRequest:
       example:
         trail: "3.14"
         time_in_force: gtc
@@ -3211,6 +3317,7 @@ components:
       - created_at
       - id
       - updated_at
+      title: OrderUpdateRequest
       type: object
     BankResource:
       allOf:
@@ -3316,17 +3423,6 @@ components:
       - $ref: '#/components/schemas/ACHRelationshipData'
       - $ref: '#/components/schemas/ACHRelationshipResource_allOf'
       title: ACHRelationshipResource
-    Error:
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      required:
-      - code
-      - message
-      title: Error
-      type: object
     UntypedACHTransferData:
       allOf:
       - $ref: '#/components/schemas/UntypedTransferData'
@@ -3377,6 +3473,117 @@ components:
       - direction
       title: UntypedTransferData
       type: object
+    Journal:
+      allOf:
+      - $ref: '#/components/schemas/Journal_allOf'
+      - anyOf:
+        - $ref: '#/components/schemas/JNLS'
+        - $ref: '#/components/schemas/JNLC'
+      description: Represents a cash or security transfer between accounts, as specified
+        by the `entry_type` parameter.
+      example:
+        id: h7h5g33f-ef01-4458-9a4b-9598727a406f
+        entry_type: JNLS
+        from_account: 8fjkjn-4483-4199-840f-6c5fe0b7ca24
+        to_account: 3gtt65jd-6f2a-433c-8c33-17b66b8941fa
+        status: executed
+        symbol: AAPL
+        qty: "2"
+        price: "128.23"
+      title: Journal
+      x-examples:
+        example:
+          id: h7h5g33f-ef01-4458-9a4b-9598727a406f
+          entry_type: JNLS
+          from_account: 8fjkjn-4483-4199-840f-6c5fe0b7ca24
+          to_account: 3gtt65jd-6f2a-433c-8c33-17b66b8941fa
+          status: executed
+          symbol: AAPL
+          qty: "2"
+          settle_date: 2020-12-24
+          price: "128.23"
+    JNLS:
+      description: Journal information specific to securities transfers. This field
+        is required for `Journal`s with an `entry_type` of `jnls` (securities transfers),
+        but will be null for those with `jnlc` (cash transfers).
+      example:
+        id: h7h5g33f-ef01-4458-9a4b-9598727a406f
+        entry_type: JNLS
+        from_account: 8fjkjn-4483-4199-840f-6c5fe0b7ca24
+        to_account: 3gtt65jd-6f2a-433c-8c33-17b66b8941fa
+        status: executed
+        symbol: AAPL
+        qty: "2"
+        price: "128.23"
+      properties:
+        symbol:
+          description: Only valid for JNLS journals. Null for JNLC.
+          type: string
+        qty:
+          description: Only valid for JNLS journals. Null for JNLC.
+          format: decimal
+          type: string
+        price:
+          description: Only valid for JNLS journals. Null for JNLC.
+          format: decimal
+          type: string
+      required:
+      - price
+      - qty
+      - symbol
+      title: JNLS
+      type: object
+      x-examples:
+        example-1:
+          id: h7h5g33f-ef01-4458-9a4b-9598727a406f
+          entry_type: JNLS
+          from_account: 8fjkjn-4483-4199-840f-6c5fe0b7ca24
+          to_account: 3gtt65jd-6f2a-433c-8c33-17b66b8941fa
+          status: executed
+          symbol: AAPL
+          qty: "2"
+          price: "128.23"
+    JNLC:
+      description: Journal information specific to cash transfers. This field is required
+        for `Journal`s with an `entry_type` of `jnlc` (cash transfers), but will be
+        null for those with `jnls` (securities transfers).
+      example:
+        id: f45g67h8-d1fc-4136-aa4f-cf4460aecdfc
+        entry_type: JNLC
+        from_account: 8fjkjn-4483-4199-840f-6c5fe0b7ca24
+        to_account: 3gtt65jd-6f2a-433c-8c33-17b66b8941fa
+        status: pending
+        net_amount: "115.5"
+      properties:
+        description:
+          description: ID the amount goes to. Only valid for JNLC journals. Null for
+            JNLS.
+          type: string
+        net_amount:
+          description: Only valid for JNLC journals. Null for JNLS.
+          format: decimal
+          type: string
+        transmitter_name:
+          description: Only valid for JNLC journals. Null for JNLS. Max 255 characters.
+          type: string
+        transmitter_account_number:
+          description: Only valid for JNLC journals. Null for JNLS.max 255 characters
+          type: string
+        transmitter_address:
+          description: Only valid for JNLC journals. Null for JNLS.max 255 characters
+          type: string
+        transmitter_financial_institution:
+          description: Only valid for JNLC journals. Null for JNLS.max 255 characters
+          type: string
+        transmitter_timestamp:
+          description: Only valid for JNLC journals. Null for JNLS.
+          format: date-time
+          type: string
+      required:
+      - net_amount
+      title: JNLC
+      type: object
+      x-examples: {}
     JournalData:
       example:
         symbol: symbol
@@ -3424,12 +3631,12 @@ components:
     JournalResource:
       discriminator:
         mapping:
-          JNLC: '#/components/schemas/JournalJNLC'
-          JNLS: '#/components/schemas/JournalJNLS'
+          JNLC: '#/components/schemas/JNLC'
+          JNLS: '#/components/schemas/JNLS'
         propertyName: entry_type
       oneOf:
-      - $ref: '#/components/schemas/JournalJNLC'
-      - $ref: '#/components/schemas/JournalJNLS'
+      - $ref: '#/components/schemas/JNLC'
+      - $ref: '#/components/schemas/JNLS'
       title: JournalResource
     BatchJournalRequest:
       example:
@@ -3533,7 +3740,7 @@ components:
       - to_account
       title: BatchJournalResponse
       type: object
-    AssetResource:
+    Asset:
       example:
         symbol: AAPL
         shortable: true
@@ -3584,63 +3791,83 @@ components:
         fractionable:
           example: true
           type: boolean
-      title: AssetResource
+      title: Asset
       type: object
     Position:
       example:
-        symbol: symbol
-        side: side
-        market_value: market_value
-        unrealized_intraday_pl: unrealized_intraday_pl
-        unrealized_pl: unrealized_pl
-        lastday_price: lastday_price
+        symbol: AAPL
+        side: long
+        market_value: "600.0"
+        unrealized_intraday_pl: "10.0"
+        unrealized_pl: "100.0"
+        lastday_price: "119.0"
         asset_class: us_equity
-        change_today: change_today
-        asset_id: asset_id
-        avg_entry_price: avg_entry_price
-        cost_basis: cost_basis
-        unrealized_intraday_plpc: unrealized_intraday_plpc
-        qty: qty
-        unrealized_plpc: unrealized_plpc
-        exchange: exchange
-        current_price: current_price
+        change_today: "0.0084"
+        asset_id: 904837e3-3b76-47ec-b432-046db621571b
+        avg_entry_price: "100.0"
+        cost_basis: "500.0"
+        unrealized_intraday_plpc: "0.0084"
+        qty: "5"
+        unrealized_plpc: "0.20"
+        exchange: NASDAQ
+        current_price: "120.0"
       properties:
         asset_id:
+          example: 904837e3-3b76-47ec-b432-046db621571b
+          format: uuid
           type: string
         symbol:
+          example: AAPL
           type: string
         exchange:
+          example: NASDAQ
           type: string
         asset_class:
           enum:
           - us_equity
           - crypto
+          example: us_equity
           type: string
         avg_entry_price:
+          example: "100.0"
           type: string
         qty:
+          example: "5"
           type: string
         side:
+          enum:
+          - long
+          example: long
           type: string
         market_value:
+          example: "600.0"
           type: string
         cost_basis:
+          example: "500.0"
           type: string
         unrealized_pl:
+          example: "100.0"
           type: string
         unrealized_plpc:
+          example: "0.20"
           type: string
         unrealized_intraday_pl:
+          example: "10.0"
           type: string
         unrealized_intraday_plpc:
+          example: "0.0084"
           type: string
         current_price:
+          example: "120.0"
           type: string
         lastday_price:
+          example: "119.0"
           type: string
         change_today:
+          example: "0.0084"
           type: string
       type: object
+      x-examples: {}
     MarketDay:
       example:
         date: 2021-04-06
@@ -3669,6 +3896,186 @@ components:
       - date
       - open
       title: MarketDay
+      type: object
+    Error:
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      required:
+      - code
+      - message
+      title: Error
+      type: object
+    Clock:
+      description: Represents the current market time and open/close events.
+      example:
+        is_open: true
+        next_close: 2000-01-23T04:56:07.000+00:00
+        next_open: 2000-01-23T04:56:07.000+00:00
+        timestamp: timestamp
+      properties:
+        timestamp:
+          format: time
+          minLength: 1
+          type: string
+        is_open:
+          type: boolean
+        next_open:
+          format: date-time
+          minLength: 1
+          type: string
+        next_close:
+          format: date-time
+          minLength: 1
+          type: string
+      required:
+      - is_open
+      - next_close
+      - next_open
+      - timestamp
+      type: object
+      x-examples:
+        example:
+          timestamp: 2018-04-01T12:00:00.000Z
+          is_open: true
+          next_open: 2018-04-01T12:00:00.000Z
+          next_close: 2018-04-01T12:00:00.000Z
+    Document:
+      items:
+        properties:
+          document_id:
+            format: uuid
+            minLength: 1
+            type: string
+          document_type:
+            $ref: '#/components/schemas/DocumentType'
+          document_date:
+            format: date-time
+            minLength: 1
+            type: string
+        required:
+        - document_date
+        - document_id
+        - document_type
+        type: object
+      minItems: 1
+      type: array
+      uniqueItems: true
+      x-examples:
+        example:
+        - document_id: b792e8ae-2cb4-4209-85b9-32be4c2fcdd6
+          document_type: account_statement
+          document_date: 2019-08-24
+    AccountStatusEvent:
+      example:
+        account_number: account_number
+        reason: reason
+        account_id: account_id
+        status_to: status_to
+        at: at
+        kyc_result:
+          addidional_information: addidional_information
+          reject: '{}'
+          indeterminate: '{}'
+          accept: '{}'
+        status_from: status_from
+      properties:
+        account_id:
+          minLength: 1
+          type: string
+        account_number:
+          minLength: 1
+          type: string
+        status_from:
+          minLength: 1
+          type: string
+        status_to:
+          minLength: 1
+          type: string
+        reason:
+          minLength: 1
+          type: string
+        at:
+          minLength: 1
+          type: string
+        kyc_result:
+          $ref: '#/components/schemas/KYCResult'
+      required:
+      - account_id
+      - account_number
+      - at
+      - reason
+      - status_from
+      - status_to
+      title: AccountStatusEvent
+      type: object
+      x-examples:
+        example:
+          account_id: 449e7a5c-69d3-4b8a-aaaf-5c9b713ebc65
+          account_number: string
+          status_from: string
+          status_to: string
+          reason: string
+          at: 2019-08-24T14:15:22Z
+    Watchlist:
+      description: Represents a set of securities observed by a user.
+      example:
+        ? ""
+        : ""
+        account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        assets:
+        - symbol: AAPL
+          shortable: true
+          easy_to_borrow: true
+          name: Apple Inc. Common Stock
+          tradable: true
+          exchange: NASDAQ
+          fractionable: true
+          id: 904837e3-3b76-47ec-b432-046db621571b
+          marginable: true
+          class: us_equity
+          status: active
+        - symbol: AAPL
+          shortable: true
+          easy_to_borrow: true
+          name: Apple Inc. Common Stock
+          tradable: true
+          exchange: NASDAQ
+          fractionable: true
+          id: 904837e3-3b76-47ec-b432-046db621571b
+          marginable: true
+          class: us_equity
+          status: active
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        created_at: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          description: |
+            Unique identifier of the watchlist itself.
+          format: uuid
+          type: string
+        account_id:
+          description: |
+            Unique identifier of the account that owns this watchlist.
+          format: uuid
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        ? ""
+        : pattern: ^[a-zA-Z0-9]+$
+          type: string
+        assets:
+          items:
+            $ref: '#/components/schemas/Asset'
+          type: array
+      title: Watchlist
       type: object
     inline_response_200:
       example:
@@ -3700,7 +4107,7 @@ components:
         account_blocked: false
         trade_suspended_by_user: false
         regt_buying_power: "12345.6789"
-        multiplier: "2"
+        multiplier: "2.0"
         trading_blocked: false
         last_long_market_value: "12345.6789"
         clearing_broker: Velox
@@ -3766,7 +4173,7 @@ components:
           example: false
           type: boolean
         multiplier:
-          example: "2"
+          example: "2.0"
           type: string
         shorting_enabled:
           example: false
@@ -3860,7 +4267,7 @@ components:
           replaced_by: 61e69015-8549-4bfd-b9c3-01e75843f47d
           limit_price: "3.14"
           time_in_force: gtc
-          trail_percent: "5"
+          trail_percent: "5.0"
           extended_hours: true
           qty: "4.2"
           filled_at: 2021-03-16T18:38:01.942282Z
@@ -3875,70 +4282,9 @@ components:
         status:
           type: integer
         body:
-          $ref: '#/components/schemas/OrderObject'
+          $ref: '#/components/schemas/Order'
       type: object
     inline_response_200_1:
-      example:
-        is_open: true
-        next_close: 2018-04-01T12:00:00.000Z
-        next_open: 2018-04-01T12:00:00.000Z
-        timestamp: 2018-04-01T12:00:00.000Z
-      properties:
-        timestamp:
-          example: 2018-04-01T12:00:00.000Z
-          type: string
-        is_open:
-          example: true
-          type: boolean
-        next_open:
-          example: 2018-04-01T12:00:00.000Z
-          type: string
-        next_close:
-          example: 2018-04-01T12:00:00.000Z
-          type: string
-      type: object
-    inline_response_200_2:
-      example:
-        document_date: 2000-01-23
-        document_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        document_type: account_statement
-      properties:
-        document_id:
-          format: uuid
-          type: string
-        document_type:
-          description: such as "account_statement" and "trade_confirmation"
-          example: account_statement
-          type: string
-        document_date:
-          format: date
-          type: string
-      type: object
-    inline_response_200_3:
-      example:
-        account_number: account_number
-        reason: reason
-        account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        status_to: status_to
-        at: 2000-01-23T04:56:07.000+00:00
-        status_from: status_from
-      properties:
-        account_id:
-          format: uuid
-          type: string
-        account_number:
-          type: string
-        status_from:
-          type: string
-        status_to:
-          type: string
-        reason:
-          type: string
-        at:
-          format: date-time
-          type: string
-      type: object
-    inline_response_200_4:
       example:
         journal_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         event_id: 0
@@ -3959,7 +4305,7 @@ components:
         status_to:
           type: string
       type: object
-    inline_response_200_5:
+    inline_response_200_2:
       example:
         client_id: 7a3c52a910e1dc2abbb14da2b6b8e711
         name: TradingApp
@@ -4024,7 +4370,7 @@ components:
           format: uuid
           type: string
       type: object
-    inline_response_200_6:
+    inline_response_200_3:
       example:
         access_token: 87586f14-c3f4-4912-b107-f75bc17ff87a
         token_type: Bearer
@@ -4063,7 +4409,7 @@ components:
           format: uuid
           type: string
       type: object
-    inline_response_200_7:
+    inline_response_200_4:
       example:
         code: 912b5502-c983-40f7-a01d-6a66f13a754d
         client_id: 7a3c52a910e1dc2abbb14da2b6b8e711
@@ -4079,6 +4425,19 @@ components:
         scope:
           description: granted scopes
           type: string
+      type: object
+    inline_object_2:
+      properties:
+        name:
+          pattern: ^[a-zA-Z0-9]+$
+          type: string
+        symbols:
+          description: New set of symbols for this watch list. Will destructively
+            replace the prior set.
+          items:
+            example: '[''AAPL'', ''GOOG'']'
+            type: string
+          type: array
       type: object
     TradeActivity_allOf:
       properties:
@@ -4167,7 +4526,7 @@ components:
           example: "0.38921"
           type: string
       type: object
-    CreateOrder_take_profit:
+    CreateOrderRequest_take_profit:
       example:
         limit_price: "3.14"
       properties:
@@ -4176,7 +4535,7 @@ components:
           format: decimal
           type: string
       type: object
-    CreateOrder_stop_loss:
+    CreateOrderRequest_stop_loss:
       example:
         stop_price: "3.14"
         limit_price: "3.14"
@@ -4284,6 +4643,46 @@ components:
           type: string
       required:
       - bank_id
+      type: object
+    Journal_allOf:
+      properties:
+        id:
+          description: journal ID
+          format: uuid
+          type: string
+        entry_type:
+          description: JNLS, for transfers of securities, or JNLC, for transfers of
+            cash.
+          enum:
+          - JNLS
+          - JNLC
+          type: string
+        from_account:
+          description: account ID the shares go from
+          format: uuid
+          type: string
+        to_account:
+          description: account ID the shares go to
+          format: uuid
+          type: string
+        settle_date:
+          format: date
+          type: string
+        status:
+          enum:
+          - pending
+          - canceled
+          - executed
+          - queued
+          - rejected
+          - deleted
+          type: string
+      required:
+      - entry_type
+      - from_account
+      - id
+      - settle_date
+      - to_account
       type: object
     BatchJournalRequest_entries:
       example:

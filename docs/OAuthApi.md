@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## OauthAuthorizePost
 
-> InlineResponse2007 OauthAuthorizePost(ctx).InlineObject1(inlineObject1).Execute()
+> InlineResponse2004 OauthAuthorizePost(ctx).InlineObject1(inlineObject1).Execute()
 
 Issue a code.
 
@@ -40,7 +40,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OAuthApi.OauthAuthorizePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `OauthAuthorizePost`: InlineResponse2007
+    // response from `OauthAuthorizePost`: InlineResponse2004
     fmt.Fprintf(os.Stdout, "Response from `OAuthApi.OauthAuthorizePost`: %v\n", resp)
 }
 ```
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 
 ## OauthClientsClientIdGet
 
-> InlineResponse2005 OauthClientsClientIdGet(ctx, clientId).ResponseType(responseType).RedirectUri(redirectUri).Scope(scope).Execute()
+> InlineResponse2002 OauthClientsClientIdGet(ctx, clientId).ResponseType(responseType).RedirectUri(redirectUri).Scope(scope).Execute()
 
 Returns an OAuth client.
 
@@ -97,7 +97,7 @@ import (
 )
 
 func main() {
-    clientId := TODO // string | 
+    clientId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     responseType := "token" // string |  (optional)
     redirectUri := "https://example.com/authorize" // string |  (optional)
     scope := "general" // string |  (optional)
@@ -109,7 +109,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OAuthApi.OauthClientsClientIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `OauthClientsClientIdGet`: InlineResponse2005
+    // response from `OauthClientsClientIdGet`: InlineResponse2002
     fmt.Fprintf(os.Stdout, "Response from `OAuthApi.OauthClientsClientIdGet`: %v\n", resp)
 }
 ```
@@ -120,7 +120,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clientId** | [**string**](.md) |  | 
+**clientId** | **string** |  | 
 
 ### Other Parameters
 
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2005**](InlineResponse2005.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## OauthTokenPost
 
-> InlineResponse2006 OauthTokenPost(ctx).InlineObject(inlineObject).Execute()
+> InlineResponse2003 OauthTokenPost(ctx).InlineObject(inlineObject).Execute()
 
 Issue a token.
 
@@ -182,7 +182,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OAuthApi.OauthTokenPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `OauthTokenPost`: InlineResponse2006
+    // response from `OauthTokenPost`: InlineResponse2003
     fmt.Fprintf(os.Stdout, "Response from `OAuthApi.OauthTokenPost`: %v\n", resp)
 }
 ```
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**InlineResponse2003**](InlineResponse2003.md)
 
 ### Authorization
 

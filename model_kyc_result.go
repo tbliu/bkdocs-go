@@ -14,33 +14,33 @@ import (
 	"encoding/json"
 )
 
-// KycResult Hold information about the result of KYC.
-type KycResult struct {
+// KYCResult Hold information about the result of KYC.
+type KYCResult struct {
 	Reject *map[string]interface{} `json:"reject,omitempty"`
 	Accept *map[string]interface{} `json:"accept,omitempty"`
 	Indeterminate *map[string]interface{} `json:"indeterminate,omitempty"`
 	AddidionalInformation *string `json:"addidional_information,omitempty"`
 }
 
-// NewKycResult instantiates a new KycResult object
+// NewKYCResult instantiates a new KYCResult object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKycResult() *KycResult {
-	this := KycResult{}
+func NewKYCResult() *KYCResult {
+	this := KYCResult{}
 	return &this
 }
 
-// NewKycResultWithDefaults instantiates a new KycResult object
+// NewKYCResultWithDefaults instantiates a new KYCResult object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewKycResultWithDefaults() *KycResult {
-	this := KycResult{}
+func NewKYCResultWithDefaults() *KYCResult {
+	this := KYCResult{}
 	return &this
 }
 
 // GetReject returns the Reject field value if set, zero value otherwise.
-func (o *KycResult) GetReject() map[string]interface{} {
+func (o *KYCResult) GetReject() map[string]interface{} {
 	if o == nil || o.Reject == nil {
 		var ret map[string]interface{}
 		return ret
@@ -50,7 +50,7 @@ func (o *KycResult) GetReject() map[string]interface{} {
 
 // GetRejectOk returns a tuple with the Reject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *KycResult) GetRejectOk() (*map[string]interface{}, bool) {
+func (o *KYCResult) GetRejectOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Reject == nil {
 		return nil, false
 	}
@@ -58,7 +58,7 @@ func (o *KycResult) GetRejectOk() (*map[string]interface{}, bool) {
 }
 
 // HasReject returns a boolean if a field has been set.
-func (o *KycResult) HasReject() bool {
+func (o *KYCResult) HasReject() bool {
 	if o != nil && o.Reject != nil {
 		return true
 	}
@@ -67,12 +67,12 @@ func (o *KycResult) HasReject() bool {
 }
 
 // SetReject gets a reference to the given map[string]interface{} and assigns it to the Reject field.
-func (o *KycResult) SetReject(v map[string]interface{}) {
+func (o *KYCResult) SetReject(v map[string]interface{}) {
 	o.Reject = &v
 }
 
 // GetAccept returns the Accept field value if set, zero value otherwise.
-func (o *KycResult) GetAccept() map[string]interface{} {
+func (o *KYCResult) GetAccept() map[string]interface{} {
 	if o == nil || o.Accept == nil {
 		var ret map[string]interface{}
 		return ret
@@ -82,7 +82,7 @@ func (o *KycResult) GetAccept() map[string]interface{} {
 
 // GetAcceptOk returns a tuple with the Accept field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *KycResult) GetAcceptOk() (*map[string]interface{}, bool) {
+func (o *KYCResult) GetAcceptOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Accept == nil {
 		return nil, false
 	}
@@ -90,7 +90,7 @@ func (o *KycResult) GetAcceptOk() (*map[string]interface{}, bool) {
 }
 
 // HasAccept returns a boolean if a field has been set.
-func (o *KycResult) HasAccept() bool {
+func (o *KYCResult) HasAccept() bool {
 	if o != nil && o.Accept != nil {
 		return true
 	}
@@ -99,12 +99,12 @@ func (o *KycResult) HasAccept() bool {
 }
 
 // SetAccept gets a reference to the given map[string]interface{} and assigns it to the Accept field.
-func (o *KycResult) SetAccept(v map[string]interface{}) {
+func (o *KYCResult) SetAccept(v map[string]interface{}) {
 	o.Accept = &v
 }
 
 // GetIndeterminate returns the Indeterminate field value if set, zero value otherwise.
-func (o *KycResult) GetIndeterminate() map[string]interface{} {
+func (o *KYCResult) GetIndeterminate() map[string]interface{} {
 	if o == nil || o.Indeterminate == nil {
 		var ret map[string]interface{}
 		return ret
@@ -114,7 +114,7 @@ func (o *KycResult) GetIndeterminate() map[string]interface{} {
 
 // GetIndeterminateOk returns a tuple with the Indeterminate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *KycResult) GetIndeterminateOk() (*map[string]interface{}, bool) {
+func (o *KYCResult) GetIndeterminateOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Indeterminate == nil {
 		return nil, false
 	}
@@ -122,7 +122,7 @@ func (o *KycResult) GetIndeterminateOk() (*map[string]interface{}, bool) {
 }
 
 // HasIndeterminate returns a boolean if a field has been set.
-func (o *KycResult) HasIndeterminate() bool {
+func (o *KYCResult) HasIndeterminate() bool {
 	if o != nil && o.Indeterminate != nil {
 		return true
 	}
@@ -131,12 +131,12 @@ func (o *KycResult) HasIndeterminate() bool {
 }
 
 // SetIndeterminate gets a reference to the given map[string]interface{} and assigns it to the Indeterminate field.
-func (o *KycResult) SetIndeterminate(v map[string]interface{}) {
+func (o *KYCResult) SetIndeterminate(v map[string]interface{}) {
 	o.Indeterminate = &v
 }
 
 // GetAddidionalInformation returns the AddidionalInformation field value if set, zero value otherwise.
-func (o *KycResult) GetAddidionalInformation() string {
+func (o *KYCResult) GetAddidionalInformation() string {
 	if o == nil || o.AddidionalInformation == nil {
 		var ret string
 		return ret
@@ -146,7 +146,7 @@ func (o *KycResult) GetAddidionalInformation() string {
 
 // GetAddidionalInformationOk returns a tuple with the AddidionalInformation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *KycResult) GetAddidionalInformationOk() (*string, bool) {
+func (o *KYCResult) GetAddidionalInformationOk() (*string, bool) {
 	if o == nil || o.AddidionalInformation == nil {
 		return nil, false
 	}
@@ -154,7 +154,7 @@ func (o *KycResult) GetAddidionalInformationOk() (*string, bool) {
 }
 
 // HasAddidionalInformation returns a boolean if a field has been set.
-func (o *KycResult) HasAddidionalInformation() bool {
+func (o *KYCResult) HasAddidionalInformation() bool {
 	if o != nil && o.AddidionalInformation != nil {
 		return true
 	}
@@ -163,11 +163,11 @@ func (o *KycResult) HasAddidionalInformation() bool {
 }
 
 // SetAddidionalInformation gets a reference to the given string and assigns it to the AddidionalInformation field.
-func (o *KycResult) SetAddidionalInformation(v string) {
+func (o *KYCResult) SetAddidionalInformation(v string) {
 	o.AddidionalInformation = &v
 }
 
-func (o KycResult) MarshalJSON() ([]byte, error) {
+func (o KYCResult) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Reject != nil {
 		toSerialize["reject"] = o.Reject
@@ -184,38 +184,38 @@ func (o KycResult) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableKycResult struct {
-	value *KycResult
+type NullableKYCResult struct {
+	value *KYCResult
 	isSet bool
 }
 
-func (v NullableKycResult) Get() *KycResult {
+func (v NullableKYCResult) Get() *KYCResult {
 	return v.value
 }
 
-func (v *NullableKycResult) Set(val *KycResult) {
+func (v *NullableKYCResult) Set(val *KYCResult) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableKycResult) IsSet() bool {
+func (v NullableKYCResult) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableKycResult) Unset() {
+func (v *NullableKYCResult) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableKycResult(val *KycResult) *NullableKycResult {
-	return &NullableKycResult{value: val, isSet: true}
+func NewNullableKYCResult(val *KYCResult) *NullableKYCResult {
+	return &NullableKYCResult{value: val, isSet: true}
 }
 
-func (v NullableKycResult) MarshalJSON() ([]byte, error) {
+func (v NullableKYCResult) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableKycResult) UnmarshalJSON(src []byte) error {
+func (v *NullableKYCResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

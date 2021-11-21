@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## AssetsAssetIdGet
 
-> AssetResource AssetsAssetIdGet(ctx, assetId).Execute()
+> Asset AssetsAssetIdGet(ctx, assetId).Execute()
 
 Retrieve an asset by UUID
 
@@ -40,7 +40,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AssetsApi.AssetsAssetIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AssetsAssetIdGet`: AssetResource
+    // response from `AssetsAssetIdGet`: Asset
     fmt.Fprintf(os.Stdout, "Response from `AssetsApi.AssetsAssetIdGet`: %v\n", resp)
 }
 ```
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AssetResource**](AssetResource.md)
+[**Asset**](Asset.md)
 
 ### Authorization
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ## AssetsSymbolGet
 
-> AssetResource AssetsSymbolGet(ctx, symbol).Execute()
+> Asset AssetsSymbolGet(ctx, symbol).Execute()
 
 Retrieve an asset by symbol
 
@@ -110,7 +110,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AssetsApi.AssetsSymbolGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AssetsSymbolGet`: AssetResource
+    // response from `AssetsSymbolGet`: Asset
     fmt.Fprintf(os.Stdout, "Response from `AssetsApi.AssetsSymbolGet`: %v\n", resp)
 }
 ```
@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AssetResource**](AssetResource.md)
+[**Asset**](Asset.md)
 
 ### Authorization
 
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 ## GetAssets
 
-> []AssetResource GetAssets(ctx).Execute()
+> []Asset GetAssets(ctx).Execute()
 
 Retrieve all assets
 
@@ -179,7 +179,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AssetsApi.GetAssets``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAssets`: []AssetResource
+    // response from `GetAssets`: []Asset
     fmt.Fprintf(os.Stdout, "Response from `AssetsApi.GetAssets`: %v\n", resp)
 }
 ```
@@ -195,7 +195,7 @@ Other parameters are passed through a pointer to a apiGetAssetsRequest struct vi
 
 ### Return type
 
-[**[]AssetResource**](AssetResource.md)
+[**[]Asset**](Asset.md)
 
 ### Authorization
 

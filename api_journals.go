@@ -152,7 +152,7 @@ func (r JournalsApiApiEventsJournalsStatusGetRequest) UntilId(untilId int32) Jou
 	return r
 }
 
-func (r JournalsApiApiEventsJournalsStatusGetRequest) Execute() (InlineResponse2004, *_nethttp.Response, error) {
+func (r JournalsApiApiEventsJournalsStatusGetRequest) Execute() (InlineResponse2001, *_nethttp.Response, error) {
 	return r.ApiService.EventsJournalsStatusGetExecute(r)
 }
 
@@ -179,15 +179,15 @@ func (a *JournalsApiService) EventsJournalsStatusGet(ctx _context.Context) Journ
 }
 
 // Execute executes the request
-//  @return InlineResponse2004
-func (a *JournalsApiService) EventsJournalsStatusGetExecute(r JournalsApiApiEventsJournalsStatusGetRequest) (InlineResponse2004, *_nethttp.Response, error) {
+//  @return InlineResponse2001
+func (a *JournalsApiService) EventsJournalsStatusGetExecute(r JournalsApiApiEventsJournalsStatusGetRequest) (InlineResponse2001, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2004
+		localVarReturnValue  InlineResponse2001
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JournalsApiService.EventsJournalsStatusGet")
@@ -305,7 +305,7 @@ func (r JournalsApiApiGetJournalsRequest) FromAccount(fromAccount string) Journa
 	return r
 }
 
-func (r JournalsApiApiGetJournalsRequest) Execute() ([]JournalResource, *_nethttp.Response, error) {
+func (r JournalsApiApiGetJournalsRequest) Execute() ([]Journal, *_nethttp.Response, error) {
 	return r.ApiService.GetJournalsExecute(r)
 }
 
@@ -323,15 +323,15 @@ func (a *JournalsApiService) GetJournals(ctx _context.Context) JournalsApiApiGet
 }
 
 // Execute executes the request
-//  @return []JournalResource
-func (a *JournalsApiService) GetJournalsExecute(r JournalsApiApiGetJournalsRequest) ([]JournalResource, *_nethttp.Response, error) {
+//  @return []Journal
+func (a *JournalsApiService) GetJournalsExecute(r JournalsApiApiGetJournalsRequest) ([]Journal, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []JournalResource
+		localVarReturnValue  []Journal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JournalsApiService.GetJournals")
@@ -428,7 +428,7 @@ func (r JournalsApiApiPostJournalsRequest) JournalData(journalData JournalData) 
 	return r
 }
 
-func (r JournalsApiApiPostJournalsRequest) Execute() (JournalResource, *_nethttp.Response, error) {
+func (r JournalsApiApiPostJournalsRequest) Execute() (Journal, *_nethttp.Response, error) {
 	return r.ApiService.PostJournalsExecute(r)
 }
 
@@ -455,15 +455,15 @@ func (a *JournalsApiService) PostJournals(ctx _context.Context) JournalsApiApiPo
 }
 
 // Execute executes the request
-//  @return JournalResource
-func (a *JournalsApiService) PostJournalsExecute(r JournalsApiApiPostJournalsRequest) (JournalResource, *_nethttp.Response, error) {
+//  @return Journal
+func (a *JournalsApiService) PostJournalsExecute(r JournalsApiApiPostJournalsRequest) (Journal, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  JournalResource
+		localVarReturnValue  Journal
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JournalsApiService.PostJournals")

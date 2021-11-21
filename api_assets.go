@@ -34,7 +34,7 @@ type AssetsApiApiAssetsAssetIdGetRequest struct {
 }
 
 
-func (r AssetsApiApiAssetsAssetIdGetRequest) Execute() (AssetResource, *_nethttp.Response, error) {
+func (r AssetsApiApiAssetsAssetIdGetRequest) Execute() (Asset, *_nethttp.Response, error) {
 	return r.ApiService.AssetsAssetIdGetExecute(r)
 }
 
@@ -56,15 +56,15 @@ func (a *AssetsApiService) AssetsAssetIdGet(ctx _context.Context, assetId string
 }
 
 // Execute executes the request
-//  @return AssetResource
-func (a *AssetsApiService) AssetsAssetIdGetExecute(r AssetsApiApiAssetsAssetIdGetRequest) (AssetResource, *_nethttp.Response, error) {
+//  @return Asset
+func (a *AssetsApiService) AssetsAssetIdGetExecute(r AssetsApiApiAssetsAssetIdGetRequest) (Asset, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  AssetResource
+		localVarReturnValue  Asset
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AssetsApiService.AssetsAssetIdGet")
@@ -140,7 +140,7 @@ type AssetsApiApiAssetsSymbolGetRequest struct {
 }
 
 
-func (r AssetsApiApiAssetsSymbolGetRequest) Execute() (AssetResource, *_nethttp.Response, error) {
+func (r AssetsApiApiAssetsSymbolGetRequest) Execute() (Asset, *_nethttp.Response, error) {
 	return r.ApiService.AssetsSymbolGetExecute(r)
 }
 
@@ -162,15 +162,15 @@ func (a *AssetsApiService) AssetsSymbolGet(ctx _context.Context, symbol string) 
 }
 
 // Execute executes the request
-//  @return AssetResource
-func (a *AssetsApiService) AssetsSymbolGetExecute(r AssetsApiApiAssetsSymbolGetRequest) (AssetResource, *_nethttp.Response, error) {
+//  @return Asset
+func (a *AssetsApiService) AssetsSymbolGetExecute(r AssetsApiApiAssetsSymbolGetRequest) (Asset, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  AssetResource
+		localVarReturnValue  Asset
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AssetsApiService.AssetsSymbolGet")
@@ -245,7 +245,7 @@ type AssetsApiApiGetAssetsRequest struct {
 }
 
 
-func (r AssetsApiApiGetAssetsRequest) Execute() ([]AssetResource, *_nethttp.Response, error) {
+func (r AssetsApiApiGetAssetsRequest) Execute() ([]Asset, *_nethttp.Response, error) {
 	return r.ApiService.GetAssetsExecute(r)
 }
 
@@ -265,15 +265,15 @@ func (a *AssetsApiService) GetAssets(ctx _context.Context) AssetsApiApiGetAssets
 }
 
 // Execute executes the request
-//  @return []AssetResource
-func (a *AssetsApiService) GetAssetsExecute(r AssetsApiApiGetAssetsRequest) ([]AssetResource, *_nethttp.Response, error) {
+//  @return []Asset
+func (a *AssetsApiService) GetAssetsExecute(r AssetsApiApiGetAssetsRequest) ([]Asset, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []AssetResource
+		localVarReturnValue  []Asset
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AssetsApiService.GetAssets")

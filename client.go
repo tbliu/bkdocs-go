@@ -57,6 +57,8 @@ type APIClient struct {
 
 	ClockApi *ClockApiService
 
+	DefaultApi *DefaultApiService
+
 	DocumentsApi *DocumentsApiService
 
 	EventsApi *EventsApiService
@@ -90,6 +92,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AssetsApi = (*AssetsApiService)(&c.common)
 	c.CalendarApi = (*CalendarApiService)(&c.common)
 	c.ClockApi = (*ClockApiService)(&c.common)
+	c.DefaultApi = (*DefaultApiService)(&c.common)
 	c.DocumentsApi = (*DocumentsApiService)(&c.common)
 	c.EventsApi = (*EventsApiService)(&c.common)
 	c.FundingApi = (*FundingApiService)(&c.common)
@@ -393,6 +396,9 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 			return
 		}
 		_, err = (*f).Write(b)
+		if err != nil {
+			return
+		}
 		_, err = (*f).Seek(0, io.SeekStart)
 		return
 	}

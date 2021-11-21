@@ -279,7 +279,7 @@ type TradingApiApiGetOrderRequest struct {
 }
 
 
-func (r TradingApiApiGetOrderRequest) Execute() (OrderObject, *_nethttp.Response, error) {
+func (r TradingApiApiGetOrderRequest) Execute() (Order, *_nethttp.Response, error) {
 	return r.ApiService.GetOrderExecute(r)
 }
 
@@ -303,15 +303,15 @@ func (a *TradingApiService) GetOrder(ctx _context.Context, accountId string, ord
 }
 
 // Execute executes the request
-//  @return OrderObject
-func (a *TradingApiService) GetOrderExecute(r TradingApiApiGetOrderRequest) (OrderObject, *_nethttp.Response, error) {
+//  @return Order
+func (a *TradingApiService) GetOrderExecute(r TradingApiApiGetOrderRequest) (Order, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  OrderObject
+		localVarReturnValue  Order
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TradingApiService.GetOrder")
@@ -449,7 +449,7 @@ func (r TradingApiApiGetOrdersRequest) Symbols(symbols string) TradingApiApiGetO
 	return r
 }
 
-func (r TradingApiApiGetOrdersRequest) Execute() ([]OrderObject, *_nethttp.Response, error) {
+func (r TradingApiApiGetOrdersRequest) Execute() ([]Order, *_nethttp.Response, error) {
 	return r.ApiService.GetOrdersExecute(r)
 }
 
@@ -471,15 +471,15 @@ func (a *TradingApiService) GetOrders(ctx _context.Context, accountId string) Tr
 }
 
 // Execute executes the request
-//  @return []OrderObject
-func (a *TradingApiService) GetOrdersExecute(r TradingApiApiGetOrdersRequest) ([]OrderObject, *_nethttp.Response, error) {
+//  @return []Order
+func (a *TradingApiService) GetOrdersExecute(r TradingApiApiGetOrdersRequest) ([]Order, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []OrderObject
+		localVarReturnValue  []Order
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TradingApiService.GetOrders")
@@ -697,15 +697,15 @@ type TradingApiApiPatchOrderRequest struct {
 	ApiService *TradingApiService
 	accountId string
 	orderId string
-	patchOrder *PatchOrder
+	updateOrderRequest *UpdateOrderRequest
 }
 
-func (r TradingApiApiPatchOrderRequest) PatchOrder(patchOrder PatchOrder) TradingApiApiPatchOrderRequest {
-	r.patchOrder = &patchOrder
+func (r TradingApiApiPatchOrderRequest) UpdateOrderRequest(updateOrderRequest UpdateOrderRequest) TradingApiApiPatchOrderRequest {
+	r.updateOrderRequest = &updateOrderRequest
 	return r
 }
 
-func (r TradingApiApiPatchOrderRequest) Execute() (OrderObject, *_nethttp.Response, error) {
+func (r TradingApiApiPatchOrderRequest) Execute() (Order, *_nethttp.Response, error) {
 	return r.ApiService.PatchOrderExecute(r)
 }
 
@@ -729,15 +729,15 @@ func (a *TradingApiService) PatchOrder(ctx _context.Context, accountId string, o
 }
 
 // Execute executes the request
-//  @return OrderObject
-func (a *TradingApiService) PatchOrderExecute(r TradingApiApiPatchOrderRequest) (OrderObject, *_nethttp.Response, error) {
+//  @return Order
+func (a *TradingApiService) PatchOrderExecute(r TradingApiApiPatchOrderRequest) (Order, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  OrderObject
+		localVarReturnValue  Order
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TradingApiService.PatchOrder")
@@ -752,8 +752,8 @@ func (a *TradingApiService) PatchOrderExecute(r TradingApiApiPatchOrderRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.patchOrder == nil {
-		return localVarReturnValue, nil, reportError("patchOrder is required and must be specified")
+	if r.updateOrderRequest == nil {
+		return localVarReturnValue, nil, reportError("updateOrderRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -774,7 +774,7 @@ func (a *TradingApiService) PatchOrderExecute(r TradingApiApiPatchOrderRequest) 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.patchOrder
+	localVarPostBody = r.updateOrderRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -845,15 +845,15 @@ type TradingApiApiPostOrdersRequest struct {
 	ctx _context.Context
 	ApiService *TradingApiService
 	accountId string
-	createOrder *CreateOrder
+	createOrderRequest *CreateOrderRequest
 }
 
-func (r TradingApiApiPostOrdersRequest) CreateOrder(createOrder CreateOrder) TradingApiApiPostOrdersRequest {
-	r.createOrder = &createOrder
+func (r TradingApiApiPostOrdersRequest) CreateOrderRequest(createOrderRequest CreateOrderRequest) TradingApiApiPostOrdersRequest {
+	r.createOrderRequest = &createOrderRequest
 	return r
 }
 
-func (r TradingApiApiPostOrdersRequest) Execute() (OrderObject, *_nethttp.Response, error) {
+func (r TradingApiApiPostOrdersRequest) Execute() (Order, *_nethttp.Response, error) {
 	return r.ApiService.PostOrdersExecute(r)
 }
 
@@ -875,15 +875,15 @@ func (a *TradingApiService) PostOrders(ctx _context.Context, accountId string) T
 }
 
 // Execute executes the request
-//  @return OrderObject
-func (a *TradingApiService) PostOrdersExecute(r TradingApiApiPostOrdersRequest) (OrderObject, *_nethttp.Response, error) {
+//  @return Order
+func (a *TradingApiService) PostOrdersExecute(r TradingApiApiPostOrdersRequest) (Order, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  OrderObject
+		localVarReturnValue  Order
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TradingApiService.PostOrders")
@@ -897,8 +897,8 @@ func (a *TradingApiService) PostOrdersExecute(r TradingApiApiPostOrdersRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.createOrder == nil {
-		return localVarReturnValue, nil, reportError("createOrder is required and must be specified")
+	if r.createOrderRequest == nil {
+		return localVarReturnValue, nil, reportError("createOrderRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -919,7 +919,7 @@ func (a *TradingApiService) PostOrdersExecute(r TradingApiApiPostOrdersRequest) 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createOrder
+	localVarPostBody = r.createOrderRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err

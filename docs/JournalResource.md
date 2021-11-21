@@ -4,28 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | journal ID | 
-**EntryType** | **string** | JNLS (constant) | 
-**FromAccount** | **string** | account ID the shares go from | 
-**ToAccount** | **string** | account ID the shares go to | 
-**Description** | Pointer to **string** | ID the amount goes to | [optional] 
-**SettleDate** | **NullableString** |  | 
-**Status** | Pointer to **string** |  | [optional] 
-**NetAmount** | **float64** |  | 
-**TransmitterName** | Pointer to **string** | max 255 characters | [optional] 
-**TransmitterAccountNumber** | Pointer to **string** | max 255 characters | [optional] 
-**TransmitterAddress** | Pointer to **string** | max 255 characters | [optional] 
-**TransmitterFinancialInstitution** | Pointer to **string** | max 255 characters | [optional] 
-**TransmitterTimestamp** | Pointer to **time.Time** |  | [optional] 
-**Symbol** | **string** |  | 
-**Qty** | **float64** |  | 
-**Price** | **float64** |  | 
+**Description** | Pointer to **string** | ID the amount goes to. Only valid for JNLC journals. Null for JNLS. | [optional] 
+**NetAmount** | **float64** | Only valid for JNLC journals. Null for JNLS. | 
+**TransmitterName** | Pointer to **string** | Only valid for JNLC journals. Null for JNLS. Max 255 characters. | [optional] 
+**TransmitterAccountNumber** | Pointer to **string** | Only valid for JNLC journals. Null for JNLS.max 255 characters | [optional] 
+**TransmitterAddress** | Pointer to **string** | Only valid for JNLC journals. Null for JNLS.max 255 characters | [optional] 
+**TransmitterFinancialInstitution** | Pointer to **string** | Only valid for JNLC journals. Null for JNLS.max 255 characters | [optional] 
+**TransmitterTimestamp** | Pointer to **time.Time** | Only valid for JNLC journals. Null for JNLS. | [optional] 
+**Symbol** | **string** | Only valid for JNLS journals. Null for JNLC. | 
+**Qty** | **float64** | Only valid for JNLS journals. Null for JNLC. | 
+**Price** | **float64** | Only valid for JNLS journals. Null for JNLC. | 
 
 ## Methods
 
 ### NewJournalResource
 
-`func NewJournalResource(id string, entryType string, fromAccount string, toAccount string, settleDate NullableString, netAmount float64, symbol string, qty float64, price float64, ) *JournalResource`
+`func NewJournalResource(netAmount float64, symbol string, qty float64, price float64, ) *JournalResource`
 
 NewJournalResource instantiates a new JournalResource object
 This constructor will assign default values to properties that have it defined,
@@ -39,86 +33,6 @@ will change when the set of required properties is changed
 NewJournalResourceWithDefaults instantiates a new JournalResource object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *JournalResource) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *JournalResource) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *JournalResource) SetId(v string)`
-
-SetId sets Id field to given value.
-
-
-### GetEntryType
-
-`func (o *JournalResource) GetEntryType() string`
-
-GetEntryType returns the EntryType field if non-nil, zero value otherwise.
-
-### GetEntryTypeOk
-
-`func (o *JournalResource) GetEntryTypeOk() (*string, bool)`
-
-GetEntryTypeOk returns a tuple with the EntryType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEntryType
-
-`func (o *JournalResource) SetEntryType(v string)`
-
-SetEntryType sets EntryType field to given value.
-
-
-### GetFromAccount
-
-`func (o *JournalResource) GetFromAccount() string`
-
-GetFromAccount returns the FromAccount field if non-nil, zero value otherwise.
-
-### GetFromAccountOk
-
-`func (o *JournalResource) GetFromAccountOk() (*string, bool)`
-
-GetFromAccountOk returns a tuple with the FromAccount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFromAccount
-
-`func (o *JournalResource) SetFromAccount(v string)`
-
-SetFromAccount sets FromAccount field to given value.
-
-
-### GetToAccount
-
-`func (o *JournalResource) GetToAccount() string`
-
-GetToAccount returns the ToAccount field if non-nil, zero value otherwise.
-
-### GetToAccountOk
-
-`func (o *JournalResource) GetToAccountOk() (*string, bool)`
-
-GetToAccountOk returns a tuple with the ToAccount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetToAccount
-
-`func (o *JournalResource) SetToAccount(v string)`
-
-SetToAccount sets ToAccount field to given value.
-
 
 ### GetDescription
 
@@ -144,61 +58,6 @@ SetDescription sets Description field to given value.
 `func (o *JournalResource) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetSettleDate
-
-`func (o *JournalResource) GetSettleDate() string`
-
-GetSettleDate returns the SettleDate field if non-nil, zero value otherwise.
-
-### GetSettleDateOk
-
-`func (o *JournalResource) GetSettleDateOk() (*string, bool)`
-
-GetSettleDateOk returns a tuple with the SettleDate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSettleDate
-
-`func (o *JournalResource) SetSettleDate(v string)`
-
-SetSettleDate sets SettleDate field to given value.
-
-
-### SetSettleDateNil
-
-`func (o *JournalResource) SetSettleDateNil(b bool)`
-
- SetSettleDateNil sets the value for SettleDate to be an explicit nil
-
-### UnsetSettleDate
-`func (o *JournalResource) UnsetSettleDate()`
-
-UnsetSettleDate ensures that no value is present for SettleDate, not even an explicit nil
-### GetStatus
-
-`func (o *JournalResource) GetStatus() string`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *JournalResource) GetStatusOk() (*string, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *JournalResource) SetStatus(v string)`
-
-SetStatus sets Status field to given value.
-
-### HasStatus
-
-`func (o *JournalResource) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
 
 ### GetNetAmount
 

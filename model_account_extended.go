@@ -24,7 +24,7 @@ type AccountExtended struct {
 	Currency *string `json:"currency,omitempty"`
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	LastEquity *float64 `json:"last_equity,omitempty"`
-	KycResults *KycResult `json:"kyc_results,omitempty"`
+	KycResults *KYCResult `json:"kyc_results,omitempty"`
 	Contact *Contact `json:"contact,omitempty"`
 	Identity *Identity `json:"identity,omitempty"`
 	Disclosures *Disclosures `json:"disclosures,omitempty"`
@@ -244,9 +244,9 @@ func (o *AccountExtended) SetLastEquity(v float64) {
 }
 
 // GetKycResults returns the KycResults field value if set, zero value otherwise.
-func (o *AccountExtended) GetKycResults() KycResult {
+func (o *AccountExtended) GetKycResults() KYCResult {
 	if o == nil || o.KycResults == nil {
-		var ret KycResult
+		var ret KYCResult
 		return ret
 	}
 	return *o.KycResults
@@ -254,7 +254,7 @@ func (o *AccountExtended) GetKycResults() KycResult {
 
 // GetKycResultsOk returns a tuple with the KycResults field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountExtended) GetKycResultsOk() (*KycResult, bool) {
+func (o *AccountExtended) GetKycResultsOk() (*KYCResult, bool) {
 	if o == nil || o.KycResults == nil {
 		return nil, false
 	}
@@ -270,8 +270,8 @@ func (o *AccountExtended) HasKycResults() bool {
 	return false
 }
 
-// SetKycResults gets a reference to the given KycResult and assigns it to the KycResults field.
-func (o *AccountExtended) SetKycResults(v KycResult) {
+// SetKycResults gets a reference to the given KYCResult and assigns it to the KycResults field.
+func (o *AccountExtended) SetKycResults(v KYCResult) {
 	o.KycResults = &v
 }
 

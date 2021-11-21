@@ -58,7 +58,7 @@ Note, enum values are always validated and all unused variables are silently ign
 ### URLs Configuration per Operation
 
 Each operation can use different server URL defined using `OperationServers` map in the `Configuration`.
-An operation is uniquely identifield by `"{classname}Service.{nickname}"` string.
+An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
 Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
 
 ```
@@ -102,6 +102,11 @@ Class | Method | HTTP request | Description
 *AssetsApi* | [**GetAssets**](docs/AssetsApi.md#getassets) | **Get** /assets | Retrieve all assets
 *CalendarApi* | [**CalendarGet**](docs/CalendarApi.md#calendarget) | **Get** /calendar | Query market calendar
 *ClockApi* | [**ClockGet**](docs/ClockApi.md#clockget) | **Get** /clock | Query market clock
+*DefaultApi* | [**DeleteAccountsAccountIdWatchlistsWatchlistId**](docs/DefaultApi.md#deleteaccountsaccountidwatchlistswatchlistid) | **Delete** /accounts/{account_id}/watchlists/{watchlist_id} | Remove a watchlist
+*DefaultApi* | [**GetAccountsAccountIdWatchlistsWatchlistId**](docs/DefaultApi.md#getaccountsaccountidwatchlistswatchlistid) | **Get** /accounts/{account_id}/watchlists/{watchlist_id} | Manage watchlists
+*DefaultApi* | [**GetTradingAccountsAccountIdWatchlists**](docs/DefaultApi.md#gettradingaccountsaccountidwatchlists) | **Get** /trading/accounts/{account_id}/watchlists | Retrieve all watchlists
+*DefaultApi* | [**PostTradingAccountsAccountIdWatchlists**](docs/DefaultApi.md#posttradingaccountsaccountidwatchlists) | **Post** /trading/accounts/{account_id}/watchlists | Create a new watchlist
+*DefaultApi* | [**PutAccountsAccountIdWatchlistsWatchlistId**](docs/DefaultApi.md#putaccountsaccountidwatchlistswatchlistid) | **Put** /accounts/{account_id}/watchlists/{watchlist_id} | Update an existing watchlist
 *DocumentsApi* | [**AccountsAccountIdDocumentsDocumentIdDownloadGet**](docs/DocumentsApi.md#accountsaccountiddocumentsdocumentiddownloadget) | **Get** /accounts/{account_id}/documents/{document_id}/download | Download a document file that belongs to an account.
 *DocumentsApi* | [**AccountsAccountIdDocumentsGet**](docs/DocumentsApi.md#accountsaccountiddocumentsget) | **Get** /accounts/{account_id}/documents | Return a list of account documents.
 *DocumentsApi* | [**DocumentsDocumentIdGet**](docs/DocumentsApi.md#documentsdocumentidget) | **Get** /documents/{document_id} | Download a document file directly
@@ -139,53 +144,56 @@ Class | Method | HTTP request | Description
  - [ACHRelationshipResource](docs/ACHRelationshipResource.md)
  - [ACHRelationshipResourceAllOf](docs/ACHRelationshipResourceAllOf.md)
  - [Account](docs/Account.md)
- - [AccountCreationObject](docs/AccountCreationObject.md)
+ - [AccountCreationRequest](docs/AccountCreationRequest.md)
+ - [AccountDocument](docs/AccountDocument.md)
  - [AccountExtended](docs/AccountExtended.md)
  - [AccountStatus](docs/AccountStatus.md)
- - [AccountUpdate](docs/AccountUpdate.md)
+ - [AccountStatusEvent](docs/AccountStatusEvent.md)
+ - [AccountUpdateRequest](docs/AccountUpdateRequest.md)
  - [Activity](docs/Activity.md)
  - [ActivityItem](docs/ActivityItem.md)
  - [ActivityType](docs/ActivityType.md)
  - [Agreement](docs/Agreement.md)
  - [ApplicationDocument](docs/ApplicationDocument.md)
- - [AssetResource](docs/AssetResource.md)
+ - [Asset](docs/Asset.md)
  - [BankData](docs/BankData.md)
  - [BankResource](docs/BankResource.md)
  - [BankResourceAllOf](docs/BankResourceAllOf.md)
  - [BatchJournalRequest](docs/BatchJournalRequest.md)
  - [BatchJournalRequestEntries](docs/BatchJournalRequestEntries.md)
  - [BatchJournalResponse](docs/BatchJournalResponse.md)
+ - [Clock](docs/Clock.md)
  - [Contact](docs/Contact.md)
- - [CreateOrder](docs/CreateOrder.md)
- - [CreateOrderStopLoss](docs/CreateOrderStopLoss.md)
- - [CreateOrderTakeProfit](docs/CreateOrderTakeProfit.md)
+ - [CreateOrderRequest](docs/CreateOrderRequest.md)
+ - [CreateOrderRequestStopLoss](docs/CreateOrderRequestStopLoss.md)
+ - [CreateOrderRequestTakeProfit](docs/CreateOrderRequestTakeProfit.md)
  - [Disclosures](docs/Disclosures.md)
  - [DocumentType](docs/DocumentType.md)
  - [DocumentUpload](docs/DocumentUpload.md)
+ - [DocumentUploadRequest](docs/DocumentUploadRequest.md)
  - [Error](docs/Error.md)
  - [IdentifiedResource](docs/IdentifiedResource.md)
  - [Identity](docs/Identity.md)
  - [InlineObject](docs/InlineObject.md)
  - [InlineObject1](docs/InlineObject1.md)
+ - [InlineObject2](docs/InlineObject2.md)
  - [InlineResponse200](docs/InlineResponse200.md)
  - [InlineResponse2001](docs/InlineResponse2001.md)
  - [InlineResponse2002](docs/InlineResponse2002.md)
  - [InlineResponse2003](docs/InlineResponse2003.md)
  - [InlineResponse2004](docs/InlineResponse2004.md)
- - [InlineResponse2005](docs/InlineResponse2005.md)
- - [InlineResponse2006](docs/InlineResponse2006.md)
- - [InlineResponse2007](docs/InlineResponse2007.md)
  - [InlineResponse207](docs/InlineResponse207.md)
+ - [JNLC](docs/JNLC.md)
+ - [JNLS](docs/JNLS.md)
+ - [Journal](docs/Journal.md)
+ - [JournalAllOf](docs/JournalAllOf.md)
  - [JournalData](docs/JournalData.md)
- - [JournalJNLC](docs/JournalJNLC.md)
- - [JournalJNLS](docs/JournalJNLS.md)
  - [JournalResource](docs/JournalResource.md)
- - [KycResult](docs/KycResult.md)
+ - [KYCResult](docs/KYCResult.md)
  - [MarketDay](docs/MarketDay.md)
  - [NonTradeActivity](docs/NonTradeActivity.md)
  - [NonTradeActivityAllOf](docs/NonTradeActivityAllOf.md)
- - [OrderObject](docs/OrderObject.md)
- - [PatchOrder](docs/PatchOrder.md)
+ - [Order](docs/Order.md)
  - [Position](docs/Position.md)
  - [TradeActivity](docs/TradeActivity.md)
  - [TradeActivityAllOf](docs/TradeActivityAllOf.md)
@@ -199,6 +207,8 @@ Class | Method | HTTP request | Description
  - [UntypedTransferData](docs/UntypedTransferData.md)
  - [UntypedWireTransferData](docs/UntypedWireTransferData.md)
  - [UntypedWireTransferDataAllOf](docs/UntypedWireTransferDataAllOf.md)
+ - [UpdateOrderRequest](docs/UpdateOrderRequest.md)
+ - [Watchlist](docs/Watchlist.md)
 
 
 ## Documentation For Authorization

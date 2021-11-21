@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## ClockGet
 
-> InlineResponse2001 ClockGet(ctx).Execute()
+> Clock ClockGet(ctx).Execute()
 
 Query market clock
 
@@ -35,7 +35,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClockApi.ClockGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ClockGet`: InlineResponse2001
+    // response from `ClockGet`: Clock
     fmt.Fprintf(os.Stdout, "Response from `ClockApi.ClockGet`: %v\n", resp)
 }
 ```
@@ -51,7 +51,7 @@ Other parameters are passed through a pointer to a apiClockGetRequest struct via
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**Clock**](Clock.md)
 
 ### Authorization
 

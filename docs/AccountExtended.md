@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Currency** | Pointer to **string** | Always \&quot;USD\&quot; | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
 **LastEquity** | Pointer to **float64** |  | [optional] 
-**KycResults** | Pointer to [**KycResult**](KycResult.md) |  | [optional] 
+**KycResults** | Pointer to [**KYCResult**](KYCResult.md) |  | [optional] 
 **Contact** | Pointer to [**Contact**](Contact.md) |  | [optional] 
 **Identity** | Pointer to [**Identity**](Identity.md) |  | [optional] 
 **Disclosures** | Pointer to [**Disclosures**](Disclosures.md) |  | [optional] 
@@ -189,20 +189,20 @@ HasLastEquity returns a boolean if a field has been set.
 
 ### GetKycResults
 
-`func (o *AccountExtended) GetKycResults() KycResult`
+`func (o *AccountExtended) GetKycResults() KYCResult`
 
 GetKycResults returns the KycResults field if non-nil, zero value otherwise.
 
 ### GetKycResultsOk
 
-`func (o *AccountExtended) GetKycResultsOk() (*KycResult, bool)`
+`func (o *AccountExtended) GetKycResultsOk() (*KYCResult, bool)`
 
 GetKycResultsOk returns a tuple with the KycResults field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKycResults
 
-`func (o *AccountExtended) SetKycResults(v KycResult)`
+`func (o *AccountExtended) SetKycResults(v KYCResult)`
 
 SetKycResults sets KycResults field to given value.
 

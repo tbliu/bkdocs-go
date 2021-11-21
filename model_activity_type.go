@@ -43,7 +43,8 @@ const (
 	ACTIVITYTYPE_SSP ActivityType = "SSP"
 )
 
-var allowedActivityTypeEnumValues = []ActivityType{
+// All allowed values of ActivityType enum
+var AllowedActivityTypeEnumValues = []ActivityType{
 	"FILL",
 	"ACATC",
 	"ACATS",
@@ -74,7 +75,7 @@ func (v *ActivityType) UnmarshalJSON(src []byte) error {
 		return err
 	}
 	enumTypeValue := ActivityType(value)
-	for _, existing := range allowedActivityTypeEnumValues {
+	for _, existing := range AllowedActivityTypeEnumValues {
 		if existing == enumTypeValue {
 			*v = enumTypeValue
 			return nil
@@ -91,13 +92,13 @@ func NewActivityTypeFromValue(v string) (*ActivityType, error) {
 	if ev.IsValid() {
 		return &ev, nil
 	} else {
-		return nil, fmt.Errorf("invalid value '%v' for ActivityType: valid values are %v", v, allowedActivityTypeEnumValues)
+		return nil, fmt.Errorf("invalid value '%v' for ActivityType: valid values are %v", v, AllowedActivityTypeEnumValues)
 	}
 }
 
 // IsValid return true if the value is valid for the enum, false otherwise
 func (v ActivityType) IsValid() bool {
-	for _, existing := range allowedActivityTypeEnumValues {
+	for _, existing := range AllowedActivityTypeEnumValues {
 		if existing == v {
 			return true
 		}

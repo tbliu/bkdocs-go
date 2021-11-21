@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## EventsAccountsStatusGet
 
-> InlineResponse2003 EventsAccountsStatusGet(ctx).Since(since).Until(until).SinceId(sinceId).UntilId(untilId).Execute()
+> AccountStatusEvent EventsAccountsStatusGet(ctx).Since(since).Until(until).SinceId(sinceId).UntilId(untilId).Execute()
 
 Subscribe to account status events (SSE).
 
@@ -43,7 +43,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsAccountsStatusGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EventsAccountsStatusGet`: InlineResponse2003
+    // response from `EventsAccountsStatusGet`: AccountStatusEvent
     fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsAccountsStatusGet`: %v\n", resp)
 }
 ```
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**AccountStatusEvent**](AccountStatusEvent.md)
 
 ### Authorization
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## EventsJournalsStatusGet
 
-> InlineResponse2004 EventsJournalsStatusGet(ctx).Since(since).Until(until).SinceId(sinceId).UntilId(untilId).Execute()
+> InlineResponse2001 EventsJournalsStatusGet(ctx).Since(since).Until(until).SinceId(sinceId).UntilId(untilId).Execute()
 
 Subscribe to journal events (SSE).
 
@@ -116,7 +116,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.EventsJournalsStatusGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EventsJournalsStatusGet`: InlineResponse2004
+    // response from `EventsJournalsStatusGet`: InlineResponse2001
     fmt.Fprintf(os.Stdout, "Response from `EventsApi.EventsJournalsStatusGet`: %v\n", resp)
 }
 ```
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 

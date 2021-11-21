@@ -12,14 +12,16 @@ package openapi
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // InlineResponse2001 struct for InlineResponse2001
 type InlineResponse2001 struct {
-	Timestamp *string `json:"timestamp,omitempty"`
-	IsOpen *bool `json:"is_open,omitempty"`
-	NextOpen *string `json:"next_open,omitempty"`
-	NextClose *string `json:"next_close,omitempty"`
+	EventId *int32 `json:"event_id,omitempty"`
+	At *time.Time `json:"at,omitempty"`
+	JournalId *string `json:"journal_id,omitempty"`
+	StatusFrom *string `json:"status_from,omitempty"`
+	StatusTo *string `json:"status_to,omitempty"`
 }
 
 // NewInlineResponse2001 instantiates a new InlineResponse2001 object
@@ -39,147 +41,182 @@ func NewInlineResponse2001WithDefaults() *InlineResponse2001 {
 	return &this
 }
 
-// GetTimestamp returns the Timestamp field value if set, zero value otherwise.
-func (o *InlineResponse2001) GetTimestamp() string {
-	if o == nil || o.Timestamp == nil {
+// GetEventId returns the EventId field value if set, zero value otherwise.
+func (o *InlineResponse2001) GetEventId() int32 {
+	if o == nil || o.EventId == nil {
+		var ret int32
+		return ret
+	}
+	return *o.EventId
+}
+
+// GetEventIdOk returns a tuple with the EventId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InlineResponse2001) GetEventIdOk() (*int32, bool) {
+	if o == nil || o.EventId == nil {
+		return nil, false
+	}
+	return o.EventId, true
+}
+
+// HasEventId returns a boolean if a field has been set.
+func (o *InlineResponse2001) HasEventId() bool {
+	if o != nil && o.EventId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEventId gets a reference to the given int32 and assigns it to the EventId field.
+func (o *InlineResponse2001) SetEventId(v int32) {
+	o.EventId = &v
+}
+
+// GetAt returns the At field value if set, zero value otherwise.
+func (o *InlineResponse2001) GetAt() time.Time {
+	if o == nil || o.At == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.At
+}
+
+// GetAtOk returns a tuple with the At field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InlineResponse2001) GetAtOk() (*time.Time, bool) {
+	if o == nil || o.At == nil {
+		return nil, false
+	}
+	return o.At, true
+}
+
+// HasAt returns a boolean if a field has been set.
+func (o *InlineResponse2001) HasAt() bool {
+	if o != nil && o.At != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAt gets a reference to the given time.Time and assigns it to the At field.
+func (o *InlineResponse2001) SetAt(v time.Time) {
+	o.At = &v
+}
+
+// GetJournalId returns the JournalId field value if set, zero value otherwise.
+func (o *InlineResponse2001) GetJournalId() string {
+	if o == nil || o.JournalId == nil {
 		var ret string
 		return ret
 	}
-	return *o.Timestamp
+	return *o.JournalId
 }
 
-// GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
+// GetJournalIdOk returns a tuple with the JournalId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineResponse2001) GetTimestampOk() (*string, bool) {
-	if o == nil || o.Timestamp == nil {
+func (o *InlineResponse2001) GetJournalIdOk() (*string, bool) {
+	if o == nil || o.JournalId == nil {
 		return nil, false
 	}
-	return o.Timestamp, true
+	return o.JournalId, true
 }
 
-// HasTimestamp returns a boolean if a field has been set.
-func (o *InlineResponse2001) HasTimestamp() bool {
-	if o != nil && o.Timestamp != nil {
+// HasJournalId returns a boolean if a field has been set.
+func (o *InlineResponse2001) HasJournalId() bool {
+	if o != nil && o.JournalId != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetTimestamp gets a reference to the given string and assigns it to the Timestamp field.
-func (o *InlineResponse2001) SetTimestamp(v string) {
-	o.Timestamp = &v
+// SetJournalId gets a reference to the given string and assigns it to the JournalId field.
+func (o *InlineResponse2001) SetJournalId(v string) {
+	o.JournalId = &v
 }
 
-// GetIsOpen returns the IsOpen field value if set, zero value otherwise.
-func (o *InlineResponse2001) GetIsOpen() bool {
-	if o == nil || o.IsOpen == nil {
-		var ret bool
-		return ret
-	}
-	return *o.IsOpen
-}
-
-// GetIsOpenOk returns a tuple with the IsOpen field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InlineResponse2001) GetIsOpenOk() (*bool, bool) {
-	if o == nil || o.IsOpen == nil {
-		return nil, false
-	}
-	return o.IsOpen, true
-}
-
-// HasIsOpen returns a boolean if a field has been set.
-func (o *InlineResponse2001) HasIsOpen() bool {
-	if o != nil && o.IsOpen != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetIsOpen gets a reference to the given bool and assigns it to the IsOpen field.
-func (o *InlineResponse2001) SetIsOpen(v bool) {
-	o.IsOpen = &v
-}
-
-// GetNextOpen returns the NextOpen field value if set, zero value otherwise.
-func (o *InlineResponse2001) GetNextOpen() string {
-	if o == nil || o.NextOpen == nil {
+// GetStatusFrom returns the StatusFrom field value if set, zero value otherwise.
+func (o *InlineResponse2001) GetStatusFrom() string {
+	if o == nil || o.StatusFrom == nil {
 		var ret string
 		return ret
 	}
-	return *o.NextOpen
+	return *o.StatusFrom
 }
 
-// GetNextOpenOk returns a tuple with the NextOpen field value if set, nil otherwise
+// GetStatusFromOk returns a tuple with the StatusFrom field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineResponse2001) GetNextOpenOk() (*string, bool) {
-	if o == nil || o.NextOpen == nil {
+func (o *InlineResponse2001) GetStatusFromOk() (*string, bool) {
+	if o == nil || o.StatusFrom == nil {
 		return nil, false
 	}
-	return o.NextOpen, true
+	return o.StatusFrom, true
 }
 
-// HasNextOpen returns a boolean if a field has been set.
-func (o *InlineResponse2001) HasNextOpen() bool {
-	if o != nil && o.NextOpen != nil {
+// HasStatusFrom returns a boolean if a field has been set.
+func (o *InlineResponse2001) HasStatusFrom() bool {
+	if o != nil && o.StatusFrom != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetNextOpen gets a reference to the given string and assigns it to the NextOpen field.
-func (o *InlineResponse2001) SetNextOpen(v string) {
-	o.NextOpen = &v
+// SetStatusFrom gets a reference to the given string and assigns it to the StatusFrom field.
+func (o *InlineResponse2001) SetStatusFrom(v string) {
+	o.StatusFrom = &v
 }
 
-// GetNextClose returns the NextClose field value if set, zero value otherwise.
-func (o *InlineResponse2001) GetNextClose() string {
-	if o == nil || o.NextClose == nil {
+// GetStatusTo returns the StatusTo field value if set, zero value otherwise.
+func (o *InlineResponse2001) GetStatusTo() string {
+	if o == nil || o.StatusTo == nil {
 		var ret string
 		return ret
 	}
-	return *o.NextClose
+	return *o.StatusTo
 }
 
-// GetNextCloseOk returns a tuple with the NextClose field value if set, nil otherwise
+// GetStatusToOk returns a tuple with the StatusTo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineResponse2001) GetNextCloseOk() (*string, bool) {
-	if o == nil || o.NextClose == nil {
+func (o *InlineResponse2001) GetStatusToOk() (*string, bool) {
+	if o == nil || o.StatusTo == nil {
 		return nil, false
 	}
-	return o.NextClose, true
+	return o.StatusTo, true
 }
 
-// HasNextClose returns a boolean if a field has been set.
-func (o *InlineResponse2001) HasNextClose() bool {
-	if o != nil && o.NextClose != nil {
+// HasStatusTo returns a boolean if a field has been set.
+func (o *InlineResponse2001) HasStatusTo() bool {
+	if o != nil && o.StatusTo != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetNextClose gets a reference to the given string and assigns it to the NextClose field.
-func (o *InlineResponse2001) SetNextClose(v string) {
-	o.NextClose = &v
+// SetStatusTo gets a reference to the given string and assigns it to the StatusTo field.
+func (o *InlineResponse2001) SetStatusTo(v string) {
+	o.StatusTo = &v
 }
 
 func (o InlineResponse2001) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Timestamp != nil {
-		toSerialize["timestamp"] = o.Timestamp
+	if o.EventId != nil {
+		toSerialize["event_id"] = o.EventId
 	}
-	if o.IsOpen != nil {
-		toSerialize["is_open"] = o.IsOpen
+	if o.At != nil {
+		toSerialize["at"] = o.At
 	}
-	if o.NextOpen != nil {
-		toSerialize["next_open"] = o.NextOpen
+	if o.JournalId != nil {
+		toSerialize["journal_id"] = o.JournalId
 	}
-	if o.NextClose != nil {
-		toSerialize["next_close"] = o.NextClose
+	if o.StatusFrom != nil {
+		toSerialize["status_from"] = o.StatusFrom
+	}
+	if o.StatusTo != nil {
+		toSerialize["status_to"] = o.StatusTo
 	}
 	return json.Marshal(toSerialize)
 }

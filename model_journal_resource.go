@@ -12,23 +12,24 @@ package openapi
 
 import (
 	"encoding/json"
+	"time"
 	"fmt"
 )
 
 // JournalResource - struct for JournalResource
 type JournalResource struct {
-	JournalJNLC *JournalJNLC
-	JournalJNLS *JournalJNLS
+	JNLC *JNLC
+	JNLS *JNLS
 }
 
-// JournalJNLCAsJournalResource is a convenience function that returns JournalJNLC wrapped in JournalResource
-func JournalJNLCAsJournalResource(v *JournalJNLC) JournalResource {
-	return JournalResource{ JournalJNLC: v}
+// JNLCAsJournalResource is a convenience function that returns JNLC wrapped in JournalResource
+func JNLCAsJournalResource(v *JNLC) JournalResource {
+	return JournalResource{ JNLC: v}
 }
 
-// JournalJNLSAsJournalResource is a convenience function that returns JournalJNLS wrapped in JournalResource
-func JournalJNLSAsJournalResource(v *JournalJNLS) JournalResource {
-	return JournalResource{ JournalJNLS: v}
+// JNLSAsJournalResource is a convenience function that returns JNLS wrapped in JournalResource
+func JNLSAsJournalResource(v *JNLS) JournalResource {
+	return JournalResource{ JNLS: v}
 }
 
 
@@ -36,36 +37,36 @@ func JournalJNLSAsJournalResource(v *JournalJNLS) JournalResource {
 func (dst *JournalResource) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
-	// try to unmarshal data into JournalJNLC
-	err = json.Unmarshal(data, &dst.JournalJNLC)
+	// try to unmarshal data into JNLC
+	err = json.Unmarshal(data, &dst.JNLC)
 	if err == nil {
-		jsonJournalJNLC, _ := json.Marshal(dst.JournalJNLC)
-		if string(jsonJournalJNLC) == "{}" { // empty struct
-			dst.JournalJNLC = nil
+		jsonJNLC, _ := json.Marshal(dst.JNLC)
+		if string(jsonJNLC) == "{}" { // empty struct
+			dst.JNLC = nil
 		} else {
 			match++
 		}
 	} else {
-		dst.JournalJNLC = nil
+		dst.JNLC = nil
 	}
 
-	// try to unmarshal data into JournalJNLS
-	err = json.Unmarshal(data, &dst.JournalJNLS)
+	// try to unmarshal data into JNLS
+	err = json.Unmarshal(data, &dst.JNLS)
 	if err == nil {
-		jsonJournalJNLS, _ := json.Marshal(dst.JournalJNLS)
-		if string(jsonJournalJNLS) == "{}" { // empty struct
-			dst.JournalJNLS = nil
+		jsonJNLS, _ := json.Marshal(dst.JNLS)
+		if string(jsonJNLS) == "{}" { // empty struct
+			dst.JNLS = nil
 		} else {
 			match++
 		}
 	} else {
-		dst.JournalJNLS = nil
+		dst.JNLS = nil
 	}
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.JournalJNLC = nil
-		dst.JournalJNLS = nil
+		dst.JNLC = nil
+		dst.JNLS = nil
 
 		return fmt.Errorf("Data matches more than one schema in oneOf(JournalResource)")
 	} else if match == 1 {
@@ -77,12 +78,12 @@ func (dst *JournalResource) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src JournalResource) MarshalJSON() ([]byte, error) {
-	if src.JournalJNLC != nil {
-		return json.Marshal(&src.JournalJNLC)
+	if src.JNLC != nil {
+		return json.Marshal(&src.JNLC)
 	}
 
-	if src.JournalJNLS != nil {
-		return json.Marshal(&src.JournalJNLS)
+	if src.JNLS != nil {
+		return json.Marshal(&src.JNLS)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -90,12 +91,12 @@ func (src JournalResource) MarshalJSON() ([]byte, error) {
 
 // Get the actual instance
 func (obj *JournalResource) GetActualInstance() (interface{}) {
-	if obj.JournalJNLC != nil {
-		return obj.JournalJNLC
+	if obj.JNLC != nil {
+		return obj.JNLC
 	}
 
-	if obj.JournalJNLS != nil {
-		return obj.JournalJNLS
+	if obj.JNLS != nil {
+		return obj.JNLS
 	}
 
 	// all schemas are nil

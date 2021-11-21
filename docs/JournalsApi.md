@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-    journalId := TODO // string | 
+    journalId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -51,7 +51,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**journalId** | [**string**](.md) |  | 
+**journalId** | **string** |  | 
 
 ### Other Parameters
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ## EventsJournalsStatusGet
 
-> InlineResponse2004 EventsJournalsStatusGet(ctx).Since(since).Until(until).SinceId(sinceId).UntilId(untilId).Execute()
+> InlineResponse2001 EventsJournalsStatusGet(ctx).Since(since).Until(until).SinceId(sinceId).UntilId(untilId).Execute()
 
 Subscribe to journal events (SSE).
 
@@ -114,7 +114,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `JournalsApi.EventsJournalsStatusGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EventsJournalsStatusGet`: InlineResponse2004
+    // response from `EventsJournalsStatusGet`: InlineResponse2001
     fmt.Fprintf(os.Stdout, "Response from `JournalsApi.EventsJournalsStatusGet`: %v\n", resp)
 }
 ```
@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ## GetJournals
 
-> []JournalResource GetJournals(ctx).After(after).Before(before).Status(status).EntryType(entryType).ToAccount(toAccount).FromAccount(fromAccount).Execute()
+> []Journal GetJournals(ctx).After(after).Before(before).Status(status).EntryType(entryType).ToAccount(toAccount).FromAccount(fromAccount).Execute()
 
 Return a list of requested journals.
 
@@ -177,8 +177,8 @@ func main() {
     before := time.Now() // string | by settle_date (optional)
     status := "status_example" // string |  (optional)
     entryType := "entryType_example" // string |  (optional)
-    toAccount := TODO // string |  (optional)
-    fromAccount := TODO // string |  (optional)
+    toAccount := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+    fromAccount := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -187,7 +187,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `JournalsApi.GetJournals``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetJournals`: []JournalResource
+    // response from `GetJournals`: []Journal
     fmt.Fprintf(os.Stdout, "Response from `JournalsApi.GetJournals`: %v\n", resp)
 }
 ```
@@ -207,12 +207,12 @@ Name | Type | Description  | Notes
  **before** | **string** | by settle_date | 
  **status** | **string** |  | 
  **entryType** | **string** |  | 
- **toAccount** | [**string**](string.md) |  | 
- **fromAccount** | [**string**](string.md) |  | 
+ **toAccount** | **string** |  | 
+ **fromAccount** | **string** |  | 
 
 ### Return type
 
-[**[]JournalResource**](JournalResource.md)
+[**[]Journal**](Journal.md)
 
 ### Authorization
 
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ## PostJournals
 
-> JournalResource PostJournals(ctx).JournalData(journalData).Execute()
+> Journal PostJournals(ctx).JournalData(journalData).Execute()
 
 Request a journal.
 
@@ -258,7 +258,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `JournalsApi.PostJournals``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PostJournals`: JournalResource
+    // response from `PostJournals`: Journal
     fmt.Fprintf(os.Stdout, "Response from `JournalsApi.PostJournals`: %v\n", resp)
 }
 ```
@@ -278,7 +278,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JournalResource**](JournalResource.md)
+[**Journal**](Journal.md)
 
 ### Authorization
 

@@ -32,11 +32,11 @@ type AccountsApiApiAccountsAccountIdDocumentsUploadPostRequest struct {
 	ctx _context.Context
 	ApiService *AccountsApiService
 	accountId string
-	documentUpload *DocumentUpload
+	documentUploadRequest *DocumentUploadRequest
 }
 
-func (r AccountsApiApiAccountsAccountIdDocumentsUploadPostRequest) DocumentUpload(documentUpload DocumentUpload) AccountsApiApiAccountsAccountIdDocumentsUploadPostRequest {
-	r.documentUpload = &documentUpload
+func (r AccountsApiApiAccountsAccountIdDocumentsUploadPostRequest) DocumentUploadRequest(documentUploadRequest DocumentUploadRequest) AccountsApiApiAccountsAccountIdDocumentsUploadPostRequest {
+	r.documentUploadRequest = &documentUploadRequest
 	return r
 }
 
@@ -80,8 +80,8 @@ func (a *AccountsApiService) AccountsAccountIdDocumentsUploadPostExecute(r Accou
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.documentUpload == nil {
-		return nil, reportError("documentUpload is required and must be specified")
+	if r.documentUploadRequest == nil {
+		return nil, reportError("documentUploadRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -102,7 +102,7 @@ func (a *AccountsApiService) AccountsAccountIdDocumentsUploadPostExecute(r Accou
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.documentUpload
+	localVarPostBody = r.documentUploadRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -578,11 +578,11 @@ func (a *AccountsApiService) AccountsGetExecute(r AccountsApiApiAccountsGetReque
 type AccountsApiApiAccountsPostRequest struct {
 	ctx _context.Context
 	ApiService *AccountsApiService
-	accountCreationObject *AccountCreationObject
+	accountCreationRequest *AccountCreationRequest
 }
 
-func (r AccountsApiApiAccountsPostRequest) AccountCreationObject(accountCreationObject AccountCreationObject) AccountsApiApiAccountsPostRequest {
-	r.accountCreationObject = &accountCreationObject
+func (r AccountsApiApiAccountsPostRequest) AccountCreationRequest(accountCreationRequest AccountCreationRequest) AccountsApiApiAccountsPostRequest {
+	r.accountCreationRequest = &accountCreationRequest
 	return r
 }
 
@@ -625,8 +625,8 @@ func (a *AccountsApiService) AccountsPostExecute(r AccountsApiApiAccountsPostReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.accountCreationObject == nil {
-		return localVarReturnValue, nil, reportError("accountCreationObject is required and must be specified")
+	if r.accountCreationRequest == nil {
+		return localVarReturnValue, nil, reportError("accountCreationRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -647,7 +647,7 @@ func (a *AccountsApiService) AccountsPostExecute(r AccountsApiApiAccountsPostReq
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.accountCreationObject
+	localVarPostBody = r.accountCreationRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1142,7 +1142,7 @@ func (r AccountsApiApiEventsAccountsStatusGetRequest) UntilId(untilId int32) Acc
 	return r
 }
 
-func (r AccountsApiApiEventsAccountsStatusGetRequest) Execute() (InlineResponse2003, *_nethttp.Response, error) {
+func (r AccountsApiApiEventsAccountsStatusGetRequest) Execute() (AccountStatusEvent, *_nethttp.Response, error) {
 	return r.ApiService.EventsAccountsStatusGetExecute(r)
 }
 
@@ -1169,15 +1169,15 @@ func (a *AccountsApiService) EventsAccountsStatusGet(ctx _context.Context) Accou
 }
 
 // Execute executes the request
-//  @return InlineResponse2003
-func (a *AccountsApiService) EventsAccountsStatusGetExecute(r AccountsApiApiEventsAccountsStatusGetRequest) (InlineResponse2003, *_nethttp.Response, error) {
+//  @return AccountStatusEvent
+func (a *AccountsApiService) EventsAccountsStatusGetExecute(r AccountsApiApiEventsAccountsStatusGetRequest) (AccountStatusEvent, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2003
+		localVarReturnValue  AccountStatusEvent
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.EventsAccountsStatusGet")
@@ -1707,19 +1707,19 @@ type AccountsApiApiGetTransfersRequest struct {
 	ApiService *AccountsApiService
 	accountId string
 	direction *string
-	limit *float32
-	offset *float32
+	limit *int32
+	offset *int32
 }
 
 func (r AccountsApiApiGetTransfersRequest) Direction(direction string) AccountsApiApiGetTransfersRequest {
 	r.direction = &direction
 	return r
 }
-func (r AccountsApiApiGetTransfersRequest) Limit(limit float32) AccountsApiApiGetTransfersRequest {
+func (r AccountsApiApiGetTransfersRequest) Limit(limit int32) AccountsApiApiGetTransfersRequest {
 	r.limit = &limit
 	return r
 }
-func (r AccountsApiApiGetTransfersRequest) Offset(offset float32) AccountsApiApiGetTransfersRequest {
+func (r AccountsApiApiGetTransfersRequest) Offset(offset int32) AccountsApiApiGetTransfersRequest {
 	r.offset = &offset
 	return r
 }
@@ -1838,11 +1838,11 @@ type AccountsApiApiPatchAccountRequest struct {
 	ctx _context.Context
 	ApiService *AccountsApiService
 	accountId string
-	accountUpdate *AccountUpdate
+	accountUpdateRequest *AccountUpdateRequest
 }
 
-func (r AccountsApiApiPatchAccountRequest) AccountUpdate(accountUpdate AccountUpdate) AccountsApiApiPatchAccountRequest {
-	r.accountUpdate = &accountUpdate
+func (r AccountsApiApiPatchAccountRequest) AccountUpdateRequest(accountUpdateRequest AccountUpdateRequest) AccountsApiApiPatchAccountRequest {
+	r.accountUpdateRequest = &accountUpdateRequest
 	return r
 }
 
@@ -1888,8 +1888,8 @@ func (a *AccountsApiService) PatchAccountExecute(r AccountsApiApiPatchAccountReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.accountUpdate == nil {
-		return localVarReturnValue, nil, reportError("accountUpdate is required and must be specified")
+	if r.accountUpdateRequest == nil {
+		return localVarReturnValue, nil, reportError("accountUpdateRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1910,7 +1910,7 @@ func (a *AccountsApiService) PatchAccountExecute(r AccountsApiApiPatchAccountReq
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.accountUpdate
+	localVarPostBody = r.accountUpdateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err

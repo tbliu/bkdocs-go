@@ -12,17 +12,15 @@ package openapi
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // InlineResponse2003 struct for InlineResponse2003
 type InlineResponse2003 struct {
-	AccountId *string `json:"account_id,omitempty"`
-	AccountNumber *string `json:"account_number,omitempty"`
-	StatusFrom *string `json:"status_from,omitempty"`
-	StatusTo *string `json:"status_to,omitempty"`
-	Reason *string `json:"reason,omitempty"`
-	At *time.Time `json:"at,omitempty"`
+	AccessToken *string `json:"access_token,omitempty"`
+	// constant `Bearer`
+	TokenType *string `json:"token_type,omitempty"`
+	// token's scope
+	Scope *string `json:"scope,omitempty"`
 }
 
 // NewInlineResponse2003 instantiates a new InlineResponse2003 object
@@ -42,217 +40,112 @@ func NewInlineResponse2003WithDefaults() *InlineResponse2003 {
 	return &this
 }
 
-// GetAccountId returns the AccountId field value if set, zero value otherwise.
-func (o *InlineResponse2003) GetAccountId() string {
-	if o == nil || o.AccountId == nil {
+// GetAccessToken returns the AccessToken field value if set, zero value otherwise.
+func (o *InlineResponse2003) GetAccessToken() string {
+	if o == nil || o.AccessToken == nil {
 		var ret string
 		return ret
 	}
-	return *o.AccountId
+	return *o.AccessToken
 }
 
-// GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
+// GetAccessTokenOk returns a tuple with the AccessToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineResponse2003) GetAccountIdOk() (*string, bool) {
-	if o == nil || o.AccountId == nil {
+func (o *InlineResponse2003) GetAccessTokenOk() (*string, bool) {
+	if o == nil || o.AccessToken == nil {
 		return nil, false
 	}
-	return o.AccountId, true
+	return o.AccessToken, true
 }
 
-// HasAccountId returns a boolean if a field has been set.
-func (o *InlineResponse2003) HasAccountId() bool {
-	if o != nil && o.AccountId != nil {
+// HasAccessToken returns a boolean if a field has been set.
+func (o *InlineResponse2003) HasAccessToken() bool {
+	if o != nil && o.AccessToken != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAccountId gets a reference to the given string and assigns it to the AccountId field.
-func (o *InlineResponse2003) SetAccountId(v string) {
-	o.AccountId = &v
+// SetAccessToken gets a reference to the given string and assigns it to the AccessToken field.
+func (o *InlineResponse2003) SetAccessToken(v string) {
+	o.AccessToken = &v
 }
 
-// GetAccountNumber returns the AccountNumber field value if set, zero value otherwise.
-func (o *InlineResponse2003) GetAccountNumber() string {
-	if o == nil || o.AccountNumber == nil {
+// GetTokenType returns the TokenType field value if set, zero value otherwise.
+func (o *InlineResponse2003) GetTokenType() string {
+	if o == nil || o.TokenType == nil {
 		var ret string
 		return ret
 	}
-	return *o.AccountNumber
+	return *o.TokenType
 }
 
-// GetAccountNumberOk returns a tuple with the AccountNumber field value if set, nil otherwise
+// GetTokenTypeOk returns a tuple with the TokenType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineResponse2003) GetAccountNumberOk() (*string, bool) {
-	if o == nil || o.AccountNumber == nil {
+func (o *InlineResponse2003) GetTokenTypeOk() (*string, bool) {
+	if o == nil || o.TokenType == nil {
 		return nil, false
 	}
-	return o.AccountNumber, true
+	return o.TokenType, true
 }
 
-// HasAccountNumber returns a boolean if a field has been set.
-func (o *InlineResponse2003) HasAccountNumber() bool {
-	if o != nil && o.AccountNumber != nil {
+// HasTokenType returns a boolean if a field has been set.
+func (o *InlineResponse2003) HasTokenType() bool {
+	if o != nil && o.TokenType != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAccountNumber gets a reference to the given string and assigns it to the AccountNumber field.
-func (o *InlineResponse2003) SetAccountNumber(v string) {
-	o.AccountNumber = &v
+// SetTokenType gets a reference to the given string and assigns it to the TokenType field.
+func (o *InlineResponse2003) SetTokenType(v string) {
+	o.TokenType = &v
 }
 
-// GetStatusFrom returns the StatusFrom field value if set, zero value otherwise.
-func (o *InlineResponse2003) GetStatusFrom() string {
-	if o == nil || o.StatusFrom == nil {
+// GetScope returns the Scope field value if set, zero value otherwise.
+func (o *InlineResponse2003) GetScope() string {
+	if o == nil || o.Scope == nil {
 		var ret string
 		return ret
 	}
-	return *o.StatusFrom
+	return *o.Scope
 }
 
-// GetStatusFromOk returns a tuple with the StatusFrom field value if set, nil otherwise
+// GetScopeOk returns a tuple with the Scope field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineResponse2003) GetStatusFromOk() (*string, bool) {
-	if o == nil || o.StatusFrom == nil {
+func (o *InlineResponse2003) GetScopeOk() (*string, bool) {
+	if o == nil || o.Scope == nil {
 		return nil, false
 	}
-	return o.StatusFrom, true
+	return o.Scope, true
 }
 
-// HasStatusFrom returns a boolean if a field has been set.
-func (o *InlineResponse2003) HasStatusFrom() bool {
-	if o != nil && o.StatusFrom != nil {
+// HasScope returns a boolean if a field has been set.
+func (o *InlineResponse2003) HasScope() bool {
+	if o != nil && o.Scope != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetStatusFrom gets a reference to the given string and assigns it to the StatusFrom field.
-func (o *InlineResponse2003) SetStatusFrom(v string) {
-	o.StatusFrom = &v
-}
-
-// GetStatusTo returns the StatusTo field value if set, zero value otherwise.
-func (o *InlineResponse2003) GetStatusTo() string {
-	if o == nil || o.StatusTo == nil {
-		var ret string
-		return ret
-	}
-	return *o.StatusTo
-}
-
-// GetStatusToOk returns a tuple with the StatusTo field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InlineResponse2003) GetStatusToOk() (*string, bool) {
-	if o == nil || o.StatusTo == nil {
-		return nil, false
-	}
-	return o.StatusTo, true
-}
-
-// HasStatusTo returns a boolean if a field has been set.
-func (o *InlineResponse2003) HasStatusTo() bool {
-	if o != nil && o.StatusTo != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStatusTo gets a reference to the given string and assigns it to the StatusTo field.
-func (o *InlineResponse2003) SetStatusTo(v string) {
-	o.StatusTo = &v
-}
-
-// GetReason returns the Reason field value if set, zero value otherwise.
-func (o *InlineResponse2003) GetReason() string {
-	if o == nil || o.Reason == nil {
-		var ret string
-		return ret
-	}
-	return *o.Reason
-}
-
-// GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InlineResponse2003) GetReasonOk() (*string, bool) {
-	if o == nil || o.Reason == nil {
-		return nil, false
-	}
-	return o.Reason, true
-}
-
-// HasReason returns a boolean if a field has been set.
-func (o *InlineResponse2003) HasReason() bool {
-	if o != nil && o.Reason != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReason gets a reference to the given string and assigns it to the Reason field.
-func (o *InlineResponse2003) SetReason(v string) {
-	o.Reason = &v
-}
-
-// GetAt returns the At field value if set, zero value otherwise.
-func (o *InlineResponse2003) GetAt() time.Time {
-	if o == nil || o.At == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.At
-}
-
-// GetAtOk returns a tuple with the At field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InlineResponse2003) GetAtOk() (*time.Time, bool) {
-	if o == nil || o.At == nil {
-		return nil, false
-	}
-	return o.At, true
-}
-
-// HasAt returns a boolean if a field has been set.
-func (o *InlineResponse2003) HasAt() bool {
-	if o != nil && o.At != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAt gets a reference to the given time.Time and assigns it to the At field.
-func (o *InlineResponse2003) SetAt(v time.Time) {
-	o.At = &v
+// SetScope gets a reference to the given string and assigns it to the Scope field.
+func (o *InlineResponse2003) SetScope(v string) {
+	o.Scope = &v
 }
 
 func (o InlineResponse2003) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AccountId != nil {
-		toSerialize["account_id"] = o.AccountId
+	if o.AccessToken != nil {
+		toSerialize["access_token"] = o.AccessToken
 	}
-	if o.AccountNumber != nil {
-		toSerialize["account_number"] = o.AccountNumber
+	if o.TokenType != nil {
+		toSerialize["token_type"] = o.TokenType
 	}
-	if o.StatusFrom != nil {
-		toSerialize["status_from"] = o.StatusFrom
-	}
-	if o.StatusTo != nil {
-		toSerialize["status_to"] = o.StatusTo
-	}
-	if o.Reason != nil {
-		toSerialize["reason"] = o.Reason
-	}
-	if o.At != nil {
-		toSerialize["at"] = o.At
+	if o.Scope != nil {
+		toSerialize["scope"] = o.Scope
 	}
 	return json.Marshal(toSerialize)
 }

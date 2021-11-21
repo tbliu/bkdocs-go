@@ -4,11 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EventId** | Pointer to **int32** |  | [optional] 
-**At** | Pointer to **time.Time** |  | [optional] 
-**JournalId** | Pointer to **string** |  | [optional] 
-**StatusFrom** | Pointer to **string** |  | [optional] 
-**StatusTo** | Pointer to **string** |  | [optional] 
+**Code** | Pointer to **string** | OAuth code to exchange with a token later. | [optional] 
+**RedirectUri** | Pointer to **string** | redirect URI | [optional] 
+**Scope** | Pointer to **string** | granted scopes | [optional] 
 
 ## Methods
 
@@ -29,130 +27,80 @@ NewInlineResponse2004WithDefaults instantiates a new InlineResponse2004 object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetEventId
+### GetCode
 
-`func (o *InlineResponse2004) GetEventId() int32`
+`func (o *InlineResponse2004) GetCode() string`
 
-GetEventId returns the EventId field if non-nil, zero value otherwise.
+GetCode returns the Code field if non-nil, zero value otherwise.
 
-### GetEventIdOk
+### GetCodeOk
 
-`func (o *InlineResponse2004) GetEventIdOk() (*int32, bool)`
+`func (o *InlineResponse2004) GetCodeOk() (*string, bool)`
 
-GetEventIdOk returns a tuple with the EventId field if it's non-nil, zero value otherwise
+GetCodeOk returns a tuple with the Code field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEventId
+### SetCode
 
-`func (o *InlineResponse2004) SetEventId(v int32)`
+`func (o *InlineResponse2004) SetCode(v string)`
 
-SetEventId sets EventId field to given value.
+SetCode sets Code field to given value.
 
-### HasEventId
+### HasCode
 
-`func (o *InlineResponse2004) HasEventId() bool`
+`func (o *InlineResponse2004) HasCode() bool`
 
-HasEventId returns a boolean if a field has been set.
+HasCode returns a boolean if a field has been set.
 
-### GetAt
+### GetRedirectUri
 
-`func (o *InlineResponse2004) GetAt() time.Time`
+`func (o *InlineResponse2004) GetRedirectUri() string`
 
-GetAt returns the At field if non-nil, zero value otherwise.
+GetRedirectUri returns the RedirectUri field if non-nil, zero value otherwise.
 
-### GetAtOk
+### GetRedirectUriOk
 
-`func (o *InlineResponse2004) GetAtOk() (*time.Time, bool)`
+`func (o *InlineResponse2004) GetRedirectUriOk() (*string, bool)`
 
-GetAtOk returns a tuple with the At field if it's non-nil, zero value otherwise
+GetRedirectUriOk returns a tuple with the RedirectUri field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAt
+### SetRedirectUri
 
-`func (o *InlineResponse2004) SetAt(v time.Time)`
+`func (o *InlineResponse2004) SetRedirectUri(v string)`
 
-SetAt sets At field to given value.
+SetRedirectUri sets RedirectUri field to given value.
 
-### HasAt
+### HasRedirectUri
 
-`func (o *InlineResponse2004) HasAt() bool`
+`func (o *InlineResponse2004) HasRedirectUri() bool`
 
-HasAt returns a boolean if a field has been set.
+HasRedirectUri returns a boolean if a field has been set.
 
-### GetJournalId
+### GetScope
 
-`func (o *InlineResponse2004) GetJournalId() string`
+`func (o *InlineResponse2004) GetScope() string`
 
-GetJournalId returns the JournalId field if non-nil, zero value otherwise.
+GetScope returns the Scope field if non-nil, zero value otherwise.
 
-### GetJournalIdOk
+### GetScopeOk
 
-`func (o *InlineResponse2004) GetJournalIdOk() (*string, bool)`
+`func (o *InlineResponse2004) GetScopeOk() (*string, bool)`
 
-GetJournalIdOk returns a tuple with the JournalId field if it's non-nil, zero value otherwise
+GetScopeOk returns a tuple with the Scope field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetJournalId
+### SetScope
 
-`func (o *InlineResponse2004) SetJournalId(v string)`
+`func (o *InlineResponse2004) SetScope(v string)`
 
-SetJournalId sets JournalId field to given value.
+SetScope sets Scope field to given value.
 
-### HasJournalId
+### HasScope
 
-`func (o *InlineResponse2004) HasJournalId() bool`
+`func (o *InlineResponse2004) HasScope() bool`
 
-HasJournalId returns a boolean if a field has been set.
-
-### GetStatusFrom
-
-`func (o *InlineResponse2004) GetStatusFrom() string`
-
-GetStatusFrom returns the StatusFrom field if non-nil, zero value otherwise.
-
-### GetStatusFromOk
-
-`func (o *InlineResponse2004) GetStatusFromOk() (*string, bool)`
-
-GetStatusFromOk returns a tuple with the StatusFrom field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatusFrom
-
-`func (o *InlineResponse2004) SetStatusFrom(v string)`
-
-SetStatusFrom sets StatusFrom field to given value.
-
-### HasStatusFrom
-
-`func (o *InlineResponse2004) HasStatusFrom() bool`
-
-HasStatusFrom returns a boolean if a field has been set.
-
-### GetStatusTo
-
-`func (o *InlineResponse2004) GetStatusTo() string`
-
-GetStatusTo returns the StatusTo field if non-nil, zero value otherwise.
-
-### GetStatusToOk
-
-`func (o *InlineResponse2004) GetStatusToOk() (*string, bool)`
-
-GetStatusToOk returns a tuple with the StatusTo field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatusTo
-
-`func (o *InlineResponse2004) SetStatusTo(v string)`
-
-SetStatusTo sets StatusTo field to given value.
-
-### HasStatusTo
-
-`func (o *InlineResponse2004) HasStatusTo() bool`
-
-HasStatusTo returns a boolean if a field has been set.
+HasScope returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

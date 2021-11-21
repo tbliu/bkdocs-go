@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **int32** |  | [optional] 
-**Body** | Pointer to [**OrderObject**](OrderObject.md) |  | [optional] 
+**Body** | Pointer to [**Order**](Order.md) |  | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetBody
 
-`func (o *InlineResponse207) GetBody() OrderObject`
+`func (o *InlineResponse207) GetBody() Order`
 
 GetBody returns the Body field if non-nil, zero value otherwise.
 
 ### GetBodyOk
 
-`func (o *InlineResponse207) GetBodyOk() (*OrderObject, bool)`
+`func (o *InlineResponse207) GetBodyOk() (*Order, bool)`
 
 GetBodyOk returns a tuple with the Body field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBody
 
-`func (o *InlineResponse207) SetBody(v OrderObject)`
+`func (o *InlineResponse207) SetBody(v Order)`
 
 SetBody sets Body field to given value.
 

@@ -16,10 +16,17 @@ import (
 
 // InlineResponse2002 struct for InlineResponse2002
 type InlineResponse2002 struct {
-	DocumentId *string `json:"document_id,omitempty"`
-	// such as \"account_statement\" and \"trade_confirmation\"
-	DocumentType *string `json:"document_type,omitempty"`
-	DocumentDate *string `json:"document_date,omitempty"`
+	ClientId *string `json:"client_id,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Url *string `json:"url,omitempty"`
+	// URL of Terms of Use
+	TermsOfUse *string `json:"terms_of_use,omitempty"`
+	// URL of Privacy Policy
+	PrivacyPolicy *string `json:"privacy_policy,omitempty"`
+	Status *string `json:"status,omitempty"`
+	RedirectUri *[]string `json:"redirect_uri,omitempty"`
+	LiveTradingApproved *bool `json:"live_trading_approved,omitempty"`
 }
 
 // NewInlineResponse2002 instantiates a new InlineResponse2002 object
@@ -39,112 +46,322 @@ func NewInlineResponse2002WithDefaults() *InlineResponse2002 {
 	return &this
 }
 
-// GetDocumentId returns the DocumentId field value if set, zero value otherwise.
-func (o *InlineResponse2002) GetDocumentId() string {
-	if o == nil || o.DocumentId == nil {
+// GetClientId returns the ClientId field value if set, zero value otherwise.
+func (o *InlineResponse2002) GetClientId() string {
+	if o == nil || o.ClientId == nil {
 		var ret string
 		return ret
 	}
-	return *o.DocumentId
+	return *o.ClientId
 }
 
-// GetDocumentIdOk returns a tuple with the DocumentId field value if set, nil otherwise
+// GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineResponse2002) GetDocumentIdOk() (*string, bool) {
-	if o == nil || o.DocumentId == nil {
+func (o *InlineResponse2002) GetClientIdOk() (*string, bool) {
+	if o == nil || o.ClientId == nil {
 		return nil, false
 	}
-	return o.DocumentId, true
+	return o.ClientId, true
 }
 
-// HasDocumentId returns a boolean if a field has been set.
-func (o *InlineResponse2002) HasDocumentId() bool {
-	if o != nil && o.DocumentId != nil {
+// HasClientId returns a boolean if a field has been set.
+func (o *InlineResponse2002) HasClientId() bool {
+	if o != nil && o.ClientId != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDocumentId gets a reference to the given string and assigns it to the DocumentId field.
-func (o *InlineResponse2002) SetDocumentId(v string) {
-	o.DocumentId = &v
+// SetClientId gets a reference to the given string and assigns it to the ClientId field.
+func (o *InlineResponse2002) SetClientId(v string) {
+	o.ClientId = &v
 }
 
-// GetDocumentType returns the DocumentType field value if set, zero value otherwise.
-func (o *InlineResponse2002) GetDocumentType() string {
-	if o == nil || o.DocumentType == nil {
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *InlineResponse2002) GetName() string {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
-	return *o.DocumentType
+	return *o.Name
 }
 
-// GetDocumentTypeOk returns a tuple with the DocumentType field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineResponse2002) GetDocumentTypeOk() (*string, bool) {
-	if o == nil || o.DocumentType == nil {
+func (o *InlineResponse2002) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
-	return o.DocumentType, true
+	return o.Name, true
 }
 
-// HasDocumentType returns a boolean if a field has been set.
-func (o *InlineResponse2002) HasDocumentType() bool {
-	if o != nil && o.DocumentType != nil {
+// HasName returns a boolean if a field has been set.
+func (o *InlineResponse2002) HasName() bool {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDocumentType gets a reference to the given string and assigns it to the DocumentType field.
-func (o *InlineResponse2002) SetDocumentType(v string) {
-	o.DocumentType = &v
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *InlineResponse2002) SetName(v string) {
+	o.Name = &v
 }
 
-// GetDocumentDate returns the DocumentDate field value if set, zero value otherwise.
-func (o *InlineResponse2002) GetDocumentDate() string {
-	if o == nil || o.DocumentDate == nil {
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *InlineResponse2002) GetDescription() string {
+	if o == nil || o.Description == nil {
 		var ret string
 		return ret
 	}
-	return *o.DocumentDate
+	return *o.Description
 }
 
-// GetDocumentDateOk returns a tuple with the DocumentDate field value if set, nil otherwise
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineResponse2002) GetDocumentDateOk() (*string, bool) {
-	if o == nil || o.DocumentDate == nil {
+func (o *InlineResponse2002) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
 		return nil, false
 	}
-	return o.DocumentDate, true
+	return o.Description, true
 }
 
-// HasDocumentDate returns a boolean if a field has been set.
-func (o *InlineResponse2002) HasDocumentDate() bool {
-	if o != nil && o.DocumentDate != nil {
+// HasDescription returns a boolean if a field has been set.
+func (o *InlineResponse2002) HasDescription() bool {
+	if o != nil && o.Description != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDocumentDate gets a reference to the given string and assigns it to the DocumentDate field.
-func (o *InlineResponse2002) SetDocumentDate(v string) {
-	o.DocumentDate = &v
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *InlineResponse2002) SetDescription(v string) {
+	o.Description = &v
+}
+
+// GetUrl returns the Url field value if set, zero value otherwise.
+func (o *InlineResponse2002) GetUrl() string {
+	if o == nil || o.Url == nil {
+		var ret string
+		return ret
+	}
+	return *o.Url
+}
+
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InlineResponse2002) GetUrlOk() (*string, bool) {
+	if o == nil || o.Url == nil {
+		return nil, false
+	}
+	return o.Url, true
+}
+
+// HasUrl returns a boolean if a field has been set.
+func (o *InlineResponse2002) HasUrl() bool {
+	if o != nil && o.Url != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
+func (o *InlineResponse2002) SetUrl(v string) {
+	o.Url = &v
+}
+
+// GetTermsOfUse returns the TermsOfUse field value if set, zero value otherwise.
+func (o *InlineResponse2002) GetTermsOfUse() string {
+	if o == nil || o.TermsOfUse == nil {
+		var ret string
+		return ret
+	}
+	return *o.TermsOfUse
+}
+
+// GetTermsOfUseOk returns a tuple with the TermsOfUse field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InlineResponse2002) GetTermsOfUseOk() (*string, bool) {
+	if o == nil || o.TermsOfUse == nil {
+		return nil, false
+	}
+	return o.TermsOfUse, true
+}
+
+// HasTermsOfUse returns a boolean if a field has been set.
+func (o *InlineResponse2002) HasTermsOfUse() bool {
+	if o != nil && o.TermsOfUse != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTermsOfUse gets a reference to the given string and assigns it to the TermsOfUse field.
+func (o *InlineResponse2002) SetTermsOfUse(v string) {
+	o.TermsOfUse = &v
+}
+
+// GetPrivacyPolicy returns the PrivacyPolicy field value if set, zero value otherwise.
+func (o *InlineResponse2002) GetPrivacyPolicy() string {
+	if o == nil || o.PrivacyPolicy == nil {
+		var ret string
+		return ret
+	}
+	return *o.PrivacyPolicy
+}
+
+// GetPrivacyPolicyOk returns a tuple with the PrivacyPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InlineResponse2002) GetPrivacyPolicyOk() (*string, bool) {
+	if o == nil || o.PrivacyPolicy == nil {
+		return nil, false
+	}
+	return o.PrivacyPolicy, true
+}
+
+// HasPrivacyPolicy returns a boolean if a field has been set.
+func (o *InlineResponse2002) HasPrivacyPolicy() bool {
+	if o != nil && o.PrivacyPolicy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivacyPolicy gets a reference to the given string and assigns it to the PrivacyPolicy field.
+func (o *InlineResponse2002) SetPrivacyPolicy(v string) {
+	o.PrivacyPolicy = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *InlineResponse2002) GetStatus() string {
+	if o == nil || o.Status == nil {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InlineResponse2002) GetStatusOk() (*string, bool) {
+	if o == nil || o.Status == nil {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *InlineResponse2002) HasStatus() bool {
+	if o != nil && o.Status != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *InlineResponse2002) SetStatus(v string) {
+	o.Status = &v
+}
+
+// GetRedirectUri returns the RedirectUri field value if set, zero value otherwise.
+func (o *InlineResponse2002) GetRedirectUri() []string {
+	if o == nil || o.RedirectUri == nil {
+		var ret []string
+		return ret
+	}
+	return *o.RedirectUri
+}
+
+// GetRedirectUriOk returns a tuple with the RedirectUri field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InlineResponse2002) GetRedirectUriOk() (*[]string, bool) {
+	if o == nil || o.RedirectUri == nil {
+		return nil, false
+	}
+	return o.RedirectUri, true
+}
+
+// HasRedirectUri returns a boolean if a field has been set.
+func (o *InlineResponse2002) HasRedirectUri() bool {
+	if o != nil && o.RedirectUri != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRedirectUri gets a reference to the given []string and assigns it to the RedirectUri field.
+func (o *InlineResponse2002) SetRedirectUri(v []string) {
+	o.RedirectUri = &v
+}
+
+// GetLiveTradingApproved returns the LiveTradingApproved field value if set, zero value otherwise.
+func (o *InlineResponse2002) GetLiveTradingApproved() bool {
+	if o == nil || o.LiveTradingApproved == nil {
+		var ret bool
+		return ret
+	}
+	return *o.LiveTradingApproved
+}
+
+// GetLiveTradingApprovedOk returns a tuple with the LiveTradingApproved field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InlineResponse2002) GetLiveTradingApprovedOk() (*bool, bool) {
+	if o == nil || o.LiveTradingApproved == nil {
+		return nil, false
+	}
+	return o.LiveTradingApproved, true
+}
+
+// HasLiveTradingApproved returns a boolean if a field has been set.
+func (o *InlineResponse2002) HasLiveTradingApproved() bool {
+	if o != nil && o.LiveTradingApproved != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLiveTradingApproved gets a reference to the given bool and assigns it to the LiveTradingApproved field.
+func (o *InlineResponse2002) SetLiveTradingApproved(v bool) {
+	o.LiveTradingApproved = &v
 }
 
 func (o InlineResponse2002) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DocumentId != nil {
-		toSerialize["document_id"] = o.DocumentId
+	if o.ClientId != nil {
+		toSerialize["client_id"] = o.ClientId
 	}
-	if o.DocumentType != nil {
-		toSerialize["document_type"] = o.DocumentType
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
 	}
-	if o.DocumentDate != nil {
-		toSerialize["document_date"] = o.DocumentDate
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
+	}
+	if o.Url != nil {
+		toSerialize["url"] = o.Url
+	}
+	if o.TermsOfUse != nil {
+		toSerialize["terms_of_use"] = o.TermsOfUse
+	}
+	if o.PrivacyPolicy != nil {
+		toSerialize["privacy_policy"] = o.PrivacyPolicy
+	}
+	if o.Status != nil {
+		toSerialize["status"] = o.Status
+	}
+	if o.RedirectUri != nil {
+		toSerialize["redirect_uri"] = o.RedirectUri
+	}
+	if o.LiveTradingApproved != nil {
+		toSerialize["live_trading_approved"] = o.LiveTradingApproved
 	}
 	return json.Marshal(toSerialize)
 }

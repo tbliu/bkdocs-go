@@ -53,7 +53,7 @@ func (r EventsApiApiEventsAccountsStatusGetRequest) UntilId(untilId int32) Event
 	return r
 }
 
-func (r EventsApiApiEventsAccountsStatusGetRequest) Execute() (InlineResponse2003, *_nethttp.Response, error) {
+func (r EventsApiApiEventsAccountsStatusGetRequest) Execute() (AccountStatusEvent, *_nethttp.Response, error) {
 	return r.ApiService.EventsAccountsStatusGetExecute(r)
 }
 
@@ -80,15 +80,15 @@ func (a *EventsApiService) EventsAccountsStatusGet(ctx _context.Context) EventsA
 }
 
 // Execute executes the request
-//  @return InlineResponse2003
-func (a *EventsApiService) EventsAccountsStatusGetExecute(r EventsApiApiEventsAccountsStatusGetRequest) (InlineResponse2003, *_nethttp.Response, error) {
+//  @return AccountStatusEvent
+func (a *EventsApiService) EventsAccountsStatusGetExecute(r EventsApiApiEventsAccountsStatusGetRequest) (AccountStatusEvent, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2003
+		localVarReturnValue  AccountStatusEvent
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsAccountsStatusGet")
@@ -194,7 +194,7 @@ func (r EventsApiApiEventsJournalsStatusGetRequest) UntilId(untilId int32) Event
 	return r
 }
 
-func (r EventsApiApiEventsJournalsStatusGetRequest) Execute() (InlineResponse2004, *_nethttp.Response, error) {
+func (r EventsApiApiEventsJournalsStatusGetRequest) Execute() (InlineResponse2001, *_nethttp.Response, error) {
 	return r.ApiService.EventsJournalsStatusGetExecute(r)
 }
 
@@ -221,15 +221,15 @@ func (a *EventsApiService) EventsJournalsStatusGet(ctx _context.Context) EventsA
 }
 
 // Execute executes the request
-//  @return InlineResponse2004
-func (a *EventsApiService) EventsJournalsStatusGetExecute(r EventsApiApiEventsJournalsStatusGetRequest) (InlineResponse2004, *_nethttp.Response, error) {
+//  @return InlineResponse2001
+func (a *EventsApiService) EventsJournalsStatusGetExecute(r EventsApiApiEventsJournalsStatusGetRequest) (InlineResponse2001, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2004
+		localVarReturnValue  InlineResponse2001
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.EventsJournalsStatusGet")

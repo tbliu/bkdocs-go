@@ -38,7 +38,7 @@ func (r OAuthApiApiOauthAuthorizePostRequest) InlineObject1(inlineObject1 Inline
 	return r
 }
 
-func (r OAuthApiApiOauthAuthorizePostRequest) Execute() (InlineResponse2007, *_nethttp.Response, error) {
+func (r OAuthApiApiOauthAuthorizePostRequest) Execute() (InlineResponse2004, *_nethttp.Response, error) {
 	return r.ApiService.OauthAuthorizePostExecute(r)
 }
 
@@ -60,15 +60,15 @@ func (a *OAuthApiService) OauthAuthorizePost(ctx _context.Context) OAuthApiApiOa
 }
 
 // Execute executes the request
-//  @return InlineResponse2007
-func (a *OAuthApiService) OauthAuthorizePostExecute(r OAuthApiApiOauthAuthorizePostRequest) (InlineResponse2007, *_nethttp.Response, error) {
+//  @return InlineResponse2004
+func (a *OAuthApiService) OauthAuthorizePostExecute(r OAuthApiApiOauthAuthorizePostRequest) (InlineResponse2004, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2007
+		localVarReturnValue  InlineResponse2004
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OAuthApiService.OauthAuthorizePost")
@@ -182,7 +182,7 @@ func (r OAuthApiApiOauthClientsClientIdGetRequest) Scope(scope string) OAuthApiA
 	return r
 }
 
-func (r OAuthApiApiOauthClientsClientIdGetRequest) Execute() (InlineResponse2005, *_nethttp.Response, error) {
+func (r OAuthApiApiOauthClientsClientIdGetRequest) Execute() (InlineResponse2002, *_nethttp.Response, error) {
 	return r.ApiService.OauthClientsClientIdGetExecute(r)
 }
 
@@ -206,15 +206,15 @@ func (a *OAuthApiService) OauthClientsClientIdGet(ctx _context.Context, clientId
 }
 
 // Execute executes the request
-//  @return InlineResponse2005
-func (a *OAuthApiService) OauthClientsClientIdGetExecute(r OAuthApiApiOauthClientsClientIdGetRequest) (InlineResponse2005, *_nethttp.Response, error) {
+//  @return InlineResponse2002
+func (a *OAuthApiService) OauthClientsClientIdGetExecute(r OAuthApiApiOauthClientsClientIdGetRequest) (InlineResponse2002, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2005
+		localVarReturnValue  InlineResponse2002
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OAuthApiService.OauthClientsClientIdGet")
@@ -312,7 +312,7 @@ func (r OAuthApiApiOauthTokenPostRequest) InlineObject(inlineObject InlineObject
 	return r
 }
 
-func (r OAuthApiApiOauthTokenPostRequest) Execute() (InlineResponse2006, *_nethttp.Response, error) {
+func (r OAuthApiApiOauthTokenPostRequest) Execute() (InlineResponse2003, *_nethttp.Response, error) {
 	return r.ApiService.OauthTokenPostExecute(r)
 }
 
@@ -333,15 +333,15 @@ func (a *OAuthApiService) OauthTokenPost(ctx _context.Context) OAuthApiApiOauthT
 }
 
 // Execute executes the request
-//  @return InlineResponse2006
-func (a *OAuthApiService) OauthTokenPostExecute(r OAuthApiApiOauthTokenPostRequest) (InlineResponse2006, *_nethttp.Response, error) {
+//  @return InlineResponse2003
+func (a *OAuthApiService) OauthTokenPostExecute(r OAuthApiApiOauthTokenPostRequest) (InlineResponse2003, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2006
+		localVarReturnValue  InlineResponse2003
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OAuthApiService.OauthTokenPost")

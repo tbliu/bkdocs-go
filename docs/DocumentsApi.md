@@ -31,8 +31,8 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
-    documentId := TODO // string | 
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
+    documentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -50,8 +50,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
-**documentId** | [**string**](.md) |  | 
+**accountId** | **string** | Account identifier. | 
+**documentId** | **string** |  | 
 
 ### Other Parameters
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## AccountsAccountIdDocumentsGet
 
-> []InlineResponse2002 AccountsAccountIdDocumentsGet(ctx, accountId).StartDate(startDate).EndDate(endDate).Execute()
+> [][]map[string]interface{} AccountsAccountIdDocumentsGet(ctx, accountId).StartDate(startDate).EndDate(endDate).Execute()
 
 Return a list of account documents.
 
@@ -103,7 +103,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
     startDate := time.Now() // string | optional date value to filter the list (inclusive). (optional)
     endDate := time.Now() // string | optional date value to filter the list (inclusive). (optional)
 
@@ -114,7 +114,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DocumentsApi.AccountsAccountIdDocumentsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AccountsAccountIdDocumentsGet`: []InlineResponse2002
+    // response from `AccountsAccountIdDocumentsGet`: [][]map[string]interface{}
     fmt.Fprintf(os.Stdout, "Response from `DocumentsApi.AccountsAccountIdDocumentsGet`: %v\n", resp)
 }
 ```
@@ -125,7 +125,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
+**accountId** | **string** | Account identifier. | 
 
 ### Other Parameters
 
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]InlineResponse2002**](InlineResponse2002.md)
+[**[][]map[string]interface{}**](set.md)
 
 ### Authorization
 
@@ -177,7 +177,7 @@ import (
 )
 
 func main() {
-    documentId := TODO // string | 
+    documentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -195,7 +195,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**documentId** | [**string**](.md) |  | 
+**documentId** | **string** |  | 
 
 ### Other Parameters
 

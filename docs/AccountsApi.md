@@ -28,7 +28,7 @@ Method | HTTP request | Description
 
 ## AccountsAccountIdDocumentsUploadPost
 
-> AccountsAccountIdDocumentsUploadPost(ctx, accountId).DocumentUpload(documentUpload).Execute()
+> AccountsAccountIdDocumentsUploadPost(ctx, accountId).DocumentUploadRequest(documentUploadRequest).Execute()
 
 Upload a document to an already existing account
 
@@ -45,12 +45,12 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
-    documentUpload := *openapiclient.NewDocumentUpload(openapiclient.DocumentType("identity_verification"), "QWxwYWNhcyBjYW5ub3QgbGl2ZSBhbG9uZS4=", "image/jpeg") // DocumentUpload | 
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
+    documentUploadRequest := *openapiclient.NewDocumentUploadRequest(openapiclient.DocumentType("identity_verification"), "QWxwYWNhcyBjYW5ub3QgbGl2ZSBhbG9uZS4=", "image/jpeg") // DocumentUploadRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.AccountsAccountIdDocumentsUploadPost(context.Background(), accountId).DocumentUpload(documentUpload).Execute()
+    resp, r, err := api_client.AccountsApi.AccountsAccountIdDocumentsUploadPost(context.Background(), accountId).DocumentUploadRequest(documentUploadRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.AccountsAccountIdDocumentsUploadPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -64,7 +64,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
+**accountId** | **string** | Account identifier. | 
 
 ### Other Parameters
 
@@ -74,7 +74,7 @@ Other parameters are passed through a pointer to a apiAccountsAccountIdDocuments
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **documentUpload** | [**DocumentUpload**](DocumentUpload.md) |  | 
+ **documentUploadRequest** | [**DocumentUploadRequest**](DocumentUploadRequest.md) |  | 
 
 ### Return type
 
@@ -118,7 +118,7 @@ func main() {
     until := "until_example" // string |  (optional)
     after := "after_example" // string |  (optional)
     direction := "direction_example" // string |  (optional)
-    accountId := TODO // string |  (optional)
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     pageSize := int32(56) // int32 |  (optional) (default to 100)
     pageToken := "pageToken_example" // string |  (optional)
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
  **until** | **string** |  | 
  **after** | **string** |  | 
  **direction** | **string** |  | 
- **accountId** | [**string**](string.md) |  | 
+ **accountId** | **string** |  | 
  **pageSize** | **int32** |  | [default to 100]
  **pageToken** | **string** |  | 
 
@@ -199,7 +199,7 @@ func main() {
     until := "until_example" // string |  (optional)
     after := "after_example" // string |  (optional)
     direction := "direction_example" // string |  (optional)
-    accountId := TODO // string |  (optional)
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
     pageSize := int32(56) // int32 |  (optional) (default to 100)
     pageToken := "pageToken_example" // string |  (optional)
 
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
  **until** | **string** |  | 
  **after** | **string** |  | 
  **direction** | **string** |  | 
- **accountId** | [**string**](string.md) |  | 
+ **accountId** | **string** |  | 
  **pageSize** | **int32** |  | [default to 100]
  **pageToken** | **string** |  | 
 
@@ -318,7 +318,7 @@ Name | Type | Description  | Notes
 
 ## AccountsPost
 
-> Account AccountsPost(ctx).AccountCreationObject(accountCreationObject).Execute()
+> Account AccountsPost(ctx).AccountCreationRequest(accountCreationRequest).Execute()
 
 Create an account
 
@@ -335,11 +335,11 @@ import (
 )
 
 func main() {
-    accountCreationObject := *openapiclient.NewAccountCreationObject() // AccountCreationObject | 
+    accountCreationRequest := *openapiclient.NewAccountCreationRequest() // AccountCreationRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.AccountsPost(context.Background()).AccountCreationObject(accountCreationObject).Execute()
+    resp, r, err := api_client.AccountsApi.AccountsPost(context.Background()).AccountCreationRequest(accountCreationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.AccountsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -360,7 +360,7 @@ Other parameters are passed through a pointer to a apiAccountsPostRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accountCreationObject** | [**AccountCreationObject**](AccountCreationObject.md) |  | 
+ **accountCreationRequest** | [**AccountCreationRequest**](AccountCreationRequest.md) |  | 
 
 ### Return type
 
@@ -399,7 +399,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -417,7 +417,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
+**accountId** | **string** | Account identifier. | 
 
 ### Other Parameters
 
@@ -465,8 +465,8 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
-    achRelationshipId := TODO // string | ACH relationship identifier
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
+    achRelationshipId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | ACH relationship identifier
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -484,8 +484,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
-**achRelationshipId** | [**string**](.md) | ACH relationship identifier | 
+**accountId** | **string** | Account identifier. | 
+**achRelationshipId** | **string** | ACH relationship identifier | 
 
 ### Other Parameters
 
@@ -534,7 +534,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
     bankId := "bankId_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
@@ -553,7 +553,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
+**accountId** | **string** | Account identifier. | 
 **bankId** | **string** |  | 
 
 ### Other Parameters
@@ -655,7 +655,7 @@ Name | Type | Description  | Notes
 
 ## EventsAccountsStatusGet
 
-> InlineResponse2003 EventsAccountsStatusGet(ctx).Since(since).Until(until).SinceId(sinceId).UntilId(untilId).Execute()
+> AccountStatusEvent EventsAccountsStatusGet(ctx).Since(since).Until(until).SinceId(sinceId).UntilId(untilId).Execute()
 
 Subscribe to account status events (SSE).
 
@@ -687,7 +687,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.EventsAccountsStatusGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EventsAccountsStatusGet`: InlineResponse2003
+    // response from `EventsAccountsStatusGet`: AccountStatusEvent
     fmt.Fprintf(os.Stdout, "Response from `AccountsApi.EventsAccountsStatusGet`: %v\n", resp)
 }
 ```
@@ -710,7 +710,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**AccountStatusEvent**](AccountStatusEvent.md)
 
 ### Authorization
 
@@ -747,7 +747,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -767,7 +767,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
+**accountId** | **string** | Account identifier. | 
 
 ### Other Parameters
 
@@ -815,7 +815,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
     statuses := "statuses_example" // string | Comma-separated status values (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -836,7 +836,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
+**accountId** | **string** | Account identifier. | 
 
 ### Other Parameters
 
@@ -885,7 +885,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | 
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     status := "status_example" // string |  (optional)
     bankName := "bankName_example" // string |  (optional)
 
@@ -907,7 +907,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) |  | 
+**accountId** | **string** |  | 
 
 ### Other Parameters
 
@@ -959,7 +959,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -979,7 +979,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
+**accountId** | **string** | Account identifier. | 
 
 ### Other Parameters
 
@@ -1029,10 +1029,10 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | 
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     direction := "direction_example" // string |  (optional)
-    limit := float32(8.14) // float32 |  (optional)
-    offset := float32(8.14) // float32 |  (optional)
+    limit := int32(56) // int32 |  (optional)
+    offset := int32(56) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -1052,7 +1052,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) |  | 
+**accountId** | **string** |  | 
 
 ### Other Parameters
 
@@ -1063,8 +1063,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **direction** | **string** |  | 
- **limit** | **float32** |  | 
- **offset** | **float32** |  | 
+ **limit** | **int32** |  | 
+ **offset** | **int32** |  | 
 
 ### Return type
 
@@ -1086,7 +1086,7 @@ Name | Type | Description  | Notes
 
 ## PatchAccount
 
-> Account PatchAccount(ctx, accountId).AccountUpdate(accountUpdate).Execute()
+> Account PatchAccount(ctx, accountId).AccountUpdateRequest(accountUpdateRequest).Execute()
 
 Update an account
 
@@ -1103,12 +1103,12 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
-    accountUpdate := *openapiclient.NewAccountUpdate() // AccountUpdate | 
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
+    accountUpdateRequest := *openapiclient.NewAccountUpdateRequest() // AccountUpdateRequest | 
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AccountsApi.PatchAccount(context.Background(), accountId).AccountUpdate(accountUpdate).Execute()
+    resp, r, err := api_client.AccountsApi.PatchAccount(context.Background(), accountId).AccountUpdateRequest(accountUpdateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.PatchAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1124,7 +1124,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
+**accountId** | **string** | Account identifier. | 
 
 ### Other Parameters
 
@@ -1134,7 +1134,7 @@ Other parameters are passed through a pointer to a apiPatchAccountRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **accountUpdate** | [**AccountUpdate**](AccountUpdate.md) |  | 
+ **accountUpdateRequest** | [**AccountUpdateRequest**](AccountUpdateRequest.md) |  | 
 
 ### Return type
 
@@ -1173,7 +1173,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
     aCHRelationshipData := *openapiclient.NewACHRelationshipData("AccountOwnerName_example", "BankAccountType_example", "BankAccountNumber_example", "BankRoutingNumber_example") // ACHRelationshipData | 
 
     configuration := openapiclient.NewConfiguration()
@@ -1194,7 +1194,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
+**accountId** | **string** | Account identifier. | 
 
 ### Other Parameters
 
@@ -1243,7 +1243,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | Account identifier.
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Account identifier.
     bankData := *openapiclient.NewBankData("Name_example", "BankCode_example", "BankCodeType_example", "AccountNumber_example") // BankData | 
 
     configuration := openapiclient.NewConfiguration()
@@ -1264,7 +1264,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) | Account identifier. | 
+**accountId** | **string** | Account identifier. | 
 
 ### Other Parameters
 
@@ -1315,7 +1315,7 @@ import (
 )
 
 func main() {
-    accountId := TODO // string | 
+    accountId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
     transferData := *openapiclient.NewTransferData("TransferType_example", "Amount_example", "Direction_example", "RelationshipId_example", "BankId_example") // TransferData | 
 
     configuration := openapiclient.NewConfiguration()
@@ -1336,7 +1336,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**accountId** | [**string**](.md) |  | 
+**accountId** | **string** |  | 
 
 ### Other Parameters
 

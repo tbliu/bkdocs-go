@@ -12,16 +12,16 @@ package openapi
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // InlineResponse2004 struct for InlineResponse2004
 type InlineResponse2004 struct {
-	EventId *int32 `json:"event_id,omitempty"`
-	At *time.Time `json:"at,omitempty"`
-	JournalId *string `json:"journal_id,omitempty"`
-	StatusFrom *string `json:"status_from,omitempty"`
-	StatusTo *string `json:"status_to,omitempty"`
+	// OAuth code to exchange with a token later.
+	Code *string `json:"code,omitempty"`
+	// redirect URI
+	RedirectUri *string `json:"redirect_uri,omitempty"`
+	// granted scopes
+	Scope *string `json:"scope,omitempty"`
 }
 
 // NewInlineResponse2004 instantiates a new InlineResponse2004 object
@@ -41,182 +41,112 @@ func NewInlineResponse2004WithDefaults() *InlineResponse2004 {
 	return &this
 }
 
-// GetEventId returns the EventId field value if set, zero value otherwise.
-func (o *InlineResponse2004) GetEventId() int32 {
-	if o == nil || o.EventId == nil {
-		var ret int32
-		return ret
-	}
-	return *o.EventId
-}
-
-// GetEventIdOk returns a tuple with the EventId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InlineResponse2004) GetEventIdOk() (*int32, bool) {
-	if o == nil || o.EventId == nil {
-		return nil, false
-	}
-	return o.EventId, true
-}
-
-// HasEventId returns a boolean if a field has been set.
-func (o *InlineResponse2004) HasEventId() bool {
-	if o != nil && o.EventId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEventId gets a reference to the given int32 and assigns it to the EventId field.
-func (o *InlineResponse2004) SetEventId(v int32) {
-	o.EventId = &v
-}
-
-// GetAt returns the At field value if set, zero value otherwise.
-func (o *InlineResponse2004) GetAt() time.Time {
-	if o == nil || o.At == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.At
-}
-
-// GetAtOk returns a tuple with the At field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InlineResponse2004) GetAtOk() (*time.Time, bool) {
-	if o == nil || o.At == nil {
-		return nil, false
-	}
-	return o.At, true
-}
-
-// HasAt returns a boolean if a field has been set.
-func (o *InlineResponse2004) HasAt() bool {
-	if o != nil && o.At != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAt gets a reference to the given time.Time and assigns it to the At field.
-func (o *InlineResponse2004) SetAt(v time.Time) {
-	o.At = &v
-}
-
-// GetJournalId returns the JournalId field value if set, zero value otherwise.
-func (o *InlineResponse2004) GetJournalId() string {
-	if o == nil || o.JournalId == nil {
+// GetCode returns the Code field value if set, zero value otherwise.
+func (o *InlineResponse2004) GetCode() string {
+	if o == nil || o.Code == nil {
 		var ret string
 		return ret
 	}
-	return *o.JournalId
+	return *o.Code
 }
 
-// GetJournalIdOk returns a tuple with the JournalId field value if set, nil otherwise
+// GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineResponse2004) GetJournalIdOk() (*string, bool) {
-	if o == nil || o.JournalId == nil {
+func (o *InlineResponse2004) GetCodeOk() (*string, bool) {
+	if o == nil || o.Code == nil {
 		return nil, false
 	}
-	return o.JournalId, true
+	return o.Code, true
 }
 
-// HasJournalId returns a boolean if a field has been set.
-func (o *InlineResponse2004) HasJournalId() bool {
-	if o != nil && o.JournalId != nil {
+// HasCode returns a boolean if a field has been set.
+func (o *InlineResponse2004) HasCode() bool {
+	if o != nil && o.Code != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetJournalId gets a reference to the given string and assigns it to the JournalId field.
-func (o *InlineResponse2004) SetJournalId(v string) {
-	o.JournalId = &v
+// SetCode gets a reference to the given string and assigns it to the Code field.
+func (o *InlineResponse2004) SetCode(v string) {
+	o.Code = &v
 }
 
-// GetStatusFrom returns the StatusFrom field value if set, zero value otherwise.
-func (o *InlineResponse2004) GetStatusFrom() string {
-	if o == nil || o.StatusFrom == nil {
+// GetRedirectUri returns the RedirectUri field value if set, zero value otherwise.
+func (o *InlineResponse2004) GetRedirectUri() string {
+	if o == nil || o.RedirectUri == nil {
 		var ret string
 		return ret
 	}
-	return *o.StatusFrom
+	return *o.RedirectUri
 }
 
-// GetStatusFromOk returns a tuple with the StatusFrom field value if set, nil otherwise
+// GetRedirectUriOk returns a tuple with the RedirectUri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineResponse2004) GetStatusFromOk() (*string, bool) {
-	if o == nil || o.StatusFrom == nil {
+func (o *InlineResponse2004) GetRedirectUriOk() (*string, bool) {
+	if o == nil || o.RedirectUri == nil {
 		return nil, false
 	}
-	return o.StatusFrom, true
+	return o.RedirectUri, true
 }
 
-// HasStatusFrom returns a boolean if a field has been set.
-func (o *InlineResponse2004) HasStatusFrom() bool {
-	if o != nil && o.StatusFrom != nil {
+// HasRedirectUri returns a boolean if a field has been set.
+func (o *InlineResponse2004) HasRedirectUri() bool {
+	if o != nil && o.RedirectUri != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetStatusFrom gets a reference to the given string and assigns it to the StatusFrom field.
-func (o *InlineResponse2004) SetStatusFrom(v string) {
-	o.StatusFrom = &v
+// SetRedirectUri gets a reference to the given string and assigns it to the RedirectUri field.
+func (o *InlineResponse2004) SetRedirectUri(v string) {
+	o.RedirectUri = &v
 }
 
-// GetStatusTo returns the StatusTo field value if set, zero value otherwise.
-func (o *InlineResponse2004) GetStatusTo() string {
-	if o == nil || o.StatusTo == nil {
+// GetScope returns the Scope field value if set, zero value otherwise.
+func (o *InlineResponse2004) GetScope() string {
+	if o == nil || o.Scope == nil {
 		var ret string
 		return ret
 	}
-	return *o.StatusTo
+	return *o.Scope
 }
 
-// GetStatusToOk returns a tuple with the StatusTo field value if set, nil otherwise
+// GetScopeOk returns a tuple with the Scope field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineResponse2004) GetStatusToOk() (*string, bool) {
-	if o == nil || o.StatusTo == nil {
+func (o *InlineResponse2004) GetScopeOk() (*string, bool) {
+	if o == nil || o.Scope == nil {
 		return nil, false
 	}
-	return o.StatusTo, true
+	return o.Scope, true
 }
 
-// HasStatusTo returns a boolean if a field has been set.
-func (o *InlineResponse2004) HasStatusTo() bool {
-	if o != nil && o.StatusTo != nil {
+// HasScope returns a boolean if a field has been set.
+func (o *InlineResponse2004) HasScope() bool {
+	if o != nil && o.Scope != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetStatusTo gets a reference to the given string and assigns it to the StatusTo field.
-func (o *InlineResponse2004) SetStatusTo(v string) {
-	o.StatusTo = &v
+// SetScope gets a reference to the given string and assigns it to the Scope field.
+func (o *InlineResponse2004) SetScope(v string) {
+	o.Scope = &v
 }
 
 func (o InlineResponse2004) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.EventId != nil {
-		toSerialize["event_id"] = o.EventId
+	if o.Code != nil {
+		toSerialize["code"] = o.Code
 	}
-	if o.At != nil {
-		toSerialize["at"] = o.At
+	if o.RedirectUri != nil {
+		toSerialize["redirect_uri"] = o.RedirectUri
 	}
-	if o.JournalId != nil {
-		toSerialize["journal_id"] = o.JournalId
-	}
-	if o.StatusFrom != nil {
-		toSerialize["status_from"] = o.StatusFrom
-	}
-	if o.StatusTo != nil {
-		toSerialize["status_to"] = o.StatusTo
+	if o.Scope != nil {
+		toSerialize["scope"] = o.Scope
 	}
 	return json.Marshal(toSerialize)
 }
